@@ -1,0 +1,31 @@
+{
+  "name": "alexanders",
+  "description": "深圳市合君道富科技有限公司",
+  "main": "index.php",
+  "authors": [
+    "深圳市合君道富科技有限公司"
+  ],
+  "license": "Apache-2.0",
+  "keywords": [
+    "gulp",
+    "thinkphp"
+  ],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "Public/plugins",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "swiper": "^3.4.0",
+    "weui": "^1.1.0",
+    "font-awesome": "Font-Awesome#^4.7.0",
+    "zepto": "^1.1.6",
+    "fastclick": "^1.0.6",
+    "iscroll": "^5.2.0"
+  }
+}

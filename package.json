@@ -1,0 +1,42 @@
+{
+  "name": "gbarcode_gulp_thinkphp",
+  "version": "1.0.0",
+  "description": "深圳市通用条码技术开发中心GULP自动构建工具——Thinkphp版",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.oschina.net/gbarcode/gulp_thinkphp.git"
+  },
+  "keywords": [
+    "gulp",
+    "thinkphp"
+  ],
+  "author": "深圳市通用条码技术开发中心",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "autoprefixer": "^6.7.5",
+    "browser-sync": "^2.18.5",
+    "cssnano": "^3.10.0",
+    "gulp": "^3.9.1",
+    "gulp-base64": "^0.1.3",
+    "gulp-changed": "^1.3.2",
+    "gulp-clean": "^0.3.2",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-html-replace": "^1.6.2",
+    "gulp-if-else": "^1.0.3",
+    "gulp-imagemin": "^3.1.1",
+    "gulp-less": "^3.3.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-postcss": "^6.3.0",
+    "gulp-replace": "^0.5.4",
+    "gulp-rev-append": "^0.1.8",
+    "gulp-sourcemaps": "^2.4.1",
+    "gulp-uglify": "^2.0.1"
+  },
+  "dependencies": {
+    "gulp-uglify": "^2.0.0"
+  }
+}
