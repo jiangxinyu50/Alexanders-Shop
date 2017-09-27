@@ -1,0 +1,152 @@
+<extend name="Public/base" />
+<block name='title'>领取优惠券</block>
+<block name='head-link'>
+    <style type="text/css">
+        .weui-icon_msg{
+            margin-top: 15px;
+            margin-bottom: 10px;
+            font-size: 65px;
+        }
+    </style>
+</block>
+<block name='content'>
+    <div class="content">
+        <!-- 顶部标识图 -->
+        <div class="weui-flex coupon-banner_style">
+            <div><div class="placeholder"></div></div>
+            <div class="weui-flex__item">
+                <div class="text-center">
+                    <img src="/Public/images/Mobile/cardInfo-logo.png?v=1.0.0" alt="Alexander's" title="Alexander's ice cream" style="width: 98%;">
+                </div>
+            </div>
+            <div><div class="placeholder"></div></div>
+        </div>
+
+        <!-- 优惠券主体部分 -->
+        <div style="margin-top: 20px;">
+            <div class="shareHongbao-div coupon-div">
+                <div class="coupon-top">
+                    <div class="" style="display: inline-block;">
+                        <span class="card-title coupon-title"><{$cardInfo.price}></span>
+                    </div>
+                    <div class="" style="display: inline-block;">
+                        <div class="coupon-style">
+                            <p class="Hongbao-rmb_style">RMB</p>
+                            <span class="Hongbao-card_style">冰淇淋券</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="coupon-desc">
+                    <p class="shareHongbao-date">有效日期: <span><{$cardInfo.startTime}></span> 至 <span><{$cardInfo.endTime}></span></p>
+                    <p class="shareHongbao-date">购满<{$cardInfo.price_limit}>元即可使用</p>
+                </div>
+            </div>
+
+            <a href="<{:U('Index/index')}>" class="weui-btn ready-to-use_btn" style="background: #ae945e;margin: 8% auto;">立即使用</a>
+        </div>
+
+        <!-- 活动细则 -->
+        <div class="white-bg shouqi-div">
+            <div class="weui-loadmore weui-loadmore_line weui-loadmore_supplement">
+                <span class="weui-loadmore__tips" style="color: #950505;font-size: 18px;">&nbsp;活动细则&nbsp;</span>
+            </div>
+            <div style="margin-top: 10px;width: 100%;">
+                <ol class="hongbao-rules">
+                    <li>福袋共设有 15 元、30 元、50 元现金券，每个福袋含 8 张随机现金券。每人每次只能获得一张现价券。</li>
+                    <li>现金券有效期为 7 天，请在有效期内使用。</li>
+                    <li>亚历山达冰淇淋保留法律范围内允许的对活动的解释权。</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- 作了个判断条件 -->
+    <if condition="($status eq 0)">
+        <div id="no_toast" style="display: none;">
+            <div class="weui-mask_transparent"></div>
+            <div class="weui-toast">
+                <i class="weui-icon-warn weui-icon_msg"></i>
+                <p class="weui-toast__content">没有此优惠券</p>
+            </div>
+        </div>
+        <elseif condition="$name eq 1"/>
+        <div id="success_toast" style="display: none;">
+            <div class="weui-mask_transparent"></div>
+            <div class="weui-toast">
+                <i class="weui-icon-success weui-icon_msg"></i>
+                <p class="weui-toast__content">领取成功</p>
+            </div>
+        </div>
+        <elseif condition="$name eq 2"/>
+        <div id="failed_toast" style="display: none;">
+            <div class="weui-mask_transparent"></div>
+            <div class="weui-toast">
+                <i class="weui-icon-warn weui-icon_msg"></i>
+                <p class="weui-toast__content">领取失败</p>
+            </div>
+        </div>
+        <else />
+        <div id="got_toast" style="display: none;">
+            <div class="weui-mask_transparent"></div>
+            <div class="weui-toast">
+                <i class="weui-icon-warn weui-icon_msg" style="color: #fff;"></i>
+                <p class="weui-toast__content">您已领取过了</p>
+            </div>
+        </div>
+    </if>
+</block>
+<block name='footer-js'>
+    <if condition="($status eq 0)">
+        <script>
+            $(function(){
+                var $no_toast = $('#no_toast');
+
+                if ($no_toast.css('display') != 'none') return;
+
+                $no_toast.show(100);
+                setTimeout(function () {
+                    $no_toast.hide(100);
+                }, 2000);
+            });
+        </script>
+        <elseif condition="$name eq 1"/>
+        <script>
+            $(function(){
+                var $success_toast = $('#success_toast');
+
+                if ($success_toast.css('display') != 'none') return;
+
+                $success_toast.show(100);
+                setTimeout(function () {
+                    $success_toast.hide(100);
+                }, 2000);
+            });
+        </script>
+        <elseif condition="$name eq 1"/>
+        <script>
+            $(function(){
+                var $failed_toast = $('#failed_toast');
+
+                if ($failed_toast.css('display') != 'none') return;
+
+                $failed_toast.show(100);
+                setTimeout(function () {
+                    $failed_toast.hide(100);
+                }, 2000);
+            });
+        </script>
+        <else/>
+        <script>
+            $(function(){
+                var $got_toast = $('#got_toast');
+
+                if ($got_toast.css('display') != 'none') return;
+
+                $got_toast.show(100);
+                setTimeout(function () {
+                    $got_toast.hide(100);
+                }, 2000);
+            });
+        </script>
+    </if>
+</block>

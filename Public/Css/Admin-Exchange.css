@@ -1,0 +1,120 @@
+/* 
+    Document   : Admin-index
+    Created on : 2013-6-27, 22:37:20
+    Author     : lisha_000
+    Description:
+        Purpose of the stylesheet follows.
+*/
+body, div, address, blockquote, iframe, ul, ol, dl, dt, dd, li, dl, h1, h2, h3, h4, h5, h6, p, pre, table, caption, th, td, form, legend, fieldset, input, button, select, textarea {margin:0; padding:0;font-style: normal;font-size: 100%; font-family: inherit;} 
+ol, ul ,li{list-style: none;} 
+img {border: 0;} 
+body {color:#000;font-size: 12px;background-color:#fff;font-family: "Microsoft YaHei",Helvetica,Verdana,Arial,Tahoma;} 
+.clearfix:after {clear:both; content:"."; display:block; height:0pt; visibility:hidden; overflow:hidden;} 
+.clear{clear:both;height:1px; margin-top:-1px; width:100%;} 
+
+.dis{display:block;} 
+.undis{display:none;} 
+
+/*************main**************/
+
+#main{
+    width:958px;
+    min-height:500px;
+    margin:0 auto;
+    margin-top:25px;
+    background:#fafafa;
+    border:1px solid #D3D3D3;
+    border-radius: 5px; 
+}
+
+#class-title{
+    height:35px;
+    line-height:35px;
+    padding-left:20px;
+    font-size:18px;
+    border-bottom:1px solid #d3d3d3;
+    background:#f4f4f4;
+}
+
+#main-left{
+    float:left;
+    width:190px;
+    padding-bottom:25px;
+}
+
+#left-menu ul li{
+    height:30px;
+    line-height:30px;
+}
+
+#left-menu ul li a{
+    display:block;
+    color:#000;
+    text-decoration:none;
+    padding:5px 0px 5px 20px;
+}
+
+#left-menu ul li a:hover{
+    background:#6EB262;
+}
+
+#main-right{
+    float:right;
+    width:747px;
+    min-height:500px;
+    padding-left:20px;
+    padding-top:25px;
+    border-left:1px solid #d3d3d3;
+}
+
+#right-title{
+    font-size:20px;
+    border-bottom:1px dashed #ccc;
+    margin-right:20px;
+}
+
+#fwcode{
+    text-align:center;
+    margin-top:100px;
+    margin-left:100px;
+    height:30px;
+    line-height:30px;
+}
+
+#right-form{
+    float:left;
+}
+
+#right-form button{
+    width:80px;
+    height:30px;
+    cursor:pointer;
+    margin-top:20px;
+    margin-left:220px;
+}
+
+#prizeMain{
+    float:left;
+    margin-top:100px;
+    margin-left:50px;
+    margin-bottom:10px;
+}
+
+#code{
+    margin-bottom:10px;
+}
+
+#prizeInfo p{
+    margin-bottom:10px;
+}
+
+#prizeInfo button{
+    width:80px;
+    height:30px;
+    cursor:pointer;
+}
+
+#not-show{
+    clear:both;
+    height:1px;
+}

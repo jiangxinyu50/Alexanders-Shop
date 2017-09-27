@@ -1,0 +1,108 @@
+body, div, address, blockquote, iframe, ul, ol, dl, dt, dd, li, dl, h1, h2, h3, h4, h5, h6, p, pre, table, caption, th, td, form, legend, fieldset, input, button, select, textarea {margin:0; padding:0;font-style: normal;font-size: 100%; font-family: inherit;} 
+h1,h2{font-weight:normal;}
+ol, ul ,li{list-style: none;} 
+img {border: 0;} 
+body {color:#000;background:#f8f8f8;font: 12px/1.5 Arial, Helvetica, sans-serif;} 
+.clearfix:after {clear:both; content:"."; display:block; height:0pt; visibility:hidden; overflow:hidden;} 
+.clear{clear:both;height:1px; margin-top:-1px; width:100%;} 
+
+.dis{display:block;} 
+.undis{display:none;} 
+
+#class-title{
+    height:35px;
+    line-height:35px;
+    padding-left:20px;
+    margin-right:20px;
+    font-size:18px;
+    border-bottom:1px solid #d3d3d3;
+}
+
+#main-left{
+    float:left;
+    height:100%;
+}
+
+#left-menu ul li{
+    height:30px;
+    line-height:30px;
+}
+
+#left-menu ul li a{
+    display:block;
+    color:#000;
+    text-decoration:none;
+    padding-left:20px;
+}
+
+#left-menu ul li a:hover{
+    background:#6EB262;
+}
+
+
+#main-right{
+    float:left;
+    min-height:500px;
+    padding-left:20px;
+    padding-top:25px;
+    border-left:1px solid #d3d3d3;
+}
+
+#logo-main{
+    margin-top:50px;
+    margin-left:50px;
+}
+
+#select{
+    margin-top:30px;
+}
+
+#img{
+    float:left;
+    margin-right:30px;
+    margin-top:60px;
+}
+
+#img-list{
+    float:left;
+    margin-left:20px;
+    margin-top:20px;
+}
+
+#btn-main{
+    clear:both;
+    margin-top:20px;
+}
+
+#logoimg{
+    float:left;
+    width:400px;
+    height:150px;
+}
+
+#logoinput{
+    clear:both;
+    padding-top: 20px;
+}
+
+#subBtn{
+    margin-top:20px;
+    width:80px;
+    height:25px;
+    cursor:pointer;
+}
+
+
+#not-show{
+    clear:both;
+    height:1px;
+}
+
+.img-main{
+    margin-top:20px;
+}
+
+.img-list{
+    height:70px;
+    width:auto;
+}

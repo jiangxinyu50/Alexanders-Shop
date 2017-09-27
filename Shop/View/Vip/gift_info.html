@@ -1,0 +1,17 @@
+<div class="goods-info popup-goods-content" name="<{$gift_info.name}>" guid="<{$gift_info.guid}>" money="<{$gift_info.price_limit}>">
+    <div class="img-box" style="background-image: url(<{$gift_info.img}>);"></div>
+    <div class="weui-flex goods-control">
+        <div class="weui-flex__item">
+            <div class="modal-name" style="font-size: 18px;"><{$gift_info.name}></div>
+            <div class="gift-limit_money sub-text">满 <{$gift_info.price_limit}>元 可用</div>
+        </div>
+        <div class="weui-flex__item">
+            <div class="gift-valid_date sub-text">有效日期: <span><{$gift_info.start_time}></span>至<span><{$gift_info.end_time}></span></div>
+        </div>
+    </div>
+    <div class="goods-deail">
+        <{$gift_info.info}>
+    </div>
+
+    <a href="<{:U('Index/index')}>" class="weui-btn weui-btn_primary ready-to-use_btn">立即使用</a>
+</div>

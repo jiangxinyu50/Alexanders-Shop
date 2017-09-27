@@ -1,0 +1,32 @@
+body{
+ background: #fff;
+}
+
+#info p{
+    text-align:center;
+}
+
+#lay1{
+ margin:10px;
+ padding:10px;
+ min-height:20px;
+ position: relative;
+}
+
+.form{
+ padding:10px;
+ margin-top:10px;
+ background: #fff;
+}
+
+#check-foot{
+ text-align:center;
+ height:70px;
+ margin-top:10px;
+ background-repeat:no-repeat;
+ background-position:center bottom;
+ }
+
+ #ps{
+ 	color:red;
+ }

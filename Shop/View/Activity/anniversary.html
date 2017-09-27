@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title><block name='title'>ALEXANDER'S</block></title>
+    <block name='head-link'></block>
+    <link rel="stylesheet" href="/Public/plugins/weui/dist/style/weui.min.css"/>
+    <link rel="stylesheet" href="/Public/Css/anniversary/style.css"/>
+</head>
+<body>
+    <include file="Public/google-analytics" />
+    <div class="content">
+        <img src="/Public/images/anniversary/top-bg.png" class='top-bg'>
+        <img src="/Public/images/anniversary/top-title.png" class='title'>
+        <div class="block-left top-block"></div>
+        <div class="block-right top-block"></div>
+        <div class="top-info-1">
+            亲爱的<span class='name'><{$userInfo.nickname}></span><br/>感谢您一如既往的支持
+        </div>
+        <div class="top-info-2">
+            我们期待用更多的3年<br/>创造冰淇淋更多的可能性
+        </div>
+        <img src="/Public/images/anniversary/info-1.png" class='info-1'>
+        <img src="/Public/images/anniversary/info-2.png" class='info-2'>
+        <img src="/Public/images/anniversary/info-3.png" class='info-3'>
+        <div class="footer-bg"></div>
+        <img src="/Public/images/anniversary/qr-bg.png" class='qr-bg'>
+        <img src="<{$qr_url}>" class='qrcode'>
+        <img src="/Public/images/anniversary/logo.png" class='logo'>
+    </div>
+    <script type="text/javascript" src="/Public/plugins/zepto/zepto.min.js"></script>
+    <eq name='is_wechat' value='1'>
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"> </script>
+    <script>
+        wx.config({
+          debug: false,
+          appId: '<{$js_sign['appid']}>', // 必填，公众号的唯一标识
+          timestamp: <{$js_sign['timestamp']}>, // 必填，生成签名的时间戳，切记时间戳是整数型，别加引号
+          nonceStr: '<{$js_sign['noncestr']}>', // 必填，生成签名的随机串
+          signature: '<{$js_sign['signature']}>', // 必填，签名，见附录1
+          jsApiList: [
+            'checkJsApi',
+        'onMenuShareTimeline',
+        'onMenuShareAppMessage',
+        'onMenuShareQQ',
+        'onMenuShareWeibo',
+        'hideMenuItems',
+        'showMenuItems',
+        'hideAllNonBaseMenuItem',
+        'showAllNonBaseMenuItem',
+        'translateVoice',
+        'startRecord',
+        'stopRecord',
+        'onRecordEnd',
+        'playVoice',
+        'pauseVoice',
+        'stopVoice',
+        'uploadVoice',
+        'downloadVoice',
+        'chooseImage',
+        'previewImage',
+        'uploadImage',
+        'downloadImage',
+        'getNetworkType',
+        'openLocation',
+        'getLocation',
+        'hideOptionMenu',
+        'showOptionMenu',
+        'closeWindow',
+        'scanQRCode',
+        'chooseWXPay',
+        'openProductSpecificView',
+        'addCard',
+        'chooseCard',
+        'openCard'
+          ]
+      });
+
+    </script>
+    <script>
+    wx.ready(function(){
+        wx.onMenuShareTimeline({
+            title: "亚历山达冰淇淋3周岁礼物！", // 分享标题
+            link: 'https://www.alexanders.cn/Shop/Activity/anniversary?link_from=timeline&guid=<{$guid}>', // 分享链接
+            imgUrl: 'https://www.alexanders.cn/Public/images/anniversary/share.jpg', // 分享图标
+            success: function () { 
+                // 用户确认分享后执行的回调函数
+            },
+            cancel: function () { 
+                // 用户取消分享后执行的回调函数
+            }
+        });
+
+        wx.onMenuShareAppMessage({
+            title: "亚历山达冰淇淋3周岁礼物！", // 分享标题
+            desc: "送你活力满满牛奶杯，戳我免费领取嗷~", // 分享描述
+            link: 'https://www.alexanders.cn/Shop/Activity/anniversary?link_from=friend_share&guid=<{$guid}>', // 分享链接
+            imgUrl: 'https://www.alexanders.cn/Public/images/anniversary/share.jpg', // 分享图标
+            success: function () { 
+                // 用户确认分享后执行的回调函数
+            },
+            cancel: function () { 
+                // 用户取消分享后执行的回调函数
+            }
+        });
+    });
+
+    </script>
+    </eq>
+    <script>
+        $('.card').on('click', function(){
+            $('.qrcode-modal').show(100);
+        });
+
+        $('.modal-close-btn').on('click', function(){
+            $('.qrcode-modal').hide(100);
+        });
+    </script>
+</body>

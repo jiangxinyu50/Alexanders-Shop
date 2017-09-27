@@ -1,0 +1,122 @@
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  text-align: center;
+  background-color: #EAE9E9;
+}
+
+a{
+  color:#000;
+}
+
+a:hover{
+  color:#000;
+}
+
+.black-a a{
+  color:#fff;
+}
+.black-a a:hover{
+  color:#fff;
+}
+
+.footer {
+  height : 100px;
+  background-color: #000;
+}
+
+.middle-diy{
+  vertical-align: middle;text-align: center;
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+.navbar{
+  color: #FFF;
+}
+
+body > .container {
+  padding: 120px 15px 100px;
+  min-height: 500px;
+}
+
+code {
+  font-size: 80%;
+}
+
+.logo{
+  margin-top : 10px;
+  height : 80px;
+  margin-bottom: 10px;
+}
+
+.followIco{
+  width:40px;
+  margin-right: 5px;
+}
+
+.navbar{
+  background-color: #FFF;
+}
+
+.menu-icon{
+  width : 50%;
+}
+
+#index-ad{
+  height : 100%;
+}
+
+#Introduction{
+  text-align: left;
+}
+
+.tb-icon{
+  display:none;
+}
+
+.displayByPresent{
+  display:none;
+}
+
+.table-display{
+  display:table; 
+  vertical-align:middle;
+  height:100%;
+}
+.table-cell-display{
+  display:table-cell; 
+  vertical-align:middle;
+}
+
+.fullscreen{
+  height: 100%;
+  min-height: 100%;
+  padding : 0px;
+}
+.halfscreen{
+  height: 50%;
+  min-height: 50%;
+  padding : 0px;
+}
+
+
+#map{
+  height:400px;
+}
+
+.discount{
+  display:none;
+}
+
+.product-list-text{
+  margin-top:-5px;
+}

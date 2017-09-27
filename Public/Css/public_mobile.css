@@ -1,0 +1,78 @@
+html,body, .pageContent{
+	background-color: #E9E9E9;
+}
+
+a{
+	text-decoration:none;
+	color : #000;
+}
+
+a:hover{
+	color : #000;
+}
+
+
+.content-gray{
+	background-color : #D4D4D4;
+	height:100%;
+}
+
+
+
+img{
+	width:100%;
+	height:auto;
+}
+
+.nav-icon{
+	width:2em;
+	padding-bottom:2px;
+	padding-top : 5px;
+}
+
+.foot-nav{
+	margin-left : 1em;
+	margin-right : 1em;
+}
+
+.main{
+	margin:10px;
+	height:100%; 
+	overflow-y:scroll;
+}
+#ad{
+	margin-left: -16px;
+	margin-right: -16px;
+}
+
+#header-logo{
+	padding-top : 0.5em;
+	padding-left : 2em;
+	padding-right : 2em;
+	padding-bottom: 0.5em;
+	text-align: center;
+}
+
+.index-icon
+{
+padding: 1em;
+}
+
+.product-icon{
+	padding:0.5em;
+}
+
+.text-center{
+	text-align: center;
+}
+
+#content-tel{
+	padding : 1em;
+	padding-top:2em;
+}
+
+#content-tel-img{
+	margin-top : 2em;
+	margin-left: 1em;
+	width :5em;
+}

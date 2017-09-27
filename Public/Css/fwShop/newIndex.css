@@ -1,0 +1,159 @@
+#full-screen-slider { 
+	width:100%; 
+	height:396px; 
+	float:left; 
+	position:relative
+}
+#slides { 
+	display:block; 
+	width:100%; 
+	height:396px; 
+	list-style:none; 
+	padding:0; 
+	margin:0; 
+	position:relative
+}
+#slides li { 
+	display:block; 
+	width:100%; 
+	height:100%; 
+	list-style:none; 
+	padding:0; 
+	margin:0; 
+	position:absolute
+}
+#slides li a { 
+	display:block; 
+	width:100%; 
+	height:100%; 
+	text-indent:-9999px
+}
+#top-btn{
+	position: absolute;
+	z-index: 1000;
+}
+#pagination { 
+	display:block; 
+	list-style:none; 
+	position:absolute; 
+	left:50%; 
+	top:340px; 
+	z-index:9900;  
+	padding:5px 15px 5px 0; 
+	margin:0
+}
+#pagination li { 
+	display:block; 
+	list-style:none; 
+	width:10px; 
+	height:10px; 
+	float:left; 
+	margin-left:15px; 
+	border-radius:5px; 
+	background:#FFF 
+}
+#pagination li a { 
+	display:block; 
+	width:100%; 
+	height:100%; 
+	padding:0; 
+	margin:0;  
+	text-indent:-9999px;
+}
+#pagination li.current { 
+	background:#0092CE
+}
+#myCarousel{
+	height: 400px;
+}
+
+.item{
+	width:3000px;
+	text-align: left;
+}
+
+.carousel-inner .item .item-img{
+	height:100%;
+}
+
+.carousel-caption{
+	margin-top: 200px;
+	top:35%;
+}
+.text{
+	border: 1px solid #CCC;
+	border-radius: 4px;
+	min-height: 40px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	background-color: #F3F3F3;
+	line-height: 40px;
+	text-align: center;
+	letter-spacing: 4px;
+	color: #000;
+}
+.img-style{
+	width:auto;
+	height: auto;
+}
+.txt-indent{
+	font-size: 12px;
+	font-weight: 15px;
+	padding: 5px;
+	line-height: 20px;
+}
+.apply-text{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	color: #00A0E9;
+	font-family: "微软雅黑";
+}
+.secondtxt{
+	font-size: 20px;
+}
+.indent{
+	text-indent:2em;
+	line-height: 30px;
+}
+#goods{
+	background-color: #F8F8F8;
+	padding-top:30px;
+	padding-bottom:30px;
+}
+#goods a{
+	color: #000;
+}
+#goods a:hover{
+	text-decoration: none;
+	color: #00A0E9;
+}
+.border-bg{
+	border-right:1px solid #dadada;
+}
+.anqi-text{
+	margin-top: 15px;
+	font-size: 14px;
+	font-weight: 1px;
+}
+.anqi-text a{
+	color: black;
+}
+.anqi-text a:hover{
+	text-decoration: none;
+	color: red;
+}
+.triangle-up {
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 22px solid #C9CACA;
+    margin-top: 20px;
+}
+.hideStyle{
+	display: none;
+}
+.backset{
+	background-color: #C9CACA;
+	padding: 10px 35px;
+}

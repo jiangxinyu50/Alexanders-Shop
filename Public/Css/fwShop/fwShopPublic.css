@@ -1,0 +1,112 @@
+.navigate ul li a{
+	line-height: 35px;
+}
+#top{
+	margin-top: 8px;
+	margin-bottom: 8px;
+}
+.nav  ul li {
+	float:left;
+	padding:0 10px;
+	text-align:center;
+	height:45px;
+	line-height:55px;
+	list-style: none;
+	font-size: 16px;
+	font-family: "黑体"
+}
+.nav li a{
+	text-decoration: none;
+	color: #4c4948;
+}
+.nav li a:hover{
+	color:#00a0e9;
+}
+.weUseBtn{
+	position: absolute;
+	z-index: 12;
+}
+.img-style{
+	width:auto;
+	height: auto;
+}
+.wxfw-text{
+	font-size:18px;
+	font-weight:normal;
+	margin-top:20px
+}
+/*foot.html*/
+.foot-text ul{
+	list-style: none;
+}
+.foot-text a{
+	color: #777;
+}
+.txt{
+	font-size: 18px;
+}
+.txt a{
+	color: #333;
+}
+.footer{
+	color: #777;
+	text-align: center;
+	padding: 20px 0px;
+	margin-top: 10px;
+	border-top: 1px solid #E5E5E5;
+	background-color: #F5F5F5;
+}
+
+#footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;/*脚部的高度*/
+  background: #F5F5F5; 
+}
+
+/*联系我们页面*/
+.heiti{
+	font-family: "SimHei";
+}
+.ywzx{
+	font-family: "微软雅黑";
+	
+	margin-top: 5px;
+	font-size: 18px;
+}
+#triangle-down {
+    height:0;
+    width:0;
+    overflow: hidden;
+    font-size: 0;
+    line-height: 0;
+    border-color:#c9caca transparent transparent transparent;
+    border-style:solid;
+    border-width:10px;
+}
+#img-text {
+	font-size: 14px;
+	font-weight: 15px;
+	line-height:23px;
+	padding: 5px 5px;
+	
+	text-align: left;
+	color:#777777;
+	
+}
+div,h1,h2,h3,h4,p{
+	font-family: "微软雅黑";
+}
+p.small {
+	line-height: 90%
+}
+#title-text{
+	font-family: "微软雅黑"
+}
+.distance{
+	margin-top:20px;
+}
+.bottom-distance{
+	margin-bottom: 20px;
+}

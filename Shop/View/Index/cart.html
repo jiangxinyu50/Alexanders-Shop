@@ -1,0 +1,738 @@
+<extend name="Public/base"/>
+<block name='title'>购物车</block>
+<block name='head-link'>
+<link href="/Public/plugins/mdater/zepto.mdater.css" rel="stylesheet">
+<style type="text/css">
+    .gray-bg{
+        background-color: #F4F4F4 !important;
+    }
+</style>
+</block>
+<block name='content'>
+    <div class="cart-page gray-bg">
+        <div class="content">
+            <!-- 配送地址 -->
+            <div class="weui-panel" id='address-panel'>
+                <div class="weui-cell weui-cell_access">
+                    <neq name='orderInfo.address' value=''>
+                        <img src="/Public/images/Mobile/icon/address_icon.ico" style="width: 13px;height: 18px;margin-right: 2px;" />
+                        <else />
+                        <img src="/Public/images/Mobile/icon/place_add.ico" style="width: 17px;height: 18px;" />
+                    </neq>
+                    <div class="weui-cell__bd">
+                        <div style="margin-left: 10px;">
+                            <a href="<{:U('address')}>?type=owner">
+                                <neq name='orderInfo.address' value=''>
+                                    <h4 class="weui-media-box__title" style="font-weight: bold;"><{$orderInfo.address.district}> <{$orderInfo.address.address}> <{$orderInfo.address.floor}></h4>
+                                    <p class="weui-media-box__desc"><{$orderInfo.address.name}>&nbsp;<{$orderInfo.address.tel}></p>
+                                    <else />
+                                    <h4 class="weui-media-box__title" style="font-weight: bold;">新增收货地址</h4>
+                                </neq>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="weui-cell__ft"></div>
+                </div>
+                <!-- 配送时间 -->
+                <neq name='not_time_sel' value='1'> <!-- 第三方配送不能选时间 -->
+                <div id='send-time-panel' class="weui-cell weui-cell_access" style="padding: 5px 15px;">
+                    <div class="weui-cell__bd">
+                        <div class="weui-cells weui-cells_new">
+                            <div class="weui-cell" style="padding: 10px 0;">
+                                <img src="/Public/images/Mobile/icon/clock.ico" style="width: 17px;height: 18px;" />
+                                <div class="weui-cell__bd">
+                                    <div class="weui-cell_access" style="margin-left: 10px;">
+                                        <label class="weui-label date-sel needsclick" style="font-weight: bold;color: #000;width: 100%;" name="date">送达时间</label>
+                                        <label class="sections"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="weui-cell__ft"></div>
+                </div>
+                    <else/>
+                    <div class="weui-cell weui-cell_access" style="padding: 5px 15px;">
+                        <div class="weui-cell__bd">
+                            <label style="font-size: 12px;">* 您的顺丰快递会在24小时内尽快发货, 也可在底部备注延迟发货日期^_^</label>
+                        </div>
+                    </div>
+                </neq>
+            </div>
+
+
+            <!-- 商品信息 -->
+            <div class="weui-panel">
+            <div class="cart-goods-style">
+                <div class="weui-panel__bd">
+                    <eq name="has_package" value='1'>
+                    <volist name='orderInfo.items' id='column' key="i">
+                        <eq name="column.type" value="0">
+                            <volist name='column.items' id='goods' key="j">
+                                <div class="weui-media-box weui-media-box_appmsg cart-goods" name='<{$goods.name}>' guid="<{$goods.guid}>" price='<{$goods.price}>' pre_sell='<{$goods.is_pre_sell}>' send_start_date='<{$goods.send_start_date}>' optional="<{$column.type}>">
+                                    <div class="weui-media-box__bd">
+                                        <h4 class="weui-media-box__title goods-info_title"><{$goods.name}> x<{$goods.num}></h4>
+                                        <span class="weui-media-box__desc goods-info_price">¥ <{$goods.price}>.00</span>
+                                    </div>
+                                </div>
+                            </volist>
+                        </eq>
+                    </volist>
+                    </eq>
+                    <eq name='has_goods' value='1'>
+                        <volist name='orderInfo.items' id='column' key="i">
+                            <eq name="column.type" value="1">
+                                <div class="weui-media-box weui-media-box_appmsg" style="padding: 0;">
+                                    <div class="weui-media-box__bd">
+                                        <volist name='column.items' id='goods' key="j">
+                                          <if condition="$j neq count($column['items']) ">
+                                              <div class="weui-media-box weui-media-box_appmsg cart-goods">
+                                                  <div class="weui-media-box__bd">
+                                                      <h4 class="weui-media-box__title goods-info_title"><{$goods.name}> x<{$goods.num}></h4>
+                                                      <span class="weui-media-box__desc goods-info_price">
+                                                        ¥ <{$goods.sumPrice}>.00
+                                                      </span>
+                                                  </div>
+                                              </div>
+                                               <else />
+                                              <div class="weui-media-box weui-media-box_appmsg cart-goods">
+                                                  <div class="weui-media-box__bd">
+                                                      <h4 class="weui-media-box__title goods-info_title"><{$goods.name}> x<{$goods.num}></h4>
+                                                      <span class="weui-media-box__desc goods-info_price">
+                                                        ¥ <{$goods.sumPrice}>.00
+                                                      </span>
+                                                  </div>
+                                              </div>
+                                            </if>
+                                        </volist>
+                                    </div>
+                                </div>
+                            </eq>
+                        </volist>
+                    </eq>
+                </div>
+                <div class="weui-media-box weui-media-box_appmsg cart-goods">
+                    <div class="weui-media-box__bd">
+                        <h4 class="weui-media-box__title goods-info_title">配送费</h4>
+                        <span class="weui-media-box__desc goods-info_price">
+                             ¥ <{$orderInfo.freightMoney}>.00
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+
+            <!-- 赠送好礼 -->
+            <neq name='gift_list' value=''>
+            <div class="weui-panel weui-panel_access">
+                <div class="weui-panel__hd">赠送好礼</div>
+                <div class="weui-panel__bd">
+                    <volist name='gift_list' id='gift' key="k">
+                    <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg weui-cells_checkbox" style="padding: 10px 15px;">
+                        <input type="checkbox" class="weui-check gift-item-input">
+                        <i class="weui-icon-checked gift-item-check" checked='0' guid="<{$gift.guid}>" id='gift-item-check-<{$k}>'></i>
+                        <div class="weui-media-box__hd">
+                            <img class="weui-media-box__thumb gift-info-title" src="<{$gift.min_img}>" alt="Alexander's" guid='<{$gift.guid}>'>
+                        </div>
+                        <div class="weui-media-box__bd">
+                            <h4 class="weui-media-box__title gift-info-title" guid='<{$gift.guid}>'><{$gift.name}></h4>
+                        </div>
+                    </a>
+                    </volist>
+                </div>
+            </div>
+            </neq>
+            <!-- 特殊商品 -->
+            <neq name='special_goods' value="">
+            <div class="weui-panel">
+                <div class="weui-panel__hd">您可能还需要</div>
+                <div class="weui-panel__bd">
+                    <volist name='special_goods' id='item'>
+                        <div class="weui-media-box weui-media-box_text weui-cells_checkbox">
+                            <h4 class="weui-media-box__title weui-check__label special-goods-item" style="margin-bottom: 0;display: inline-block;" checked='0' name="<{$item.name}>" price="<{$item.price}>" guid="<{$item.guid}>">
+                                <input type="checkbox" class="weui-check">
+                                <i class="weui-icon-checked" style="margin-top: -2px;"></i><{$item.name}>
+                                <span class="pull-right"> <{$item.price}>.00元</span>
+                            </h4>
+                            <a href="javascript:;" class="special-goods-info">查看详情 ></a>
+                            <p class="weui-media-box__desc" style="margin: -2px 0 10px 28px;"><{$item.summary}></p>
+                        </div>
+                    </volist>
+                </div>
+            </div>
+            </neq>
+
+            <!-- 支付方式选择 -->
+            <div class="weui-panel">
+                <!-- 优惠券 -->
+                <div id="weui-cells_card" class="weui-cells" style="margin-top: 0;">
+                    <div class="weui-cell weui-cell_access weui-cell_select-after card_cell exchange-card-btn" style="padding: 15px;">
+                        <div class="weui-cell__bd">
+                            <label class="weui-label" style="color: #1C1C20;">使用优惠</label>
+                        </div>
+                        <div class="weui-cell__ft">
+                            <eq name='card' value=''>
+                                <label class="weui-label">点击兑换</label>
+                                <else/>
+                                <label class="weui-label exchange-card-label" style="color: #e8524c;width: 200px;"></label>
+                            </eq>
+                        </div>
+                    </div>
+                </div>
+                <!-- 余额 -->
+                <div class="weui-cells use-balance_show" style="margin: 0 auto;">
+                    <div class="weui-cell">
+                        <div class="weui-cell__bd">
+                            <p style="color: #1C1C20;"><label class="weui-label" style="display: inline-block;">账号余额 </label><span class="balance" style="font-size: 16px;display: inline-block;"><{$balance}></span>元</p>
+                            <span class="balance-point">点我充值，最低仅需充168元，最高可赠100元！</span>
+                        </div>
+                        <div class="weui-cell__ft">
+                            <input id="balance-sel" class="weui-switch balance-sel" type="checkbox">
+                        </div>
+                    </div>
+                </div>
+                <!-- 余额支付显示 -->
+                <div class="weui-cells balance_display" style="display: none;margin-top: 0;">
+                    <div class="weui-cell" style="padding: 12.5px 15px;">
+                        <div class="weui-cell__bd">
+                            <label class="weui-label" style="color: #1C1C20;">支付方式</label>
+                        </div>
+                        <div class="weui-cell__ft" style="color: #1C1C20;">余额支付 ¥ <span id="use_balance">0</span>.00</div>
+                    </div>
+                </div>
+                <!-- 支付方式显示 -->
+                <div class="weui-panel__bd peyment-sel_content weui-cells" style="margin: 0 auto;">
+                    <div class="weui-cell weui-cell_select weui-cell_select-after">
+                        <div class="weui-cell__bd">
+                            <label class="weui-label" style="color: #1C1C20;">支付方式</label>
+                        </div>
+                        <div class="weui-cell__ft" style="font-size: 14px;">
+                            <select id="payment-choose" class="weui-select" style="color: #1C1C20;">
+                                <option value="wechatpay">微信支付</option>
+                                <neq name='not_time_sel' value='1'> <!-- 第三方配送不显示货到付款 -->
+                                    <option value="nopay">货到付款</option>
+                                </neq>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 用户留言 -->
+            <div class="weui-panel">
+                <div class="weui-cells weui-cells_form" style="font-size: 14px;margin-top: 0;">
+                    <div class="weui-cell" style="color: #000;">
+                        <div class="weui-cell__bd">
+                            <textarea class="weui-textarea message-input needsclick" placeholder="留言/备注" rows="3"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 底部栏信息 -->
+        <div class="cart-footer">
+            <div class="weui-flex">
+                <div class="weui-flex__item footer_bg">
+                    <div class="discount_style" style="font-size: 15px;padding-left: 13px;">已减去&nbsp;<span>¥ <span id="discountPrice"><{$orderInfo.discount}></span></span></div>
+                </div>
+                <div class="weui-flex__item footer_bg">
+                    <div class="count_style" style="font-size: 15px;">待支付&nbsp;<span style="color:#e8524c;">¥ <span id="total"><{$orderInfo.payPrice}></span></span></div>
+                </div>
+                <div style="width: 110px;background-color: #1AAD19;">
+                    <div class="placeholder" style="line-height: 2;">
+                        <a href="javascript:;" class="pay-btn" style="margin-left: 18%;color: #fff;">立即支付</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--=========================各类弹出层、弹窗、提示信息等======================-->
+        <!-- 选择、兑换优惠券弹出层 -->
+        <div class="card_content">
+            <div class="weui-mask togger-mask" style="display:none;"></div>
+            <div class="weui-actionsheet card-sel-dialog" style="height:65%;">
+                <div class="weui-cell white-bg" style="padding:5px 13px;">
+                    <div class="weui-cell__hd base-color">
+                        <img src="/Public/images/Mobile/icon/coupon-icon.png" alt="Alexander's" class="exchange_icon">
+                    </div>
+                    <div class="weui-cell__bd base-color">
+                        <p style="font-size:18px;">优惠券兑换</p>
+                    </div>
+                </div>
+                <div class="exchangeDiv">
+                    <div class="weui-cell weui-cell_vcode base-padding" style="padding: 0;">
+                        <div class="weui-search-bar__form exchangeDiv_div">
+                            <div class="weui-search-bar__box exchange-input">
+                                <input type="text" class="weui-search-bar__input code-input" placeholder="手动输入优惠码兑换优惠券" style="padding:6px 0;">
+                            </div>
+                        </div>
+                        <div class="weui-cell__ft">
+                            <button class="weui-vcode-btn exchange-btn">兑换</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="weui-cell cardDiv">
+                    <div class="weui-cell__hd base-color">
+                        <img src="/Public/images/Mobile/icon/usable-card.png" alt="Alexander's" class="card_icon">
+                    </div>
+                    <div class="weui-cell__bd base-color">
+                        <p style="font-size:18px;">可用优惠券</p>
+                    </div>
+                </div>
+                <div id="card-list" class="card-dialog-list gray-bg card-cart-height">
+                <volist name='card' id='item' key='k'>
+                    <div class="gray-bg base-margin-top">
+                        <div class="weui-panel__bd coupon-bg">
+                            <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg card-list-item base-padding" style="padding: 0;" index="<{$k-1}>" params='<{$item.id}>'>
+                                <div class="coupon-left popup-card-left">
+                                    <span class="little-circle" style="left:-8px;bottom:42%;"></span>
+                                    <label class="coupon-money" style="">￥<{$item.price}></label>
+                                </div>
+                                <div class="weui-media-box__bd">
+                                    <span class="little-circle" style="right:-8px;bottom:42%;"></span>
+                                    <h4 class="weui-media-box__title"><{$item.name}></h4>
+                                    <p class="weui-media-box__desc most_small-font">有效日期:<{$item.startTime}> 至 <{$item.endTime}></p>
+                                    <p class="weui-media-box__desc most_small-font">订单满<{$item.price_limit}>元可使用</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </volist>
+                </div>
+            </div>
+            <!-- 兑换结果弹窗 -->
+            <div class="js_dialog" id="exchange-dialog" style="opacity:1; display:none;">
+                <div class="weui-mask"></div>
+                <div class="weui-dialog">
+                    <div class="weui-dialog__hd"><strong class="weui-dialog__title">兑换结果</strong></div>
+                    <div class="weui-dialog__bd exchange-info"></div>
+                    <div class="weui-dialog__ft">
+                        <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary exchange-dialog-ok close_dialog">确认</a>
+                    </div>
+                </div>
+            </div>
+            <!-- 提示信息弹窗 -->
+            <div class="js_dialog" id="date_sel_message" style="display:none;">
+            <div class="weui-mask"></div>
+            <div class="weui-dialog">
+                <div class="weui-dialog__bd date_err_message"></div>
+                <div class="weui-dialog__ft">
+                    <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary date_dialog_btn">知道了</a>
+                </div>
+            </div>
+        </div>
+        </div>
+        <!-- 赠送好礼、商品详情以及特殊商品详情弹出层 -->
+        <div class="popup-modal">
+            <div class="weui-mask togger-mask" style='display:none;'></div>
+            <i class="iconfont icon-guanbi2 modal-close close-btn" style='display:none;'></i>
+            <div class="weui-actionsheet popup-content left-right-radius white-bg">
+                <div class="modal-content left-right-radius">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 提示信息 -->
+    <div class="tooltiptext cart-tooltip" style="visibility:hidden;">Tooltip text</div>
+    <!-- 订单提交loading -->
+    <div id="loadingToast" style="display:none;">
+        <div class="weui-mask_transparent"></div>
+        <div class="weui-toast">
+            <i class="weui-loading weui-icon_toast"></i>
+            <p class="weui-toast__content">订单提交中</p>
+        </div>
+    </div>
+</block>
+<block name='footer-js'>
+<script type="text/javascript" src="/Public/plugins/mdater/zepto.mdater.js"></script>
+<script>
+    var orderInfo = <{:json_encode($orderInfo)}>;
+    var cardInfo = <{:json_encode($card)}>;
+    var integral = <{$integral}>;
+    var balance = <{$balance}>;
+    var code_success = 0;
+    var send_time_list = [];
+    var btn_click = false;
+</script>
+<eq name='not_time_sel' value='1'>
+<script>
+    orderInfo['sendTime'] = '任意时段配送';
+</script>
+</eq>
+<script type="text/javascript">
+        // ---------弹窗模块,可重用----------- //
+        function popup_func(){
+            close_toggle_modal();
+
+            $('.popup-modal').css("z-index", 5000);
+            $('.weui-tabbar').css("z-index", 5100);
+            $('.popup-content').addClass('weui-actionsheet_toggle');
+            $('.togger-mask').show(100);
+            $('.modal-close').show(100);
+
+            //弹出层内滚动条事件
+            if(!myScroll){
+                setTimeout(function(){
+                    myScroll = new IScroll('.popup-content', {
+                        mouseWheel: true,
+                    });
+                }, 800);
+            }else{
+                setTimeout(function () {
+                    myScroll.refresh();
+                }, 800);
+            }
+        }
+
+        //点击赠送好礼,弹出详情弹出层
+        $('.gift-info-title').on('click', function(){
+            var guid = $(this).attr('guid');
+
+            $('.modal-content').load("<{:U('gift_info')}>",{guid : guid}, function(){
+                popup_func();
+            });
+        });
+
+        //点击特殊商品,弹出详情弹出层
+        $('.special-goods-info').on('click',function(){
+            var special_guid =$(this).siblings('.special-goods-item').attr('guid');
+
+            $('.modal-content').load("<{:U('special_goods_info')}>",{guid : special_guid }, function(){
+                popup_func();
+            });
+        });
+
+        //赠送好礼 勾选事件
+        $('.gift-item-check').on('click', function(){
+            var checked = $(this).attr('checked');
+            if(checked == 0){
+                $('.gift-item-input').removeAttr('checked');
+                $('.gift-item-check').attr('checked', 0);
+                $(this).parent().find('input').attr('checked', true);
+                $(this).attr('checked', 1);
+
+                orderInfo['gift_guid'] = $(this).attr('guid');
+            }else{
+                $(this).parent().find('input').removeAttr('checked');
+                $(this).attr('checked', 0);
+                orderInfo['gift_guid'] = "";
+            }
+        });
+
+        /*
+         * 特殊商品 勾选事件
+         */
+        $('.special-goods-item').on('click', function(e){
+            var checked = $(this).attr('checked');
+            var guid = $(this).attr('guid');
+            var name = $(this).attr('name');
+            var price = $(this).attr('price');
+
+            if(checked == 0){
+                if(orderInfo['special_goods'] == undefined){
+                    orderInfo['special_goods'] = {};
+                }
+
+                orderInfo['special_goods'][guid] = {
+                    "name" : name,
+                    "price" : price
+                };
+
+                orderInfo['payPrice'] += parseInt(price);
+
+                $('#total').text(orderInfo['payPrice']);
+
+                $(this).find('input').attr('checked', true);
+                $(this).attr('checked', '1');
+            }else{
+                delete orderInfo['special_goods'][guid];
+                orderInfo['payPrice'] -= parseInt(price);
+
+                if(orderInfo['payPrice'] < 0){
+                    var plus_price = 0 - parseInt(orderInfo['payPrice']);
+
+                    orderInfo['payPrice'] = 0;
+
+                    orderInfo['balance']['price'] =parseInt(orderInfo['balance']['price']) - plus_price;
+
+                    orderInfo['discount'] = orderInfo['discount'] - plus_price;
+                }
+
+                $('#total').text(orderInfo['payPrice']);
+
+                $(this).find('input').removeAttr('checked');
+                $(this).attr('checked', '0');
+            }
+        });
+
+        /*
+         * 基于zepto精简的日历控件mdater,配送日期选择事件
+         */
+        $('.date-sel').mdater({
+            minDate : new Date("<{$send_min_format}>"),
+            correct_date : "<{$send_min}>",
+            finish_function : date_sel_handle
+        });
+
+        function date_sel_handle(date){
+            $('.tooltiptext').css("visibility", "hidden");
+            $.post("<{:U('getTimeSectionHandle')}>", {date:date}, function(data){
+                    $('#section').empty();
+                    $('.date-sel').text(date);
+                    $('.date-sel').css('color','#000');
+
+                    if(!data['TimeSection']){
+                       $('.sections').text(date['Message']);
+                    }
+                    if(data['Code'] == 0){
+                        orderInfo['sendDay'] = date;
+
+                        send_time_list = [];
+
+                        for(var i=0; i<data['TimeSection'].length; i++){
+                            send_time_list.push({
+                                label : data['TimeSection'][i],
+                                value : data['TimeSection'][i]
+                            });
+                        }
+
+                        weui.picker(send_time_list, {
+                            onChange: function (result) {
+                                orderInfo['sendTime'] = result[0];
+                                $('.sections').text(result[0]);
+                                $('.sections').css('color','#000');
+
+                                $('.error-date-sel').hide();
+                            },
+                            onConfirm: function (result) {
+                                orderInfo['sendTime'] = result[0];
+                                $('.sections').text(result[0]);
+                                $('.sections').css('color','#000');
+
+                                $('.error-date-sel').hide();
+                            }
+                        });
+                    }else{
+                        $('.date_err_message').text(data['Message']);
+                        $('#date_sel_message').show();
+                    }
+                });
+        }
+
+        /*
+         * 使用余额 事件
+         */
+        $('.balance-sel').on('change', function(){
+          if(orderInfo['balance']){
+            orderInfo['payPrice'] = parseInt(orderInfo['payPrice']) + parseInt(orderInfo['balance']['price']);
+
+            orderInfo['discount'] = parseInt(orderInfo['discount']) - parseInt(orderInfo['balance']['price']);
+            orderInfo['balance'] = 0;
+          }else{
+            if($(this).val() != ''){
+                if(!orderInfo['discount']){
+                  orderInfo['discount'] = 0;
+                }
+
+                var max_discount = parseInt(orderInfo['payPrice']);
+
+                if(parseInt(balance) >= max_discount){
+                  if(max_discount == 0){
+                    orderInfo['balance'] = null;
+                    return;
+                  }
+                  
+                  orderInfo['balance'] = {
+                    'price' : max_discount
+                  };
+                  orderInfo['payPrice'] = parseInt(orderInfo['payPrice']) - parseInt(orderInfo['balance']['price']);
+
+                  orderInfo['discount'] = parseInt(orderInfo['discount']) + parseInt(max_discount);
+                }else{
+                  orderInfo['balance'] = {
+                    'price' : balance
+                  };
+                  orderInfo['payPrice'] = parseInt(orderInfo['payPrice']) - parseInt(balance);
+                  orderInfo['discount'] = parseInt(orderInfo['discount']) + parseInt(balance);
+                }
+              }
+          }
+
+          // 如果使用余额支付,待付款金额为0则隐藏选择支付方式;如果余额小于支付金额,则正常显示
+          if($('#balance-sel').attr('checked')){
+              $('.peyment-sel_content').hide();
+              $('.balance_display').show();
+          }else{
+              $('.peyment-sel_content').show();
+              $('.balance_display').hide();
+          }
+
+          $('#discountPrice').text(orderInfo['discount']);
+          $('#use_balance').text(orderInfo['balance']['price']);
+          $('#total').text(orderInfo['payPrice']);
+        });
+
+        /*
+         * 使用优惠券 事件
+         */
+        //优惠券兑换按钮事件
+        $('.exchange-card-btn').on('click', function(e){
+            $('.card-sel-dialog').addClass('weui-actionsheet_toggle');
+            $('.weui-mask').show(100);
+
+            return false;
+        });
+        //
+        $('.exchange-card-label').text(cardInfo.length +'张可用');
+        //优惠券 事件,同余额、积分差不多
+        $('.card-list-item').on('click', function(e){
+
+            var index = $(this).attr('index');
+            var params = $(this).attr('params');
+
+            if(orderInfo['cardInfo']){
+                orderInfo['payPrice'] = parseInt(orderInfo['payPrice']) + parseInt(orderInfo['cardInfo']['discount']);
+                orderInfo['discount'] = parseInt(orderInfo['discount']) - parseInt(orderInfo['cardInfo']['discount']);
+                orderInfo['cardInfo'] = null;
+            }
+            if($(this).val() != ''){
+                if(!orderInfo['discount']){
+                    orderInfo['discount'] = 0;
+                }
+
+                orderInfo['discount'] = parseInt(orderInfo['discount']) + parseInt(cardInfo[index].price);
+
+                orderInfo['cardInfo'] = {
+                    'id' : cardInfo[index].id,
+                    'price' : cardInfo[index].price,
+                    'discount' : cardInfo[index].price,
+                    'name' : cardInfo[index].name,
+                };
+
+                if(parseInt(orderInfo['price']) < parseInt(orderInfo['discount'])){
+                    orderInfo['cardInfo']['discount'] = cardInfo[index].price - (parseInt(orderInfo['discount']) - parseInt(orderInfo['price']));
+                    orderInfo['discount'] = orderInfo['price'];
+                }
+
+                orderInfo['payPrice'] = parseInt(orderInfo['payPrice']) - parseInt(orderInfo['cardInfo']['discount']);
+            }
+
+            $('#discountPrice').text(orderInfo['discount']);
+            $('#total').text(orderInfo['payPrice']);
+
+            $('.exchange-card-label').text('-¥ '+cardInfo[index].price);
+
+            close_toggle_modal();
+            $('.tooltiptext').removeClass('tooltip-position-menu');
+        });
+
+        //优惠券兑换 事件
+        $('.exchange-btn').on('click', function(e){
+            var code = $('.code-input').val();
+            if(!code)
+                return ;
+
+            var params  = {
+                code : code
+            };
+
+            $.post("<{:U('Vip/exchange_promo_code')}>", params, function(data){
+                if(data['status'] == 0){
+                    code_success = 1;
+                    close_toggle_modal();
+                    $('.exchange-info').text("兑换成功");
+                    $('#exchange-dialog').show(200);
+                }else if(data['status'] == -40006){  //已兑换过
+                    close_toggle_modal();
+                    $('.exchange-info').text(data.info);
+                    $('#exchange-dialog').show(200);
+                }else{
+                    close_toggle_modal();
+                    $('.exchange-info').text("兑换码错误");
+                    $('#exchange-dialog').show();
+                }
+            });
+        });
+
+        /*
+         * 支付 事件
+         */
+        //不同支付选择，底部按钮样式不一样
+        $('#payment-choose').on('change',function(e){
+            if($('#payment-choose').val() == 'wechatpay'){
+                orderInfo['payType'] ='wechatpay';
+                $('.pay-btn').text('立即支付');
+            }else{
+                orderInfo['payType'] ='nopay';
+                $('.pay-btn').text('完成订单');
+            }
+        });
+
+        //立即支付点击事件
+        $('.pay-btn').on('click', function(e){
+            var verification = order_verification(orderInfo);
+            $('#gift_tool').hide();
+
+            if(verification['status'] == 0){
+                $('#loadingToast').show(100);
+
+                $.post("<{:U('create_order_handle')}>", orderInfo, function(data){
+                    if(data['status'] == 0){
+                        var url = "";
+                        clear_storge();
+                        switch(orderInfo['payType']){
+                            case "nopay" : 
+                                url = "<{:U('finishOrder')}>?no="+data['order_no'];
+                                break;
+                            case "wechatpay" : 
+                                url = "<{:U('payByWechat')}>?no="+data['order_no'];
+                                break;
+                        }
+
+                        if(url)
+                            window.location.href = url;
+
+                        $('#loadingToast').hide(100);
+                    }
+                });
+            }
+        });
+
+        //留言事件
+        $('.message-input').on('change', function(){
+            var val = $(this).val();
+            orderInfo['Message'] = val;
+        });
+
+        //提示框关闭按钮事件
+        $('.date_dialog_btn').on('click', function(e){
+            $('#date_sel_message').hide();
+        });
+
+        //关闭弹出层
+        $('.close_dialog').on('click', function(e){
+            if(code_success){
+                window.location.href="<{:U('cart')}>";
+            }else{
+                $('#exchange-dialog').hide(200);
+                $('.card-sel-dialog').addClass('weui-actionsheet_toggle');
+                $('.weui-mask').show(100);
+            }
+        });
+	</script>
+
+    <!-- 对赠送好礼进行判断，如果状态为1，则输出好礼信息 -->
+    <neq name='gift_list' value=''>
+    <script type="text/javascript">
+        $('#gift-item-check-1').parent().find('input').attr('checked', true);
+        $('#gift-item-check-1').attr('checked', 1);
+
+        orderInfo['gift_guid'] = $('#gift-item-check-1').attr('guid');
+    </script>
+    </neq>
+    <script type="text/javascript">
+        $('.balance-point').on('click', function(){
+            window.location.href = "/Shop/Vip/recharge";
+        });
+    </script>
+</block>

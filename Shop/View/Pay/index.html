@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>ALEXANDER'S</title>
+    <link href="/Public/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/Public/plugins/weui/dist/style/weui.min.css"/>
+    <link rel="stylesheet" href="/Public/plugins/swiper/dist/css/swiper.min.css">
+    <link rel="stylesheet" href="/Public/Css/Mobile/style.css"/>
+</head>
+<body ontouchstart style="background-color: #f0eff5;">
+    <div class="header">
+        <!-- 顶部栏目 -->
+        <div class="weui-flex">
+            <div class="weui-flex__item">
+                <div class="placeholder"><span class="cancel-btn">取消</span></div>
+            </div>
+            <div class="weui-flex__item">
+                <div class="placeholder text-center">在线支付</div>
+            </div>
+            <div class="weui-flex__item">
+                <div class="placeholder"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content shop-vip qr-code_pay">
+        <div class="weui-flex">
+            <div class="weui-flex__item"><div class="placeholder">
+                <img src="/Public/images/logo.png" style="width: 60%;margin: 10px 20%;" />
+            </div>
+            </div>
+        </div>
+
+        <div class="weui-form-preview" style="width: 90%;margin: 0 auto;">
+            <div style="position: relative;padding: 10px 15px;text-align: right;line-height: 1em;">
+                <div class="weui-form-preview__item">
+                    <label class="weui-form-preview__label" style="font-weight: 600;color: #000;font-size: 14px;">支付金额</label>
+                </div>
+            </div>
+            <div class="weui-form-preview__bd">
+                <div class="weui-cells">
+                    <div class="weui-cell">
+                        <label style="font-size: 25px;font-weight: bold;">¥</label>
+                        <div class="weui-cell__bd" style="padding-left: 15px;">
+                            <input class="weui-input qr-code_input money-input" type="tel" placeholder="请输入您要支付的金额">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="weui-form-preview__ft">
+                <a href="javascript:;" class="weui-btn weui-btn_primary weui-btn_disabled qr-code-pay_btn" style="  background-color: #9ed99d;width: 90%;margin: 20px auto 30px;">去支付</a>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="/Public/Js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="/Public/plugins/iscroll/build/iscroll.js"></script>
+    <script type="text/javascript" src="/Public/plugins/swiper/dist/js/swiper.jquery.min.js"></script>
+    <script>
+        // 监控input输入值的变化
+        $('.qr-code_input').bind('input propertychange', function() {
+            var btn = $('.qr-code-pay_btn');
+
+            if($('.qr-code_input').val() == ""){
+                btn.addClass('weui-btn_disabled');
+                btn.css('background-color','#9ed99d');
+            }else{
+                btn.removeClass('weui-btn_disabled');
+                btn.css('background-color','#1aad19');
+            }
+        });
+
+        // 取消
+        $('.cancel-btn').on('click', function(){
+            window.location.href="<{:U('Index/index')}>";
+        });
+
+        // 点击支付
+        $(".qr-code-pay_btn").on('click', function(){
+            var money = $('.money-input').val().trim();
+
+            if(!money)
+                return;
+
+            window.location.href = "<{:U('payByWechat')}>?money=" + money;
+        })
+    </script>
+</body>
+</html>

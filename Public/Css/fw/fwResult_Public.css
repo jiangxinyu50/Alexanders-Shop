@@ -1,0 +1,87 @@
+body, div, address, blockquote, iframe, ul, ol, dl, dt, dd, li, dl, h1, h2, h3, h4, h5, h6, p, pre, table, caption, th, td, form, legend, fieldset, input, button, select, textarea {margin:0; padding:0;font-style: normal;font-size: 100%; font-family: inherit;} 
+ol, ul ,li{list-style: none;} 
+img {border: 0;} 
+body {color:#000;background:#f8f8f8;font: 12px/1.5 Arial, Helvetica, sans-serif;} 
+.clearfix:after {clear:both; content:"."; display:block; height:0pt; visibility:hidden; overflow:hidden;} 
+.clear{clear:both;height:1px; margin-top:-1px; width:100%;} 
+
+.dis{display:block;} 
+.undis{display:none;} 
+	
+#main{
+	height : 501px;
+	_height:501px;
+	margin:0px auto;
+	background-image:url(/fw/Public/Image/big-end-bg.jpg);
+	background-repeat:x-repeat;
+	}
+	
+#message{
+	width:960px;
+	height:500px;
+	margin:0 auto;
+	}
+	
+#ADC{
+	float:left;
+	width:450px;
+	height:370px;
+	margin-top:54px;
+	position:absolute;
+	z-index:1;
+	_position:absolute;
+	_z-index:1;
+	}
+
+#fwResult{
+	float:right;
+	color:#fff;
+	width:406px;
+	height:370px;
+	}
+	
+#mes-pai{
+	width:411px;
+	height:126px;
+	margin:0 auto;
+	background-image:url(/fw/Public/Image/mes-pai.jpg);
+	}
+
+#fwCode{
+	letter-spacing:3px;
+	font-size:15px;
+	margin-top:35px;
+	padding-bottom: 15px;
+	}
+
+#Result-info{
+	padding-top : 10px;
+	min-height : 140px;
+	font-size:20px;
+	padding-right:10px;
+	_padding-right:5px;
+	padding-bottom:30px;
+	}
+	
+#baidufx a{
+	color:#fff;
+	}
+	
+	
+.banners-mod,.banners{ height:370px;overflow:hidden;}
+.banners li{ position:absolute; left:0; top:0;z-index:0;}
+.clients{ right:1px; top:237px;}
+.bgs{background-image:url(/fw/Public/Image/img-btn.png);background-repeat:no-repeat;_background:none;
+                      _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="/fw/Public/Image/img-btn.png");}
+.wh20{ width:10px; height:11px; margin-top:3px;}
+.slide{ right:20px; bottom:20px;  display:block;}
+.slide span{ cursor:pointer; margin-right:15px; text-indent:-9999px;overflow:hidden;}
+
+.ico-d{ background-position:1 -74px;background-image:url(/fw/Public/Image/img-btn-click.png);_background:none;
+                      _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="/fw/Public/Image/img-btn-click.png");}
+.ico-e{ background-position:0 -95px;}
+
+section,article{display:block; }
+.l, .fl-li li { float:left; }
+.rel { position:relative; }
+.abs, .abs-tr, .abs-br, .abs-lt { position:absolute; }

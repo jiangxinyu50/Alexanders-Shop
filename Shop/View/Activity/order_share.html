@@ -1,0 +1,115 @@
+<extend name="Public/base" />
+<block name='title'>好友分享红包</block>
+<block name='content'>
+    <div class="content Vip-Hongbao">
+        <!-- 分享红包大banner图 -->
+        <div class="hongbao-banner-img">
+            <div class="hongbao-banner_div"></div>
+        </div>
+
+        <div class="white-bg" style="padding: 20px 0 8% 0;width: 100%;">
+            <!-- 作了个判断条件 -->
+            <eq name='cardInfo' value="">
+                <div class="shareHongbao-over">
+                    <eq name='wx_share_set' value=''>
+                        <img src="/Public/images/Mobile/card-bg-over.png" class='img-response shareHongbao-over_img'>
+                        <else />
+                        <img src="<{$wx_share_set.banner}>" class='img-response shareHongbao-over_img'>
+                    </eq>
+                </div>
+
+                <else />
+            <!-- 优惠券主体部分 -->
+            <div class="shareHongbao-div shareHongbao">
+                <div class="weui-flex shareHongbao-top">
+                    <div class="weui-flex__item shareHongbao-title_div">
+                        <span class="card-title shareHongbao-title"><{$cardInfo.price}></span>
+                    </div>
+                    <div class="weui-flex__item">
+                        <div class="Hongbao-style">
+                            <p class="Hongbao-rmb_style">RMB</p>
+                            <span class="Hongbao-card_style">冰淇淋券</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="Hongbao-desc">
+                    <p class="shareHongbao-date">有效日期: <span><{$cardInfo.startTime}></span> 至 <span><{$cardInfo.endTime}></span></p>
+                    <p class="shareHongbao-date">购满<{$cardInfo.price_limit}>元即可使用</p>
+                </div>
+            </div>
+
+            <a href="<{:U('Index/index')}>" class="weui-btn ready-to-use_btn" style="background-color: #950505;">立即使用</a>
+            </eq>
+        </div>
+
+        <!-- 看看抢到优惠券的人 -->
+        <div class="white-bg shouqi-div">
+            <div class="weui-loadmore weui-loadmore_line weui-loadmore_supplement">
+                <span class="weui-loadmore__tips" style="color: #950505;font-size: 18px;">&nbsp;看看大家的手气&nbsp;</span>
+            </div>
+            <div>
+                <volist name='gift_list' id='giftList'>
+                <div class="weui-cell" style="padding: 10px 30px 10px 15px;">
+                    <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                        <img src="<{$giftList.headimgurl}>" class="order_share_userhead">
+                    </div>
+                    <div class="weui-cell__bd">
+                        <p style="font-weight: bold;color: #646464;"><{$giftList.nickname}></p>
+                        <p style="font-size: 13px;color: #888;"><{$giftList.addTime}></p>
+                    </div>
+                    <div class="weui-cell__ft" style="color: #950505;"><{$giftList.price}>元</div>
+                </div>
+                </volist>
+            </div>
+        </div>
+
+        <!-- 活动细则 -->
+        <div class="white-bg shouqi-div">
+            <div class="weui-loadmore weui-loadmore_line weui-loadmore_supplement">
+                <span class="weui-loadmore__tips" style="color: #950505;font-size: 18px;">&nbsp;活动细则&nbsp;</span>
+            </div>
+            <div style="margin-top: 10px;width: 100%;">
+                <ol class="hongbao-rules">
+                    <li>福袋共设有 15 元、30 元、50 元现金券，每个福袋含 8 张随机现金券。每人每次只能获得一张现价券。</li>
+                    <li>现金券有效期为 7 天，请在有效期内使用。</li>
+                    <li>亚历山达冰淇淋保留法律范围内允许的对活动的解释权。</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</block>
+<block name='footer-js'>
+    <eq name='can_share' value='1'>
+    <script>
+        wx.ready(function(){
+            wx.onMenuShareTimeline({   // 分享朋友圈
+                title: "<{$userInfo.nickname}>送你的冰淇淋券，只有8张，快抢！", // 分享标题
+                link: 'https://www.alexanders.cn/Shop/Activity/order_share?from_user=<{$userInfo.openId}>&no=<{$orderNo}>&link_from=timeline', // 分享链接
+                imgUrl: 'http://www.alexanders.cn/Public/images/Mobile/share_hongbao.jpg', // 分享图标
+                success: function () { 
+                    // 用户确认分享后执行的回调函数
+                },
+                cancel: function () { 
+                    // 用户取消分享后执行的回调函数
+                }
+            });
+
+            wx.onMenuShareAppMessage({   // 发送给好友
+                title: "<{$userInfo.nickname}>送你的冰淇淋券，只有8张，快抢！", // 分享标题
+                desc: '这里有张冰淇淋优惠券，只差你领取了', // 分享描述
+                link: 'https://www.alexanders.cn/Shop/Activity/order_share?from_user=<{$userInfo.openId}>&no=<{$orderNo}>&link_from=friend_share', // 分享链接
+                imgUrl: 'http://www.alexanders.cn/Public/images/Mobile/share_hongbao.jpg', // 分享图标
+                success: function () { 
+                    // 用户确认分享后执行的回调函数
+                },
+                cancel: function () { 
+                    // 用户取消分享后执行的回调函数
+                }
+            });
+        });
+    </script>
+    <else />
+    </eq>
+    <script>
+    </script>
+</block>

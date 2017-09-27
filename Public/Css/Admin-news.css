@@ -1,0 +1,36 @@
+body{margin:0;}
+
+#main{
+	padding:20px;
+	padding-top:0px;
+	border-top:5px solid green;
+	}
+	
+#logo{
+	color:#fff;
+	padding:5px;
+	background-color:green;
+	float:left;
+	}
+	
+#time{
+	float:right;
+	margin-top:5px;
+	}
+	
+#info{
+	clear:both;
+	padding-top:20px;
+	}
+	
+#info-title{
+	color:#283160;
+	font-size:16px;
+	border-bottom:1px solid #ccc;
+	padding-bottom:20px;
+	}
+
+img{
+	max-width:95%;
+	height:auto;
+	}

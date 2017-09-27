@@ -1,0 +1,103 @@
+<extend name="Public/base" />
+<block name='title'>我的好礼</block>
+<block name='content'>
+    <div class="content shop-vip mygift">
+        <!-- 个人信息 -->
+        <div class="weui-panel_access user-background"></div>
+
+        <!-- 好礼信息 -->
+        <div class="weui-cell" style="padding: 10px 13px 0 13px;">
+            <div class="weui-cell__hd base-color">
+                <img src="/Public/images/Mobile/icon/coupon-icon.png" alt="Alexander's" class="exchange_icon">
+            </div>
+            <div class="weui-cell__bd base-color">
+                <p class="big-font">好礼列表<span style="color: #999;font-size: 13px;">（点击查看好礼详情）</span></p>
+            </div>
+        </div>
+
+        <!-- 多额好礼,可循环部分 -->
+        <volist name='gift_list' id='gift' mod="3">
+            <div class="weui-panel__bd text-center">
+                <div class="weui-media-box weui-media-box_appmsg base-padding recharge-money recharge-bg giftCard_money" style="padding: 0;">
+                    <div class="gift-left" style="background-color: #ded49f;">
+                        <p class="gift-money" money='<{$gift.price_limit}>' guid='<{$gift.guid}>'>
+                            <label>满<{$gift.price_limit}>元</label> <br/>
+                            <label>可用</label>
+                        </p>
+                    </div>
+                    <div class="weui-media-box__bd recharge-bg_style">
+                        <h4 class="weui-media-box__title gift-bg_title" style="color: #ded49f;"><{$gift.name}></h4>
+                        <p class="weui-media-box__desc card-date" style="margin-left: 0;">有效期: <span><{$gift.start_time}></span>至<span><{$gift.end_time}></span></p>
+                    </div>
+                </div>
+            </div>
+        </volist>
+
+        <!-- 好礼详情弹出层 -->
+        <div class="popup-modal">
+            <div class="weui-mask togger-mask" style='display:none;'></div>
+            <i class="iconfont icon-guanbi2 modal-close close-btn" style='display:none;'></i>
+            <div class="weui-actionsheet popup-content left-right-radius white-bg">
+                <div class="modal-content left-right-radius">
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <include file="Public/footer" />
+</block>
+<block name='footer-js'>
+    <script>
+        // -----------------------------------
+        //  点击好礼出现的事件
+        // -----------------------------------
+
+        // ---------弹窗模块,可重用----------- //
+        function popup_func(){
+            close_toggle_modal();
+            $('.popup-modal').css("z-index", 5000);
+            $('.weui-tabbar').css("z-index", 5100);
+            $('.popup-content').addClass('weui-actionsheet_toggle');
+            $('.togger-mask').show(100);
+            $('.modal-close').show(100);
+
+            //弹出层内滚动条事件
+            if(!myScroll){
+                setTimeout(function(){
+                    myScroll = new IScroll('.popup-content', {
+                        mouseWheel: true
+                    });
+                }, 800);
+            }else{
+                setTimeout(function () {
+                    myScroll.refresh();
+                }, 800);
+            }
+        }
+
+        // ---------点击好礼,弹出详情弹出层----------- //
+        $('.giftCard_money').on('click', function(){
+            var guid = $(this).find('.gift-money').attr('guid');
+
+            //礼物选中样式
+            $('.giftCard_money').removeClass("gift-select");
+            $(this).addClass("gift-select");
+
+            $('.modal-content').load("<{:U('gift_info')}>",{guid : guid}, function(){
+                popup_func();
+            });
+        });
+
+
+        //加载顶部
+        $('.user-background').load("<{:U('vipHeader')}>", function(){
+            $('.account_balance').text(<{$balance}>);
+        });
+
+        //底部栏图标选中变色
+        shop_item_init(false);
+        $('.menu-vip').addClass('weui-bar__item_on');
+        $('.vip-menu-icon').attr('src', "__PUBLIC__/images/Mobile/icon/menu-vip.png");
+    </script>
+</block>

@@ -1,0 +1,82 @@
+#menu{
+	margin: 0 -15px;
+}
+
+#rightBrand{
+    width:20%;
+}
+
+.list-group-item{
+    word-break:break-all;
+    word-wrap:break-word;
+}
+
+.productKeyList , .brandKeyList{
+	margin-top:10px;
+}
+
+.tags{
+	word-break:break-all;
+	word-wrap: break-word; 
+}
+.brand-tags{
+	word-break:break-all;
+	word-wrap: break-word; 
+}
+.text-info{
+	float:left;
+	line-height:30px;
+}
+
+.tags span{
+	margin-top:3px;
+	margin-left:10px;
+}
+
+.tags{
+	float:left;
+	height:auto;
+	line-height:30px;
+	margin-right:20px;
+	margin-bottom:10px;
+	border:1px solid #ccc;
+	border-radius: 5px;
+	padding-left:5px;
+	padding-right:5px;
+}
+.brand-tags span{
+	margin-top:3px;
+	margin-left:10px;
+	float:right;
+}
+.keyword{
+	float: left;
+	width: 91.66667%;
+}
+.keyword-close{
+	float: left;
+	width: 8.33333%;
+}
+.brand-tags{
+	float:left;
+	height:auto;
+	line-height:30px;
+	margin-right:10px;
+	margin-bottom:10px;
+	border:1px solid #ccc;
+	border-radius: 5px;
+	padding-left:5px;
+	padding-right:5px;
+}
+
+#not-show{
+	clear:both;
+	height:1px;
+}
+
+#page{
+	margin-top:30px;
+}
+.foot-right{
+	text-align: right;
+}

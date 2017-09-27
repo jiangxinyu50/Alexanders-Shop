@@ -1,0 +1,34 @@
+<extend name="Public/base" />
+<block name='title'>自助服务</block>
+<block name='content'>
+	<div class="gray-bg">
+    <div class="content question-info gray-bg">
+        <!-- 问题banner -->
+        <div class="weui-panel_access">
+            <img src="__PUBLIC__/images/Mobile/common_problems.jpg" style="width: 100%;">
+        </div>
+	    <!-- 问题列表 -->
+	    <div class="weui-cells__title">问题类型</div>
+	    <div class="weui-cells">
+	    	<volist name='type' id='item'>
+	        <a class="weui-cell weui-cell_access" href="<{:U('question_list')}>/id/<{$item.id}>">
+	            <div class="weui-cell__bd">
+	                <p><{$item.name}></p>
+	            </div>
+	            <div class="weui-cell__ft">
+	            </div>
+	        </a>
+	        </volist>
+	    </div>
+    </div>
+    </div>
+    <include file="Public/footer" />
+</block>
+<block name='footer-js'>
+<script>
+    //底部栏图标变色
+    $('.menu-vip').addClass('weui-bar__item_on');
+    $('.vip-menu-icon').attr('src', "__PUBLIC__/images/Mobile/icon/menu-vip.png");
+    shop_item_init(false);
+</script>
+</block>

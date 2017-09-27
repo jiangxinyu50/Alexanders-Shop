@@ -1,0 +1,140 @@
+<extend name="Public/base"/>
+<block name='title'>选择城市</block>
+<block name='content'>
+<div class="city-select city-select-content">
+    <!-- 城市搜索 -->
+<!--    <div class="weui-search-bar" id="searchBar">
+        <form class="weui-search-bar__form">
+            <div class="weui-search-bar__box">
+                <i class="weui-icon-search"></i>
+                <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="搜索您所要选择的城市" required="">
+                <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+            </div>
+            <label class="weui-search-bar__label" id="searchText">
+                <i class="weui-icon-search"></i>
+                <span>搜索您所要选择的城市</span>
+            </label>
+        </form>
+        <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
+    </div>-->
+
+    <!-- 自主配送城市 -->
+    <div class="weui-cells__title" style="margin-top: 1.77em;">自主配送城市</div>
+    <div class="weui-cells">
+        <volist name='city_list' id='city'>
+            <if condition="$city['delivery_type'] eq 'owner'">
+                <div class="weui-cell weui-cell_access">
+                    <div class="weui-cell__bd city_self">
+                        <span class="selfD_city" id="city-<{$city['guid']}>" city='<{$city["city"]}>' style="vertical-align: middle"><{$city['city']}></span>
+                    </div>
+                </div>
+            </if>
+        </volist>
+    </div>
+
+    <!-- 第三方配送城市 -->
+    <div class="weui-cells__title" style="margin-top: 1.77em;">顺丰配送城市</div>
+    <div class="weui-cells">
+        <volist name='city_list' id='city'>
+            <if condition="$city['delivery_type'] eq 'thirdparty'">
+                <div class="weui-cell weui-cell_access">
+                    <div class="weui-cell__bd city_self">
+                        <span class="selfD_city" id="city-<{$city['guid']}>" city='<{$city["city"]}>' style="vertical-align: middle"><{$city['city']}></span>
+                        <span class="weui-badge selected_status" style="margin-left: 10px;display: none;">当前城市</span>
+                    </div>
+                </div>
+            </if>
+        </volist>
+    </div>
+</div>
+
+</block>
+<block name='footer-js'>
+<script>
+var redirect_guid = "<{$redirect_guid}>";
+var sel_city = '<{$city_info.city}>';  //当前选择的城市
+
+$(document).ready(function() {
+});
+
+// 选择城市事件
+function judge_city(selectCity){
+    // 如果本地缓存的城市不存在或为空（这种情况肯定与我们所选择的城市不一样）...
+    if(selectCity != local_storage['city']){
+        local_storage['city_sel'] = 1;
+        local_storage['city'] = selectCity;
+
+        $.post("<{:U('citySelHandle')}>", {city: selectCity}, function(data){
+            clear_storge();
+            var url = "<{:U('index')}>?city_sel=1";
+            if(redirect_guid){
+                url += "&redirect="+redirect_guid;
+            }
+            window.location.href = url;
+        });
+    }else{
+        // 点击的城市与缓存的一样则不清缓存
+        window.location.href = '<{:U('index')}>?city_sel=1';
+    }
+}
+
+// 自主配送选择城市
+$('.city_self').on('click',function(){
+    var selfD_city = $(this).find('.selfD_city').text();
+
+    judge_city(selfD_city);
+});
+
+// 第三方配送选择城市
+$('.city_area').on('click',function(){
+    var thirdPartD_city = $(this).val();
+
+    judge_city(thirdPartD_city);
+});
+
+/*// 返回
+$('.back-btn').on('click', function(){
+    if(!local_storage['city']){
+        alert('^_^请选择您要配送的城市');
+    }else {
+        window.location.href = '<{:U('index')}>?city_sel=1';
+    }
+});*/
+</script>
+<script type="text/javascript">
+/* 城市搜索框JS */
+/*$(function(){
+     var $searchBar = $('#searchBar'),
+         $searchText = $('#searchText'),
+         $searchInput = $('#searchInput'),
+         $searchClear = $('#searchClear'),
+         $searchCancel = $('#searchCancel');
+
+     function hideSearchResult(){
+         $searchInput.val('');
+     }
+     function cancelSearch(){
+         hideSearchResult();
+         $searchBar.removeClass('weui-search-bar_focusing');
+         $searchText.show();
+     }
+
+     $searchText.on('click', function(){
+         $searchBar.addClass('weui-search-bar_focusing');
+         $searchInput.focus();
+     });
+     $searchInput
+         .on('blur', function () {
+             if(!this.value.length) cancelSearch();
+         });
+     $searchClear.on('click', function(){
+         hideSearchResult();
+         $searchInput.focus();
+     });
+     $searchCancel.on('click', function(){
+         cancelSearch();
+         $searchInput.blur();
+     });
+});*/
+</script>
+</block>

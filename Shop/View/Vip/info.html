@@ -1,0 +1,236 @@
+<extend name="Public/base" />
+<block name='title'>个人信息</block>
+<block name='content'>
+	<div class="content shop-info vip-info">
+        <!-- 顶部个人信息 -->
+        <div class="weui-panel_access user-background"></div>
+
+        <!-- 个人信息编辑或查看 -->
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><img src="__PUBLIC__/images/Mobile/icon/name-icon.png" alt="Alexander's" class="info-icon"></div>
+                <div class="weui-cell__hd">
+                    <label for="info_name" class="weui-label">姓名</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input id="info_name" class="weui-input info-input" type="text" placeholder="请输入您的姓名" value="<{$userInfo.realName}>" param='realName'/>
+                </div>
+            </div>
+            <div class="weui-cell weui-cell_select weui-cell_select-after">
+                <div class="weui-cell__hd"><img src="__PUBLIC__/images/Mobile/icon/sex-icon.png" alt="Alexander's" class="info-icon"></div>
+                <div class="weui-cell__hd">
+                    <label class="weui-label">性别</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <select class="weui-select info-input" style="color: black;" name="select2" param='sex'>
+                        <option value='0' <eq name='userInfo.sex' value='0'>selected</eq>>保密</option>
+                        <option value='1' <eq name='userInfo.sex' value='1'>selected</eq>>男</option>
+                        <option value='2' <eq name='userInfo.sex' value='2'>selected</eq>>女</option>
+                    </select>
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><img src="__PUBLIC__/images/Mobile/icon/birthday-icon.png" alt="Alexander's" class="info-icon"></div>
+                <div class="weui-cell__hd">
+                    <label for="info_born" class="weui-label" style="width: 73px;">生日</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input id="info_born" class="weui-input info-input" type="date" value="<{$userInfo.born}>" param='born'/>
+                </div>
+            </div>
+
+            <!-- 手机号绑定 -->
+            <div class="weui-cell weui-cell_vcode">
+                <div class="weui-cell__hd"><img src="__PUBLIC__/images/Mobile/icon/mobile-icon.png" alt="Alexander's" class="info-icon"></div>
+                <div class="weui-cell__hd">
+                    <label class="weui-label">手机</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input add-owner-tel info-input" type="tel" pattern="[0-9]{11}" maxlength="11" placeholder="您的手机号" param='tel' value="<{$userInfo.tel}>">
+                </div>
+                <div class="weui-cell__ft">
+                    <button class="weui-vcode-btn tel-vcode-btn">
+                        <eq name='userInfo.tel' value=''>
+                            获取验证码
+                            <else />
+                            重新绑定
+                        </eq>
+                    </button>
+                </div>
+            </div>
+            <div class="weui-cell vcode-input-cell" style='display:none;'>
+                <div class="weui-cell__hd"><img src="__PUBLIC__/images/Mobile/icon/mobile-icon.png" alt="Alexander's" class="info-icon"></div>
+                <div class="weui-cell__hd">
+                    <label class="weui-label">验证码</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input add-owner-tel-vcode info-input" type="tel" maxlength="6" placeholder="手机验证码" param='owner_vcode'>
+                </div>
+            </div>
+
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><img src="__PUBLIC__/images/Mobile/icon/email-icon.png" alt="Alexander's" class="info-icon"></div>
+                <div class="weui-cell__hd">
+                    <label for="info_email" class="weui-label">邮箱</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input id="info_email" class="weui-input info-input" type="text" placeholder="请输入您的邮箱" value="<{$userInfo.email}>" param='email'/>
+                </div>
+            </div>
+        </div>
+        <div class="content-margin base-margin-2x">
+            <a href="javascript:;" class="weui-btn weui-btn_primary save-btn">保存</a>
+        </div>
+    </div>
+
+    <!--BEGIN toast-->
+    <div id="success-toast" style="display: none;">
+        <div class="weui-mask_transparent"></div>
+        <div class="weui-toast">
+            <i class="weui-icon-success-no-circle weui-icon_toast"></i>
+            <p class="weui-toast__content">已完成</p>
+        </div>
+    </div>
+    <!--end toast-->
+    <include file="Public/footer" />
+</block>
+<block name='footer-js'>
+
+<script>
+    var change = {};
+    var secs = 60;   //倒计时60秒
+    var default_tel = "<{$userInfo.tel}>";
+    var addAddress = {
+        "tel" : "<{$userInfo.tel}>"
+    };
+    var has_send_vcode = false;
+
+    // -----------------------------
+    //  手机绑定 事件
+    // -----------------------------
+    // 如果存在手机号码,input只读.注:readonly属性规定输入字段为只读.
+    if(default_tel){
+        $('.add-owner-tel').attr('readonly', "readonly");
+    }
+    // -----------手机绑定验证码----------- //
+    //获取验证码
+    $('.tel-vcode-btn').on('click', function(){
+        // 验证手机号码的格式
+        var num = /(^(([0\+]\d{2,3}-)?(0\d{2,3})-)(\d{7,8})(-(\d{3,}))?$)|(^0{0,1}1[3|4|5|6|7|8|9][0-9]{9}$)/;
+
+        if(num.test($('.add-owner-tel').val())==false){
+            $('.add-owner-tel').addClass('input-error');
+        }else{
+            $('.add-owner-tel').removeClass('input-error');
+        }// ----验证结束
+
+        if(default_tel){
+            $('.add-owner-tel').val("");
+            $('.add-owner-tel').attr('readonly', null);
+            $(this).text('获取验证码');
+            default_tel = '';
+        }
+        var tel = $('.add-owner-tel').val();
+
+        if(tel){
+            $(this).attr('disabled', 'disabled');
+            $('#loadingToast').show(100);
+            // 向后台要求发送验证码
+            $.post("<{:U('get_tel_vcode')}>", {"tel" : tel}, function(data){
+                if(data['status'] == 0){
+                    $('.vcode-input-cell').show();
+                    setTimeout("update('" + secs + "')", 1000);
+                    addAddress['tel'] = tel;
+                    addAddress['need_vcode'] = true;
+                    has_send_vcode = true;
+                    $('#loadingToast').hide(100);
+                }else{
+                    $('#loadingToast').hide(100);
+                    $('.tel-vcode-btn').attr('disabled', null);
+                }
+            });
+        }
+    });
+    //获取验证码方法
+    function update(num) {
+        if(num == 0) {
+            $('.tel-vcode-btn').attr('disabled', null);
+            $('.tel-vcode-btn').text('获取验证码');
+        }
+        else {
+            num--;
+            $('.tel-vcode-btn').text('已发送('+num+')');
+            setTimeout("update('" + num + "')", 1000);
+        }
+    }
+
+    //输入框监听“数值改变”事件
+    $('.info-input').on('change', function(){
+        var param_name = $(this).attr('param');
+        change[param_name] = $(this).val();
+    });
+    // --------------保存信息 事件-------------- //
+    $('.save-btn').on('click', function(){
+        var correct = true;
+        var tel_vcode = $('.add-owner-tel-vcode').val();
+
+        // 保存、保存成功弹出提示
+        if(!change)
+            return;
+
+        // 验证手机验证码是否为空
+       if (has_send_vcode) {
+            if (tel_vcode == undefined || tel_vcode == '') {
+                $('.add-owner-tel-vcode').addClass('input-error');
+                correct = false;
+            } else {
+                $('.add-owner-tel-vcode').removeClass('input-error');
+                correct = true;
+            }
+       }
+
+        if(!correct){
+            return;
+        }else{
+            // 将改变的数据传输到后台
+            $.post("<{:U('saveInfoHandle')}>", change, function (data) {
+                var $toast = $('#success-toast');
+
+                // 保存成功
+                if (data['status'] == 0) {
+                    if ($toast.css('display') != 'none')
+                        return;
+
+                    $toast.show(100);
+                    setTimeout(function () {
+                        $toast.hide(100);
+                    }, 2000);
+
+                    change = {};
+
+                    location.reload();  //保存成功刷新页面
+
+                }else{    // 保存失败的话
+                    $('.error-dialog').show(100);
+
+                    if(data['status'] == 10016){
+                        $('.error-message').text("信息未修改");
+                    }else{
+                        $('.error-message').text(data.message);
+                    }
+                }
+            });
+        }
+    });
+
+    //加载顶部
+    $('.user-background').load("<{:U('vipHeader')}>", function(){
+        $('.account_balance').text(<{$balance}>);
+    });
+
+    //底部栏图标选中变色
+    $('.menu-vip').addClass('weui-bar__item_on');
+    $('.vip-menu-icon').attr('src', "__PUBLIC__/images/Mobile/icon/menu-vip.png");
+    shop_item_init(false);
+</script>
+</block>

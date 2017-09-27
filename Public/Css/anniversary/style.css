@@ -1,0 +1,318 @@
+.html,.body{
+	width: 100%;
+	height: 100%;
+	color:#70b96b;
+}
+
+.img-responsive{
+	width: 100%;
+	height: auto;
+}
+
+.top-bg{
+	position: absolute;
+	top:-1rem;
+	left:0;
+	width:100%;
+	height: auto;
+}
+
+.title{
+	position: absolute;
+	margin:0 auto;
+	width: 292px;
+	left:0;
+	right: 0;
+	top:1rem;
+}
+
+.top-block{
+	background-color: #FFF;
+	width:8px;
+	height: 30px;
+	position: absolute;
+	top:2rem;
+}
+
+.block-left{
+	left:0;
+}
+.block-right{
+	right:0;
+}
+
+.top-info-1{
+	position: absolute;
+	top:6.5rem;
+	left:3.8rem;
+	color:#FFF;
+	font-size: 22px;
+	line-height: 26px;
+}
+
+.top-info-2{
+	position: absolute;
+	top:11rem;
+	left:3.8rem;
+	color:#FFF;
+	font-size: 12px;
+	line-height: 14px;
+	padding-left:.5rem;
+	border-left:2px solid #FFF;
+}
+
+.info-1{
+	position: absolute;
+	top:17rem;
+	width: 350px;
+	height: auto;
+	margin: 0 auto;
+	left:0;
+	right: 0;
+}
+
+.info-2{
+	position: absolute;
+	top:21rem;
+	width: 350px;
+	height: auto;
+	margin: 0 auto;
+	left:0;
+	right: 0;
+}
+
+.info-3{
+	position: absolute;
+	top:27rem;
+	width: 380px;
+	height: auto;
+	margin: 0 auto;
+	left:0;
+	right: 0;
+}
+
+.footer-bg{
+	position: absolute;
+	bottom: 0;
+	height: 13rem;
+	width:100%;
+	background-image: url('/Public/images/anniversary/footer-bg.png');
+	background-size: cover;
+	background-position: center;
+}
+
+.qr-bg{
+	position: absolute;
+	bottom:2.5rem;
+	width:178px;
+	margin: 0 auto;
+	left:0;
+	right: 0;
+}
+
+.qrcode{
+	position: absolute;
+	bottom:2.2rem;
+	width:115px;
+	margin: 0 auto;
+	left:0;
+	right: 0;
+	z-index: 5000;
+	padding:30px;
+}
+
+.logo{
+	position: absolute;
+	bottom: 5px;
+	width:57px;
+	height: auto;
+	margin: 0 auto;
+	left:0;
+	right:0;
+}
+
+@media (max-width: 320px) and (min-width: 320px){
+	.title {
+		margin: 6px auto;
+		width: 240px;
+	}
+
+	.top-info-1 {
+		top: 5rem;
+		left: 2.5rem;
+		font-size: 16px;
+		line-height: 21px;
+	}
+
+	.top-info-2 {
+		top: 8.5rem;
+		left: 2.5rem;
+		font-size: 10px;
+	}
+
+	.info-1 {
+		top: 12.5rem;
+		width: 282px;
+	}
+
+	.info-2 {
+		top: 15.5rem;
+		width: 282px;
+	}
+
+	.info-3 {
+		top: 20.5rem;
+		width: 320px;
+	}
+
+	.qrcode {
+		bottom: 2.2rem;
+		width: 112px;
+	}
+
+	.footer-bg {
+		height: 12rem;
+	}
+}
+
+@media (max-width: 360px) and (min-width: 360px){
+	.title {
+		margin: 4px auto;
+		width: 260px;
+	}
+
+	.top-info-1 {
+		top: 5.5rem;
+		left: 3rem;
+		font-size: 18px;
+		line-height: 23px;
+	}
+
+	.top-info-2 {
+		top: 9.5rem;
+		left: 3rem;
+		font-size: 13px;
+	}
+
+	.info-1 {
+		top: 14.5rem;
+		width: 320px;
+	}
+
+	.info-2 {
+		top: 18rem;
+		width: 320px;
+	}
+
+	.info-3 {
+		top: 24rem;
+		width: 360px;
+	}
+	.footer-bg {
+		height: 12rem;
+	}
+}
+
+@media (max-width: 375px) and (min-width: 375px) {
+	.title{
+		width:260px;
+	}
+
+	.top-block{
+		height: 25px;
+	}
+
+	.top-info-1{
+		position: absolute;
+		top:5.5rem;
+		font-size: 20px;
+		line-height: 24px;
+	}
+
+	.top-info-2{
+		top:10rem;
+		left:3.8rem;
+	}
+
+	.info-1{
+		top:15.5rem;
+		width: 320px;
+	}
+
+	.info-2{
+		top:19rem;
+		width: 320px;
+	}
+
+	.info-3{
+		top:24.5rem;
+		width: 330px;
+	}
+
+	.footer-bg{
+		height: 12rem;
+	}
+
+	.qr-bg{
+		bottom:2rem;
+		width:190px;
+	}
+
+	.qrcode{
+		bottom:1.8rem;
+		width:130px;
+		border-radius : 40px;
+	}
+}
+
+@media (max-width: 768px) and (min-width: 768px){
+	.top-bg{
+		top:-8rem;
+	}
+	.title {
+		margin: -8px auto;
+		width: 440px;
+	}
+	.top-info-1 {
+		top: 8.5rem;
+		left: 11rem;
+		font-size: 28px;
+		line-height: 40px;
+	}
+	.top-info-2 {
+		top: 16rem;
+		left: 11rem;
+		font-size: 20px;
+		line-height: 26px;
+	}
+	.info-1 {
+		top: 25rem;
+		width: 650px;
+	}
+	.info-2 {
+		top: 32rem;
+		width: 650px;
+	}
+	.info-3 {
+		top: 43rem;
+		width: 768px;
+	}
+	.footer-bg {
+		height: 18rem;
+	}
+	.qr-bg {
+		bottom: 4rem;
+		width: 260px;
+	}
+	.qrcode {
+		bottom: 4.5rem;
+		width: 166px;
+	}
+	.logo {
+		bottom: 10px;
+		width: 124px;
+	}
+}
+
+@media (max-width: 1024px) and (min-width: 1024px){
+}

@@ -1,0 +1,86 @@
+<extend name="Public/base" />
+<block name='title'><{$goods_info.name}></block>
+<block name='content'>
+    <!-- 返回顶部 -->
+    <i class="iconfont icon-dingbu back_up" aria-hidden="true"></i>
+
+    <div class="content shop-index">
+        <div class="goods-info popup-goods-content" name='<{$goods_info.name}>' guid="<{$goods_info.guid}>" price='<{$goods_info.price}>' pre_sell='<{$goods_info.is_pre_sell}>' send_start_date='<{$goods_info.send_start_date}>' optional="<{$item.optional}>">
+            <div class="img-box" style='background-image: url("<{$goods_info.img}>?x-oss-process=image/resize,w_750/format,jpg/quality,Q_80");'></div>
+            <div class="weui-flex goods-control">
+                <div class="weui-flex__item">
+                    <div class="modal-name red-text"><{$goods_info.name}></div>
+                </div>
+                <div class="weui-flex__item">
+                    <div class='text-right item-btn modal-number'>
+                        <neq name="goods_info.base_price" value="$goods_info.price">
+                            <span class="original_price discounted-price">¥<{$goods_info.base_price}> </span>
+                        </neq>
+                        <span class="present_price goods-detail-present_price red-text">¥<{$goods_info.price}></span>
+                    </div>
+                </div>
+                <div class="weui-flex__item">
+                    <div class="goods-detail-btn_div">
+                        <!--<button class="weui-btn weui-btn_mini weui-btn_number goods-detail_btn item-minus" column='<{$goods_info.column_guid}>' item='<{$goods_info.guid}>'><i class="iconfont icon-jianhao"></i></button>
+                        <span class='goods-number number-<{$goods_info.guid}>'><{$num}></span>
+                        <button class="weui-btn weui-btn_mini weui-btn_number goods-detail_btn item-plus" column='<{$goods_info.column_guid}>' item='<{$goods_info.guid}>'><i class="iconfont icon-jiahao1"></i></button>-->
+                    </div>
+                </div>
+        </div>
+        <div class="goods-detail">
+            <eq name="goods_info_value" value='1'>
+                <volist name="goods_info.info" id="info">
+                   <{$info}>
+                </volist>
+            <else />
+                <{$goods_info.info}>
+            </eq>
+        </div>
+    </div>
+
+    <!-- 底部冒泡信息 -->
+    <div class="tooltip">
+        <span class="tooltiptext tooltip-position-menu">Tooltip text</span>
+    </div>
+    <include file="Public/footer" />
+</block>
+<block name='footer-js'>
+    <script>
+        // 监听IOS系统点击左上返回或者滑屏返回事件
+        // $(function(){
+        //     pushHistory();
+
+        //     window.addEventListener("popstate", function(e) {  //回调函数中实现需要的功能
+        //         window.location.href="<{:U('index')}>";  //在这里操作点击返回后的操作事件
+        //     }, false);
+        // });
+        // function pushHistory() {
+        //     var state = {
+        //         title: "title",
+        //         url: "#"
+        //     };
+        //     window.history.pushState(state, state.title, state.url);
+        // }
+
+        // 如果存在缓存，则购物车提示信息
+        if(local_storage['sel_cache']){
+            shop_item_init(false);
+        }
+
+        //监听事件，滚动条超过一定程度，显示“返回顶部”
+        window.addEventListener('scroll',function(){
+            var _scrollTop = document.body.scrollTop;
+            var $backUp = document.querySelector('.back_up');
+
+            if(_scrollTop > 200){
+                $backUp.classList.add('show');
+            }else{
+                $backUp.classList.remove('show');
+            }
+        },false);
+
+        //给底部栏“我的冰淇淋”加选中class
+        $('.menu-cart').addClass('weui-bar__item_on');
+        $('.cart-menu-icon').attr('src', "__PUBLIC__/images/Mobile/icon/menu-cart.png");
+    </script>
+</block>

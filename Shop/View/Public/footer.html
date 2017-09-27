@@ -1,0 +1,144 @@
+<!-- 底部栏 -->
+<div class="weui-tabbar white-bg">
+    <a href="<{:U('Index/index')}>" class="weui-tabbar__item menu-shop" style="display: block;">
+            <span class="weui-tabbar_span">
+                <img src="__PUBLIC__/images/Mobile/icon/menu-home-u.png?v=1.0.0" style="width: 29px;height: 31px;" class="weui-tabbar__icon shop-menu-icon" alt="Alexander's" >
+            </span>
+        <p class="weui-tabbar__label">商城</p>
+    </a>
+    <a href="javascript:;" class="weui-tabbar__item menu-menu" style="display: none;">
+        <span class="weui-tabbar_span">
+            <img src="__PUBLIC__/images/Mobile/icon/Menu-icon.png?v=1.0.0" style="margin-top: 5px;width: 30px;height: 24px;" class="weui-tabbar__icon menu-menu-icon" alt="Alexander's">
+        </span>
+        <p class="weui-tabbar__label" style="margin-top: 2px;">分类</p>
+    </a>
+    <a href="<{:U('Vip/recharge')}>" class="weui-tabbar__item menu-card">
+        <span class="weui-tabbar_span">
+            <img src="__PUBLIC__/images/Mobile/icon/recharge-icon.png?v=1.0.0" style="width: 29px;height: 31px;" class="weui-tabbar__icon card-menu-icon" alt="Alexander's">
+        </span>
+        <p class="weui-tabbar__label" style="margin-left: 4px;">储值卡</p>
+    </a>
+    <a href="javascript:;" class="weui-tabbar__item menu-cart">
+        <span class="weui-tabbar_span">
+                <img src="__PUBLIC__/images/Mobile/icon/menu-cart-u.png?v=1.0.0" style="width: 34px;height: 32px;" class="weui-tabbar__icon cart-menu-icon" alt="Alexander's">
+                <span class="weui-badge cart-count">0</span>
+            </span>
+        <p class="weui-tabbar__label" style="margin-left: 8px;">购物车</p>
+    </a>
+    <a href="<{:U('Vip/index')}>" class="weui-tabbar__item menu-vip">
+        <span class="weui-tabbar_span">
+            <img src="__PUBLIC__/images/Mobile/icon/menu-vip-u.png?v=1.0.0" style="margin-top:1px;width: 21px;height: 31px;" class="weui-tabbar__icon vip-menu-icon" alt="Alexander's">
+            <span class="weui-badge" style="position: absolute;padding: .15em;width: 26px;border-radius: 8px;">兑换</span>
+        </span>
+        <p class="weui-tabbar__label" style="margin-left: 2px;">我的</p>
+    </a>
+</div>
+<!-- 底部购物车弹出层 -->
+<div class="shop-cart">
+    <div class="weui-mask togger-mask" style='display:none;'></div>
+    <div class="weui-actionsheet shop-cart-content left-right-radius white-bg">
+        <div class="cart-header left-right-radius grayish-bg">
+            <div class="weui-flex">
+                <div class="weui-flex__item">
+                    <div class="placeholder" style="padding: 0 5px;">
+                        <span>已选商品</span>
+                    </div>
+                </div>
+                <div class='div-clear-cart btn-clear-cart'>
+                    <img  class="weui-tabbar__icon clear-cart_icon" src="__PUBLIC__/images/Mobile/icon/clear-cart.png?v=1.0.0" alt="Alexander's">
+                    <span style="font-size: 13px;">清空购物车</span>
+                </div>
+                <div class='close-cart'>
+                    <i class="iconfont icon-guanbi2 close-icon"></i>
+                </div>
+                <div class="cart-prompt" style="display: none;">
+                    <span>如遇无法购买请尝试清空购物车</span>
+                </div>
+            </div>
+        </div>
+        <div class="cart-iscroll">
+            <div class="cart-items">
+                
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="weui-flex">
+                <div style="width: 35%;">
+                    <div class="placeholder cartPrice-div">
+                        ¥ <span class="cart-price">0</span>
+                    </div>
+                </div>
+                <div style="width: 65%;">
+                    <div class="weui-flex">
+                        <div class="weui-flex__item">
+                            <div class="placeholder cartBtn-div">
+                                <button class="weui-btn weui-btn_primary cart-btn" params="send_friend">送朋友</button>
+                            </div>
+                        </div>
+                        <div class="weui-flex__item">
+                            <div class="placeholder cartBtn-div">
+                                <button class="weui-btn weui-btn_primary cart-btn" params="send_yourself">自个吃</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 绑定手机弹出层 -->
+<div class="Binding-mobile-phone" id='Binding-mobile-phone' style='display: none;'>
+    <div class="weui-mask no_mobile-mask scrollable" id="scrollable"></div>
+    <div class="weui-dialog toolbar">
+        <div class="weui-dialog__hd"><strong class="weui-dialog__title">关联手机</strong></div>
+        <div class="weui-dialog__bd">
+            <p>耽误您些许时间，亚历山达希望您能绑定手机号码~望海涵体谅，谢谢~~祝您工作顺利生活愉快！</p>
+        </div>
+        <div class="weui-panel weui-panel_access" style="margin-bottom:1rem;">
+            <div class="weui-panel__bd">
+                <div class="weui-cell" style="">
+                    <div class="weui-cell__bd">
+                        <input id="phonenum" class="weui-input phonenum" type="tel" pattern="[0-9]{11}" param-name='tel' maxlength="11"  placeholder="请输入您的手机号码" autofocus="autofocus" oninput="isPhoneNum()">
+                    </div>
+                    <div class="weui-cell__ft">
+                        <i class="weui-icon-warn tel-warn" style="display: none;"></i>
+                    </div>
+                </div>
+                <div class="weui-cell weui-cell_vcode">
+                    <div class="weui-cell__bd">
+                        <input id="verificationCode" class="weui-input verificationCode" type="tel" pattern="[0-9]*" maxlength="6" placeholder="请输入收到的验证码" param-name='code'>
+                    </div>
+                    <div class="weui-cell__ft">
+                        <button id="getVerificationCode" class="weui-vcode-btn weui-dialog__btn_primary getVerificationCode" style="font-size: 14px;">获取验证码</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="weui-dialog__ft">
+            <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default bind_mobile-cancle-btn">稍候再说</a>
+            <a href="javascript:;" id="bind_mobile-btn" class="weui-dialog__btn weui-dialog__btn_primary bind_mobile-btn">立即绑定</a>
+        </div>
+    </div>
+</div>
+<!-- 绑定成功弹出提示 -->
+<div class="succeedToast" style="display: none;">
+    <div class="weui-mask_transparent"></div>
+    <div class="weui-toast">
+        <i class="weui-icon-success-no-circle weui-icon_toast"></i>
+        <p>绑定成功</p>
+        <p style="font-size: 13px;margin: 0 0 15px;">正在跳转中...</p>
+    </div>
+</div>
+<!-- 错误信息提示 -->
+<div class="error-dialog" style="display:none;">
+    <div class="weui-mask"></div>
+    <div class="weui-dialog">
+        <div class="weui-dialog__bd">
+            <span class="error-message" style="font-size: 18px;"></span>
+        </div>
+        <div class="weui-dialog__ft">
+            <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary index-dialog-btn">知道了</a>
+        </div>
+    </div>
+</div>

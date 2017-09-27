@@ -1,0 +1,265 @@
+<extend name="Public/base" />
+<block name='title'>查看商家</block>
+<block name='content'>
+<style>
+.map-modal-close{
+    position: fixed;
+    bottom: 45%;
+    right: -2px;
+    font-size: 30px;
+    color: #fff;
+    z-index: 6000;
+}
+.BMap_stdMpType4 .BMap_stdMpZoom{
+    top: -435% !important;
+}
+</style>
+    <div class="gray-bg">
+        <div id="allmap" style="height: 400px;"></div>
+        <div class="weui-cell" id="shopInfo" style="display: none;"></div>
+        <div class="weui-cell shopInfo" style="display: none;"></div>
+        <div class="content gray-bg" style="padding:0;">
+            <!-- 选择区域 -->
+            <div class="weui-cells" style="margin: 0 auto;">
+                <div class="weui-cell weui-cell_access chose-district">
+                    <div class="weui-cell__bd district_name">区 域</div>
+                    <div class="weui-cell__ft" style="font-size: 0">
+                        <span class="district-sele" style="vertical-align:middle; font-size: 17px;">点击选择</span>
+                    </div>
+                </div>
+            </div>
+            <div class="weui-cells__tips">温馨提示: 如果出现问题,可以尝试重新进入该页面或刷新该页面后再重新选择区域。</div>
+            <div class="popup-modal">
+                <i class="iconfont icon-guanbi2 map-modal-close close-btn" style='display:none;color: #000;'></i>
+                <div class="weui-actionsheet popup-content left-right-radius white-bg" style="height: 50%;width: 100%;left: 0;">
+                    <div class="modal-content left-right-radius merchantList"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+<block name='footer-js'>
+<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=41193a426878963512af9f91de8b414f"></script>
+<script type="text/javascript">
+    var map = new BMap.Map("allmap");
+    var point = new BMap.Point();
+    var top_left_navigation = new BMap.NavigationControl();
+    map.centerAndZoom(point,14);
+    map.addControl(top_left_navigation); 
+
+    var geolocation = new BMap.Geolocation();
+    geolocation.getCurrentPosition(function(r){
+        if(this.getStatus() == BMAP_STATUS_SUCCESS){
+            var mk = new BMap.Marker(r.point);
+            map.addOverlay(mk);
+            map.panTo(r.point);
+
+            var data_info = <{:json_encode($cityInfo)}>;
+            var opts = {
+                        width : 300,     // 信息窗口宽度
+                        height: 50     // 信息窗口高度
+                    };
+            
+            for(var i=0;i<data_info.length;i++){
+                var myIcon = new BMap.Icon("/Public/images/ice_mark.png", new BMap.Size(28,28));
+                var marker = new BMap.Marker(new BMap.Point(data_info[i]['longitude'],data_info[i]['latitude']),{icon:myIcon});  // 创建标注
+                var content = '<div style="font-size:14px;"><strong>'+data_info[i]['name']+'</strong></div>\
+                                <div style="font-size:12px;">'+data_info[i]['address']+'</div>\ ';
+                map.addOverlay(marker);               // 将标注添加到地图中
+                addClickHandler(content,marker,data_info);             // 将标注添加到地图中
+            }
+            
+            function addClickHandler(content,marker,info){
+                marker.addEventListener("click",function(e){
+                    var shopLoc = openInfo(content,e);
+                    var list = '<div class="weui-cell__hd" style="position: relative;margin-right: 15px;">\
+                                    <button class="weui-btn weui-btn_mini weui-btn_primary goHere">去这里</button>\
+                                </div>';
+
+                    $('.shopInfo').html(list);
+                    $('.shopInfo').show();
+
+                    shopLoc = {longitude: shopLoc.lng, latitude: shopLoc.lat};
+                    goHere(shopLoc);
+                });
+            }
+            
+            function openInfo(content,e){
+                var p = e.target;
+                var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+                var infoWindow = new BMap.InfoWindow(content,opts);  // 创建信息窗口对象 
+                map.openInfoWindow(infoWindow,point); //开启信息窗口
+                document.getElementById("shopInfo").innerHTML = infoWindow.getContent();
+                $("#shopInfo").show();
+                return p.point;
+            }
+        } else {
+            alert('failed'+this.getStatus());
+        }   
+    },{enableHighAccuracy: true})
+</script>
+<script>
+// fastClick 加载
+$(function() {
+   FastClick.attach(document.body);
+});
+
+//---------弹窗模块,可重用---------//
+function popup_func(){
+    close_toggle_modal();
+
+    $('.popup-modal').css("z-index", 5000);
+    $('.weui-tabbar').css("z-index", 5100);
+    $('.popup-content').addClass('weui-actionsheet_toggle');
+    $('.map-modal-close').show(100);
+
+    //弹出层内滚动条事件
+    if(!myScroll){
+        setTimeout(function(){
+            myScroll = new IScroll('.popup-content', {
+                mouseWheel: true
+            });
+        }, 800);
+    }else{
+        setTimeout(function () {
+            myScroll.refresh();
+        }, 800);
+    }
+}
+// 点击关闭商家列表
+$('.close-btn').on('click', function(e){
+    close_toggle_modal();
+    $('.popup-content').removeClass('weui-actionsheet_toggle');
+    $('.chose-merchant').remove();
+});
+</script>
+<script type="text/javascript">
+var districtInfo = {};
+
+// 点击区域——先选择区域，然后选择商家
+$('.chose-district').on('click',function(){
+    $('.chose-merchant').remove();
+
+    weui.picker(<{:json_encode($districtList)}>, {  //weui.picker 是必须的
+        onConfirm: function (result) {
+            districtInfo['district'] = result[0];
+            $(".district_name").text(result[0]);
+            $('.district-sele').text('');
+
+            $.post('<{:U("getMerchant")}>', districtInfo, function(data){
+                if(!data){
+                    alert('该区域暂无商家');
+                    return false;
+                }
+
+                for(var i=0;i<data.length;i++){
+                    var merchant = '<div class="weui-media-box weui-media-box_text chose-merchant" id="'+data[i].id+'">\
+                       <h4 class="weui-media-box__title">'+data[i].name+'</h4>\
+                       <p class="weui-media-box__desc">'+data[i].address+'</p>\
+                       </div>';
+                    popup_func();
+                    $('.merchantList').append(merchant);
+                }
+            });
+
+            // 只有区域选择完毕（点击确定）的时候,才会有商家选择
+            if($('.merchant_bd').css('display','none')){
+                $('.merchant_bd').show();
+            }else{
+                $('.merchant_bd').hide();
+            }
+        }
+    });
+});
+
+// 弹出商家列表后的点击事件
+$('.modal-content').on('click', '.chose-merchant', function(e){
+    var id = $(this).attr('id');
+    $.post('<{:U("getLocation")}>', {id:id}, function(data){
+        // 用经纬度设置地图中心点
+        if(data.longitude != "" && data.latitude != ""){
+            map.clearOverlays();
+            var new_point = new BMap.Point(data.longitude,data.latitude);
+            var myIcon = new BMap.Icon("/Public/images/ice_mark.png", new BMap.Size(24,25));
+            var marker = new BMap.Marker(new_point,{icon:myIcon});  // 创建标注
+            var opts = {
+                width : 300,     // 信息窗口宽度
+                height: 50     // 信息窗口高度
+            };
+            var content = '<div style="font-size:14px;"><strong>'+data['name']+'</strong></div>\
+                           <div style="font-size:12px;">'+data['address']+'</div>\ ';
+
+            addClickHandler(content,marker);     // 点击展开信息窗口事件
+            map.addOverlay(marker);              // 将标注添加到地图中
+            map.panTo(new_point);
+
+            var list = '<div class="weui-cell__hd" style="position: relative;margin-right: 15px;">\
+                            <button class="weui-btn weui-btn_mini weui-btn_primary goHere">去这里</button>\
+                        </div>\
+                        <div class="weui-cell__bd">\
+                            <p>'+data.name+'</p >\
+                            <p style="font-size: 13px;color: #888888;">'+data.address+'</p >\
+                        </div>';
+
+            $('.shopInfo').html(list);
+            $('.shopInfo').show();
+            $('#shopInfo').hide();
+
+            goHere(data);
+
+            function addClickHandler(content,marker){
+                marker.addEventListener("click",function(e){
+                    openInfo(content,e)});
+            }
+
+            function openInfo(content,e){
+                var p = e.target;
+                var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+                var infoWindow = new BMap.InfoWindow(content,opts);  // 创建信息窗口对象
+                map.openInfoWindow(infoWindow,point); //开启信息窗口
+            }
+        }
+    });
+    close_toggle_modal();
+    $('.popup-content').removeClass('weui-actionsheet_toggle');
+    $('.chose-merchant').remove();
+});
+
+function goHere(data){
+    $('.goHere').on('click', function(e){
+        var geolocation = new BMap.Geolocation();
+        geolocation.getCurrentPosition(function(r){
+            var myLoc = myLocation(r.point.lng,r.point.lat);
+            var shopLoc = shopLocation(data.longitude,data.latitude);
+
+            window.location.href = 'http://uri.amap.com/navigation?from='+myLoc.lng+','+myLoc.lat+',我的位置&to='+shopLoc.lng+','+shopLoc.lat+'&mode=car&policy=0&src=alexanders&coordinate=wgs84&callnative=1';
+        });
+    });
+}
+
+function myLocation(bd_lon,bd_lat){
+    var myloc = [];
+    var x_pi = 3.14159265358979324 * 3000.0 / 180.0;
+    var x = bd_lon - 0.0065;
+    var y = bd_lat - 0.006;
+    var z = Math.sqrt(x * x + y * y) - 0.00002 * Math.sin(y * x_pi);
+    var theta = Math.atan2(y, x) - 0.000003 * Math.cos(x * x_pi);
+    myloc['lng'] = z * Math.cos(theta);
+    myloc['lat'] = z * Math.sin(theta);
+    return myloc;
+}
+
+function shopLocation(bd_lon,bd_lat){
+    var shoploc = [];
+    var x_pi = 3.14159265358979324 * 3000.0 / 180.0;
+    var x = bd_lon - 0.0065;
+    var y = bd_lat - 0.006;
+    var z = Math.sqrt(x * x + y * y) - 0.00002 * Math.sin(y * x_pi);
+    var theta = Math.atan2(y, x) - 0.000003 * Math.cos(x * x_pi);
+    shoploc['lng'] = z * Math.cos(theta);
+    shoploc['lat'] = z * Math.sin(theta);
+    return shoploc;
+}
+
+</script>
+</block>

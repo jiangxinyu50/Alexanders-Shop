@@ -1,0 +1,21 @@
+.clientBg{
+	border-bottom: 1px solid #DCDDDD;
+	padding: 30px;
+}
+.blueStyle{
+	font-family: "SimHei";
+	text-align: center;
+	color: #00A0E9;
+}
+.div-details{
+	text-align: left;
+	padding: 5px 5px;
+}
+.details{
+	background-color: #959595;
+	margin-bottom: 20px;
+	border:2px solid #959595;
+	border-radius: 4px;
+	color: white;
+	text-align: left;
+}

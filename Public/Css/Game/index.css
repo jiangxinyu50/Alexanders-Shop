@@ -1,0 +1,180 @@
+html body{
+	/*width: 100%;
+	height: 100%;*/
+	margin:0;
+}
+/*分享层*/
+.share-layer{
+	background: rgba(0,0,0,.5);
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 999;
+}
+.share-layer span{
+	position: absolute;
+	right: 20px;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: url(../../images/Game/share_icons_01.png) no-repeat;
+	-webkit-background-size: fixed;
+	background-size: 60%;
+	background-position: top right;
+}
+body .fn-hide {
+	display: none;
+}
+#myCanvas{
+    width: 100%;
+    height:100%;
+    display:none;
+}
+@media (orientation: landscape) {
+    #myCanvas{
+        display: inline;
+        text-align: center;
+        font-size: 20px;
+        padding-top: 1rem;
+        background-color:#FFF;
+        position:absolute;
+        z-index: 999;
+    }
+}
+#main{
+    width: 100%;
+    height:100%;
+    overflow: hidden;
+    position: absolute;
+    background: url('../../images/Game/bg.png') no-repeat top center;
+    background-size: 100% auto;
+}
+.margin-top-15{
+	margin-top: 15px;
+}
+.margin-top-10{
+	margin-top: 10px;
+}
+.section{
+	padding:0 18px;
+}
+#tasteSel_desc{
+	font-size: 16px;
+	color:#714f29;
+	margin-bottom: 10px;
+}
+.taste-text{
+	color:#714f29;
+	margin-top: 5px;
+}
+#index-build{	
+    width: 100%;
+    height:100%;
+    bottom:0;
+    position: absolute;
+}
+#partOne,#partTwo{
+	position: relative;
+	z-index: 1;
+}
+#tasteSel_title{
+	text-align: center;
+	margin-top: 6%;
+	margin-bottom:10px;
+}
+.modal-content{
+	text-align: center;
+	width:84%;
+	padding-left: 8%;
+	padding-top:30px;
+}
+#rule-content{
+	padding-left:20%;
+	padding-right:20%;
+	padding-top: 80px;
+}
+#rule h3{
+	margin-top:110px;
+	text-align: center;
+}
+
+#lottery{
+	text-align: center;
+	/*width: 100%;*/
+	position: relative;
+    background: url('../../images/Game/kuang.png') no-repeat top center;
+    background-size: 100% auto;
+    padding:4.5%;
+}
+#lottery table td{
+    padding: 0;
+    margin:0;
+}
+#lottery table td img{
+    width: 100%;
+    display: block;
+}
+.box{
+    position: relative;
+    width:100%;
+    height: 100%;
+} 
+.visited{
+	position: absolute;
+    background: url('../../images/Game/zhuan.png') no-repeat top center;
+    background-size: 100% 100%;
+    width:100%;
+    height: 100%;
+    top:0;
+}
+.lottery_mask{
+	font-size: 15px;
+}
+.confirm-margin{
+	padding-top: 108px;
+}
+#partTwo{
+	padding: 90px 50px 15px;
+	display:none;
+}
+.selecttitle{
+	margin-top: 60px;
+    color: #54310B;
+    font-size: 18px;
+    letter-spacing: 2px;
+    line-height: 1.9rem;
+}
+.selectbtn{
+	text-align:center;
+	margin-top:90px;
+	margin-bottom:50px;
+}
+@media (min-width: 320px) and (max-width: 359px){
+    .section{
+    	padding:0 22px;
+    }
+    #tasteSel_desc{
+    	font-size: 14px;
+    }
+	.confirm-margin{
+		padding-top: 78px;
+	}
+}
+@media (min-width: 412px) and (max-width: 414px){  
+	#partTwo{
+		padding: 90px 50px 15px;
+	}  
+	.confirm-margin{
+		padding-top: 128px;
+	}
+	.selecttitle{
+		margin-top: 60px;
+	}
+	.selectbtn{
+		margin-top:90px;
+	}
+}

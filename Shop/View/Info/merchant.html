@@ -1,0 +1,98 @@
+<extend name="Public/base" />
+<block name='title'>选择城市</block>
+<block name='content'>
+    <div class="gray-bg">
+        <h4 style="text-align: center; margin-top: 20px; margin-bottom: -20px;">点击下图，立即查询体验点</h4>
+        <div class="content gray-bg" style="padding:15px;">
+            <div class="Shenzhen merchant-city" style="background:url(/Public/web/images/sz.jpg) no-repeat;margin: 1 atuo;height: 110px;" onclick="jumpPage('1');"></div>
+            <div class="Guangzhou merchant-city" style="background:url(/Public/web/images/gz.jpg) no-repeat;margin: 1 atuo;height: 110px;" onclick="jumpPage('2');"></div>
+            <div class="Chengdu merchant-city" style="background:url(/Public/web/images/cd.jpg) no-repeat;margin: 1 atuo;height: 110px;" onclick="jumpPage('8');"></div>
+            <div class="Shanghai merchant-city" style="background:url(/Public/web/images/sh.jpg) no-repeat;margin: 1 atuo;height: 110px;" onclick="jumpPage('12');"></div>
+        </div>
+    </div>
+</block>
+<block name='footer-js'>
+<script>
+    function jumpPage(data){
+        window.location.href = "<{:U('mLocation')}>/id/" + data;
+    }
+</script>
+<eq name='is_wechat' value='1'>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"> </script>
+<script>
+    wx.config({
+      debug: false,
+      appId: '<{$js_sign['appid']}>', // 必填，公众号的唯一标识
+      timestamp: <{$js_sign['timestamp']}>, // 必填，生成签名的时间戳，切记时间戳是整数型，别加引号
+      nonceStr: '<{$js_sign['noncestr']}>', // 必填，生成签名的随机串
+      signature: '<{$js_sign['signature']}>', // 必填，签名，见附录1
+      jsApiList: [
+        'checkJsApi',
+    'onMenuShareTimeline',
+    'onMenuShareAppMessage',
+    'onMenuShareQQ',
+    'onMenuShareWeibo',
+    'hideMenuItems',
+    'showMenuItems',
+    'hideAllNonBaseMenuItem',
+    'showAllNonBaseMenuItem',
+    'translateVoice',
+    'startRecord',
+    'stopRecord',
+    'onRecordEnd',
+    'playVoice',
+    'pauseVoice',
+    'stopVoice',
+    'uploadVoice',
+    'downloadVoice',
+    'chooseImage',
+    'previewImage',
+    'uploadImage',
+    'downloadImage',
+    'getNetworkType',
+    'openLocation',
+    'getLocation',
+    'hideOptionMenu',
+    'showOptionMenu',
+    'closeWindow',
+    'scanQRCode',
+    'chooseWXPay',
+    'openProductSpecificView',
+    'addCard',
+    'chooseCard',
+    'openCard'
+      ]
+  });
+</script>
+<neq name='wx_no_default' value='1'>
+<script>
+wx.ready(function(){
+    wx.onMenuShareTimeline({
+        title: "ALEXANDER'S 线下体验", // 分享标题
+        link: 'http://www.alexanders.cn/Shop/Info/merchant', // 分享链接
+        imgUrl: 'http://www.alexanders.cn/Public/images/ice_one.png', // 分享图标
+        success: function () { 
+            // 用户确认分享后执行的回调函数
+        },
+        cancel: function () { 
+            // 用户取消分享后执行的回调函数
+        }
+    });
+
+    wx.onMenuShareAppMessage({
+        title: "ALEXANDER'S 线下体验", // 分享标题
+        desc: '做最好的雪糕品牌', // 分享描述
+        link: 'http://www.alexanders.cn/Shop/Info/merchant', // 分享链接
+        imgUrl: 'http://www.alexanders.cn/Public/images/ice_one.png', // 分享图标
+        success: function () { 
+            // 用户确认分享后执行的回调函数
+        },
+        cancel: function () { 
+            // 用户取消分享后执行的回调函数
+        }
+    });
+});
+</script>
+</neq>
+</eq>
+</block>

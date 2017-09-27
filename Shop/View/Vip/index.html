@@ -1,0 +1,99 @@
+<extend name="Public/base" />
+<block name='title'>会员中心</block>
+<block name='content'>
+	<div class="content vip-index gray-bg margin-footer">
+        <!-- 顶部个人信息 -->
+        <div class="weui-panel_access user-background"></div>
+
+        <!-- 个人中心栏目 part1-->
+        <div class="weui-cells">
+            <!-- 订单信息 -->
+            <a class="weui-cell weui-cell_access" href="<{:U('order_list')}>">
+                <div class="weui-cell__hd"><img src="__PUBLIC__/images/Mobile/icon/order-icon.png" alt="Alexander's" class="info-icon"></div>
+                <div class="weui-cell__bd">
+                    <p class="font-color">订单信息</p>
+                </div>
+                <div class="weui-cell__ft">
+                </div>
+            </a>
+            <a class="weui-cell weui-cell_access" href="<{:U('send_friend_order_list')}>">
+                <div class="weui-cell__hd"><img src="__PUBLIC__/images/Mobile/icon/order-icon.png" alt="Alexander's" class="info-icon"></div>
+                <div class="weui-cell__bd">
+                    <p class="font-color">赠送好友订单</p>
+                </div>
+                <div class="weui-cell__ft">
+                </div>
+            </a>
+            <!-- 个人资料 -->
+            <a class="weui-cell weui-cell_access" href="<{:U('info')}>">
+                <div class="weui-cell__hd"><img src="__PUBLIC__/images/Mobile/icon/user-icon.png" alt="Alexander's" class="info-icon"></div>
+                <div class="weui-cell__bd">
+                    <p class="font-color">个人资料</p>
+                </div>
+                <div class="weui-cell__ft">
+                </div>
+            </a>
+        </div>
+        <!-- 个人中心栏目 part2-->
+        <div class="weui-cells">
+            <!-- 优惠券 -->
+            <a class="weui-cell weui-cell_access" href="<{:U('card')}>">
+                <div class="weui-cell__hd"><img src="__PUBLIC__/images/Mobile/icon/card-icon.png" alt="Alexander's" class="info-icon"></div>
+                <div class="weui-cell__bd">
+                    <span class="font-color">我的优惠券</span>
+                    <span class="weui-badge" style="margin-left: 5px;">优惠券兑换在这里</span>
+                </div>
+                <div class="weui-cell__ft">
+                    <span id="coupon_num" style="color: #FF0000;"><{$card_count}></span>
+                    <span style="color:#a4a09d;">张</span>
+                </div>
+            </a>
+            <!-- 我的好礼 -->
+            <a class="weui-cell weui-cell_access" href="<{:U('myGift')}>" style="display: none;">
+                <div class="weui-cell__hd"><img src="__PUBLIC__/images/Mobile/icon/name-icon.png" alt="Alexander's" class="info-icon"></div>
+                <div class="weui-cell__bd">
+                    <p class="font-color">我的好礼</p>
+                </div>
+                <div class="weui-cell__ft">
+                </div>
+            </a>
+        </div>
+        <!-- 在线充值 -->
+        <div class="weui-cells">
+            <a class="weui-cell weui-cell_access" href="<{:U('recharge')}>">
+                <div class="weui-cell__hd"><img src="__PUBLIC__/images/Mobile/icon/balance-icon.png" alt="Alexander's" class="info-icon"></div>
+                <div class="weui-cell__bd">
+                    <p class="font-color">在线充值</p>
+                </div>
+                <div class="weui-cell__ft">
+                </div>
+            </a>
+        </div>
+        <!-- 个人中心栏目 part3-->
+        <div class="weui-cells">
+            <!-- 自助服务 -->
+            <a class="weui-cell weui-cell_access" href="<{:U('Info/question_type')}>">
+                <div class="weui-cell__hd"><img src="__PUBLIC__/images/Mobile/icon/question-icon.png" alt="Alexander's" class="info-icon"></div>
+                <div class="weui-cell__bd">
+                    <p class="font-color">自助服务</p>
+                </div>
+                <div class="weui-cell__ft">
+                </div>
+            </a>
+        </div>
+    </div>
+    <include file="Public/footer" />
+</block>
+<block name='footer-js'>
+<script>
+    //加载顶部
+    $('.user-background').load("<{:U('vipHeader')}>", function(){
+        $('.account_balance').text(<{$balance}>);
+    });
+
+    //底部栏图标选中变色
+    $('.menu-vip').addClass('weui-bar__item_on');
+    $('.vip-menu-icon').attr('src', "__PUBLIC__/images/Mobile/icon/menu-vip.png");
+    shop_item_init(false);
+</script>
+</block>

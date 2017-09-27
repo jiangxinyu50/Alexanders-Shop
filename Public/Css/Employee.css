@@ -1,0 +1,18 @@
+#main{
+	background-image: url(../Image/bg.png);
+}
+#content{
+	margin:0;
+	padding:0;
+}
+#content a{
+	border-radius: 0.5em;
+}
+#header-img,#tel,#job,#mail{
+	float: left;
+}
+#emName,#tel-num,#position,#e-mail{
+	float: left;
+	margin-top: 0.6em;
+	margin-left: 1em;
+}

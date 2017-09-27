@@ -1,0 +1,204 @@
+/* Sticky footer styles
+-------------------------------------------------- */
+.main-content{
+	padding-bottom: 60px;
+}
+
+.footer {
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 40px;
+  background-color: #f5f5f5;
+}
+
+.linkText{
+	color:#000;
+}
+.linkText :hover,:link{
+	text-decoration: none !important;
+}
+.shop_product .quantity_button {
+    color: #555;
+    width: 50px;
+    height: 45px;
+    padding: 5px;
+    border: medium none;
+    outline: medium none;
+    cursor: pointer;
+    font-size: 20px;
+    background: #EEE none repeat scroll 0% 0%;
+    text-align: center;
+    font-weight: normal;
+    white-space: nowrap;
+    display: inline-block;
+}
+.shop_product .quantity-field {
+    width: 50px;
+    height: 45px;
+    outline: medium none;
+    margin: 0px -4px;
+    font-size: 20px;
+    text-align: center;
+    border: 1px solid #EEE;
+}
+.copyright{
+    border-top: medium none;
+    background: #EEE none repeat scroll 0% 0%;
+    padding: 10px 0px 10px;
+}
+#footer,#topContent{
+    height:52px !important;
+}
+.hover-effect{
+    color:#A10F2B;
+}
+.package-quantity .quantity-button {
+color: #555;
+width: 32px;
+height: 40px;
+border: none;
+outline: none;
+padding:5px;
+cursor: pointer;
+font-size: 18px;
+background: #eee;
+text-align: center;
+font-weight: normal;
+white-space: nowrap;
+display: inline-block;
+background-image: none;
+}
+.package-quantity .quantity-field {
+width: 32px;
+height: 40px;
+outline: none;
+border: none;
+font-size: 18px;
+/*background-color: #DEDEDE;*/
+color:#000 !important;
+text-align: center;
+}
+.shopInfoCount{
+    bottom: 27px;
+    right:1px;
+    position: absolute;
+}
+.shopInfoCountL{
+    bottom: 27px;
+    left:25%;
+    position: absolute;
+}
+.themeColor{
+    color:#5AA449 !important;
+}
+.black{
+    color:#555;
+}
+
+.input-fix{
+    position: fixed;
+    z-index: 99999;
+    top : 15px;
+    left:5%;
+    width: 90%;
+}
+
+.map-background{
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    z-index: 99998;
+    background-color: #000;
+    filter: alpha(opacity=80);
+
+     -moz-opacity: 0.8;
+
+     -khtml-opacity: 0.8;
+
+    opacity: 0.8;
+}
+
+.amap-sug-result{
+    z-index: 99999;
+}
+.span-rounded{
+    color:#fff !important;
+    background-color:#5AA449 !important;
+}
+.deepGreen{
+    color:#5AA449 !important;
+}
+
+.margin-title{
+    margin-top: 100px;
+}
+
+.user-top{
+	text-align: center;
+	background-position : top center;
+	background-image: url(http://img.msa12365.com/03e4840e69452bbe2b4b7d466da30963.jpg@750w);
+	background-size : auto 18em;
+	background-repeat: no-repeat;
+	padding-top : 13em;
+}
+.topBottom{
+	border-top: 1px #ccc solid;
+}
+.font{
+	font-size: 16px;
+}
+.fontColor{
+	color: #000;
+}
+.userInfo input{
+	border:none;
+	font-size: 16px;
+	outline:none;
+}
+.userInfo{
+	border-bottom: 1px #ccc solid;
+}
+.ui-dialog-content{
+	min-height: 35px !important;
+	max-height: auto;
+}
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset .red{
+	background-color: #B61332;
+	color:#fff;
+	border-color: #B61332;
+}
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset .white{
+	background-color: #fff;
+	border-color: #ccc;
+	color:#777474;
+}
+.ui-dialog .ui-dialog-buttonpane { 
+    text-align: center;
+}
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset { 
+    float: none;
+}
+.funny-boxes{
+	background: url("../../images/redCoupon.jpg") no-repeat center center;
+	background-size:100% 100%;
+}
+.radioCls{
+	font-size: 18px;
+	color:#555;
+}
+
+.back {
+	cursor: pointer;
+}
+.save{
+	cursor: pointer;
+}
+.borderBottom{
+	margin-bottom:10px !important;
+}
+.borderDot{
+	border-top: 1px dotted #ccc;
+	padding-top:10px;
+}

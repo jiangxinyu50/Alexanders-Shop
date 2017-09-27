@@ -1,0 +1,425 @@
+<extend name="Public/base" />
+<block name='title'>订单详情</block>
+<block name='head-link'>
+    <style type="text/css">
+        .black_color{
+            color: #000;
+        }
+        .share-btn{
+            width: 90px;
+            display: block;
+            margin: 10px 15px;
+            float: right;
+        }
+        .orderNo{
+            margin: 5px 0 5px 15px;
+            font-size: 13px;
+            color: #383838;
+        }
+    </style>
+</block>
+<block name='content'>
+    <div class="shop-cart-page gray-bg">
+        <!--============订单详情=============-->
+        <div class="content">
+            <div class="weui-panel">
+                <div class="weui-panel__bd">
+                    <div class="weui-flex">
+                        <div class="orderNo" style="width: 80%;color: #a4a09d;">
+                            <p>订单编号:&nbsp;&nbsp;<span style="color: #000;"><{$orderInfo.orderNo}></span></p>
+                            <p>下单时间:&nbsp;&nbsp;<span style="color: #000;"><{$orderInfo.addTime}></span></p>
+                        </div>
+                        <!-- 赠送好友订单再次分享 -->
+                        <if condition="($orderInfo.is_wechat_share eq 1) AND ($orderInfo.is_friend_receive eq '') ">
+                            <div style="width: 40%;">
+                                <a href="<{:U('Activity/share_to_friend')}>?orderNo=<{$orderInfo.orderNo}>" class="weui-btn weui-btn_mini weui-btn_primary share-btn">再次分享</a>
+                            </div>
+                        </if>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 物流信息 -->
+            <eq name='orderInfo.sign' value='1'>
+            <div class="weui-panel">
+                <div class="weui-panel__hd">物流信息</div>
+                <div class="weui-panel__bd">
+                    <div class="weui-media-box weui-media-box_small-appmsg">
+                        <div class="weui-cells">
+                            <div class="weui-cell weui-cell_access">
+                                <div class="weui-cell__hd"><img style="width:22px;position: absolute;top: 8px;" src="/Public/images/Mobile/icon/logistics-info.png" /><label style="margin-left: 30px;" class="weui-label">物流进度:</label></div>
+                                <div class="weui-cell__bd new more-btn black_color" style="font-size: 13px;">
+                                    <label class="weui-label first-child" style="width: 100%;"><{$latestLogisticInfo.ftime}></label>
+                                    <label class="weui-label" style="width: 100%;"><{$latestLogisticInfo.context}></label>
+                                </div>
+                                <div class="weui-cell__bd all black_color" style="font-size: 13px; display: none;">
+                                    <volist name="logisticInfo" id="item">
+                                        <label class="weui-label" style="width: 100%;"><{$item.ftime}></label>
+                                        <label class="weui-label" style="width: 100%;"><{$item.context}></label><br/>
+                                    </volist>
+                                </div>
+                                <div class="weui-cell__ft"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </eq>
+
+            <!-- ========配送信息======== -->
+            <div class="weui-panel">
+                <div class="weui-panel__hd">配送信息</div>
+                <div class="weui-panel__bd">
+                    <!-- 配送地址 -->
+                    <div class="weui-media-box weui-media-box_text" style="height: 47px;">
+                        <img style="position: absolute;width: 24px;top: 28px;" src="/Public/images/Mobile/icon/details-address.png" />
+                        <h4 class="weui-media-box__title" style="margin-left: 28px;"><{$orderInfo.address.name}> <{$orderInfo.address.tel}></h4>
+                        <p class="weui-media-box__desc" style="margin-left: 28px;"><{$orderInfo.address.address}> <{$orderInfo.address.floor}></p>
+                        <!--<h4 class="weui-media-box__title" style="margin-left: 28px;margin-top: 14px;">好友未选择地址</h4>-->
+                    </div>
+                    <!-- 配送时间 -->
+                    <div class="weui-cells" style="margin-top: 0;">
+                        <div class="weui-cell">
+                            <div class="weui-cell__hd">
+                                <img style="width: 22px;position: absolute;" src="/Public/images/Mobile/icon/logistics-time.png" />
+                                <if condition="($orderInfo.city eq '深圳') OR ($orderInfo.city eq '广州') OR ($orderInfo.city eq '成都')">
+                                    <label class="weui-label" style="margin-left: 28px;">配送时间:</label>
+                                    <else/>
+                                    <label class="weui-label" style="margin-left: 28px;">发货时间:</label>
+                                </if>
+
+                            </div>
+                            <div class="weui-cell__bd weui-flex black_color">
+                                <div class="weui-flex__item">
+                                    <label class="weui-label order-send-day"><{$orderInfo.sendDay}></label>
+                                </div>
+                                <div class="weui-flex__item">
+                                    <label class="weui-label order-send-time"><{$orderInfo.sendTime}></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 客户留言 -->
+                    <div class="weui-media-box weui-media-box_small-appmsg">
+                        <neq name="orderInfo.Message" value="">
+                            <div class="weui-cells weui-cells_form">
+                                <div class="weui-cell">
+                                    <div class="weui-cell__hd">
+                                        <img style="width: 22px;position: absolute;" src="/Public/images/Mobile/icon/message-icon.png" />
+                                        <label class="weui-label" style="margin-left: 28px;">留言信息:</label>
+                                    </div>
+                                    <div class="weui-cell__bd black_color">
+                                        <span><{$orderInfo.Message}></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </neq>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- 附加商品 -->
+            <neq name='orderInfo.special' value="">
+                <div class="weui-panel">
+                    <div class="weui-panel__hd">附加商品</div>
+                    <div class="weui-panel__bd">
+                        <volist name='orderInfo.special' id='item'>
+                            <div class="weui-media-box weui-media-box_text" style="padding: 10px 15px;">
+                                <h4 class="" style="display: inline-block;font-weight: lighter;font-size: 14px;"><{$item.name}></h4>
+                                <span class="pull-right black_color" style="display: inline-block;float: right;font-size: 13px;">¥ <{$item.price}>.00元</span>
+                            </div>
+                        </volist>
+                    </div>
+                </div>
+            </neq>
+
+            <!-- 商品列表 -->
+            <div class="weui-panel weui-panel_access">
+                <div class="weui-panel__hd">商品列表</div>
+                <div class="weui-panel__bd">
+                    <volist name='orderInfo.goods' id='column' key="i">
+                        <eq name="column.type" value="0">
+                            <volist name='column.items' id='goods' key="j">
+                                <div class="weui-media-box weui-media-box_appmsg">
+                                    <div class="weui-media-box__hd">
+                                        <img class="weui-media-box__thumb" src="<{$goods.img}>" alt="Alexander's">
+                                    </div>
+                                    <div class="weui-media-box__bd goods_desc">
+                                        <div class="weui-flex">
+                                            <div class="weui-flex__item">
+                                                <h4 class="weui-media-box__title"><{$goods.name}></h4>
+                                            </div>
+                                            <div class="weui-flex__item" style="text-align: right;font-size: 13px;">
+                                                <span>¥ <{$goods.price}>.00</span>
+                                            </div>
+                                        </div>
+                                        <p class="weui-media-box__desc"> x<{$goods.num}></p>
+                                    </div>
+                                </div>
+                            </volist>
+                        <else />
+                            <div class="weui-media-box weui-media-box_appmsg">
+                                <div class="weui-media-box__hd">
+                                    <img class="weui-media-box__thumb" src="<{$column['items'][0]['img']}>" alt="Alexander's">
+                                </div>
+                                <div class="weui-media-box__bd goods_desc">
+                                    <div class="weui-flex">
+                                        <div class="weui-flex__item">
+                                            <h4 class="weui-media-box__title"><{$column.column_name}>(<{$column.sumNum}>杯)</h4>
+                                        </div>
+                                        <div class="weui-flex__item" style="text-align: right;font-size: 13px;">
+                                            <span>¥ <{$column.payPrice}>.00</span>
+                                        </div>
+                                    </div>
+                                    <p class="weui-media-box__desc">
+                                        <volist name='column.items' id='goods' key="j">
+                                            <{$goods.name}> x<{$goods.num}> |
+                                        </volist>
+                                    </p>
+                                </div>
+                            </div>
+                        </eq>
+                    </volist>
+                </div>
+                <div class="weui-panel__ft">
+                    <div class="weui-cell weui-cell_link order-price">
+                        <div class="weui-cell__bd" style="text-align: right;">运费: <span class="black_color">¥ <{$orderInfo.freightMoney}>.00</span><br />
+                            小计: <span class="sum_price black_color"></span></div>
+                    </div>    
+                </div>
+            </div>
+
+            <!-- 赠送好礼 -->
+            <neq name='orderInfo.gift_info' value=''>
+                 <div class="weui-panel weui-panel_access">
+                     <div class="weui-panel__hd">赠送好礼</div>
+                     <div class="weui-panel__bd">
+                         <div class="weui-media-box weui-media-box_appmsg">
+                             <div class="weui-media-box__hd">
+                                 <img class="weui-media-box__thumb gift-info-title" src="<{$orderInfo.gift_info.img}>" alt="Alexander's" guid='<{$orderInfo.gift_info.guid}>'>
+                             </div>
+                             <div class="weui-media-box__bd">
+                                 <h4 class="weui-media-box__title gift-info-title" guid='<{$orderInfo.gift_info.guid}>'><{$orderInfo.gift_info.name}></h4>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+            </neq>
+
+            <div class="weui-panel">
+                <div class="weui-panel__hd">支付详情</div>
+                <div class="weui-panel__bd">
+                    <div class="weui-media-box weui-media-box_small-appmsg">
+                        <div class="weui-cells">
+                            <neq name='orderInfo.balance' value="">
+                            <div class="weui-cell">
+                                <div class="weui-cell__bd">余额支付:</div>
+                                <div class="weui-cell__bd">
+                                    <label class="weui-label black_color"><{$orderInfo.balance.price}></label>
+                                </div>
+                            </div>
+                            </neq>
+                            <neq name='orderInfo.cardInfo' value="">
+                                <div class="weui-cell">
+                                    <div class="weui-cell__bd">优惠券:</div>
+                                    <div class="weui-cell__bd">
+                                        <label class="weui-label order-send-time black_color"><{$orderInfo.cardInfo.name}></label>
+                                    </div>
+                                </div>
+                            </neq>
+                            <div class="weui-cell">
+                                <div class="weui-cell__bd">现金支付:</div>
+                                <div class="weui-cell__bd">
+                                    <label class="weui-label black_color"><{$orderInfo.payPrice}></label>
+                                </div>
+                            </div>
+                            <div class="weui-cell">
+                                <div class="weui-cell__bd">支付方式:</div>
+                                <div class="weui-cell__bd">
+                                    <label class="weui-label payment-text black_color"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 底部状态栏 -->
+        <div class="cart-footer">
+            <div class="weui-flex">
+                <div class="weui-flex__item">
+                    <div class="placeholder">
+                        <span>状态:</span>
+                        <span><{$orderInfo['status_msg']}></span>
+                    </div>
+                </div>
+                <div>
+                    <div class="placeholder">
+                        <eq name='orderInfo.can_pay' value="1">
+                        <a href="javascript:" class="weui-btn weui-btn_mini weui-btn_warn order-cancle-confirm-btn">取消订单</a>
+                        <a href="<{:U('Index/payByWechat')}>?no=<{$orderInfo.orderNo}>" class="weui-btn weui-btn_mini pay-btn" style="background: #1aad19;">立即支付</a>
+                        </eq>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 在线支付页面可分享红包 -->
+        <div class="redpackage-dialog" style="display: none;">
+            <img src="/Public/images/share_top.png" class='share-point'>
+            <div class="weui-mask"></div>
+            <div class="weui-dialog">
+                <img src="/Public/images/redpackage.jpeg" class='img-response'>
+                <div class="weui-dialog__bd">您有一个大红包，快点击右上角发送给朋友一起来抢吧！</div>
+                <div class="weui-dialog__ft">
+                    <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary close-msg-btn">知道了</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 订单取消时的弹窗 -->
+        <div class="js_dialog" id="cancle-confirm-dialog" style="display: none;">
+            <div class="weui-mask"></div>
+            <div class="weui-dialog">
+                <div class="weui-dialog__hd"><strong class="weui-dialog__title">请确认</strong></div>
+                <div class="weui-dialog__bd">真的要取消这张订单吗？</div>
+                <div class="weui-dialog__ft">
+                    <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default">取消</a>
+                    <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary order-cancle-btn">确认</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 订单取消，确认后的弹窗 -->
+    <div id="loadingToast" style="display: none;">
+        <div class="weui-mask_transparent"></div>
+        <div class="weui-toast">
+            <i class="weui-loading weui-icon_toast"></i>
+            <p class="weui-toast__content">订单处理中</p>
+        </div>
+    </div>
+</block>
+<block name='footer-js'>
+    <!-- 等于标签,判断是否是微信支付 -->
+    <if condition="$orderInfo.is_can_share eq 1">
+ 	<script>
+        $('.payment-text').text('微信支付');
+        $('.redpackage-dialog').show();
+
+        wx.ready(function(){
+            wx.onMenuShareTimeline({
+                title: "<{$userInfo.nickname}>送你的冰淇淋券，只有8张，快抢！", // 分享标题
+                link: 'https://www.alexanders.cn/Shop/Activity/order_share?from_user=<{$userInfo.openId}>&no=<{$orderInfo.orderNo}>&link_from=timeline', // 分享链接
+                imgUrl: 'http://www.icalex.com/Public/images/Mobile/share_hongbao.jpg', // 分享图标
+                success: function () { 
+                    // 用户确认分享后执行的回调函数
+                },
+                cancel: function () { 
+                    // 用户取消分享后执行的回调函数
+                }
+            });
+
+            wx.onMenuShareAppMessage({
+                title: "<{$userInfo.nickname}>送你的冰淇淋券，只有8张，快抢！", // 分享标题
+                desc: '靠手气吃冰淇淋也是没谁了~', // 分享描述
+                link: 'https://www.alexanders.cn/Shop/Activity/order_share?from_user=<{$userInfo.openId}>&no=<{$orderInfo.orderNo}>&link_from=friend_share', // 分享链接
+                imgUrl: 'http://www.icalex.com/Public/images/Mobile/share_hongbao.jpg', // 分享图标
+                success: function () { 
+                    // 用户确认分享后执行的回调函数
+                },
+                cancel: function () { 
+                    // 用户取消分享后执行的回调函数
+                }
+            });
+        });
+        
+	</script>
+    <elseif condition="($orderInfo.sign eq 0) OR ($orderInfo.sign eq 206) OR ($orderInfo.sign eq -1)" />
+        <script>
+            $('.payment-text').text('微信支付');
+        </script>
+    <else/>
+        <script>
+            $('.payment-text').text('货到付款');
+        </script>
+    </if>
+    <script>
+        // 订单详情小计
+        var Discount = '<{$orderInfo.discount}>';
+        var pay_price = '<{$orderInfo.payPrice}>';
+
+        if(pay_price == ''){
+            pay_price = 0;
+            var sum_price = Discount;
+            $('.sum_price').text('¥ '+sum_price+'.00');
+        }else if(Discount == ''){
+            Discount = 0;
+            var sum_price = pay_price;
+            $('.sum_price').text('¥ '+sum_price+'.00');
+        }else{
+            var i = new Number(pay_price);   //string 转 int
+            parseInt(i);
+            var j = new Number(Discount);   //string 转 int
+            parseInt(j);
+            var sum_price = j + i;
+            $('.sum_price').text('¥ '+sum_price+'.00');
+        }
+
+        //关闭弹窗
+        $('.close-msg-btn').on('click', function(){
+            $('.redpackage-dialog').hide();
+        });
+
+        // 如果没有配送日期就不显示
+        if($('.order-send-day').text() == ''){
+            $('.order-send-day').parent().hide();
+        }
+
+        //取消订单操作
+        $('.order-cancle-confirm-btn').on('click', function(){
+            $('#cancle-confirm-dialog').show();
+        });
+
+        //取消--->取消订单操作
+        $('.weui-dialog__btn_default').on('click', function(){
+            $('#cancle-confirm-dialog').hide();
+        });
+
+        //确认--->取消订单操作
+        $('.order-cancle-btn').on('click', function(){
+            $('#cancle-confirm-dialog').hide();
+            $('#loadingToast').show();
+            var params = {
+                no : "<{$orderInfo.orderNo}>"
+            };
+
+            $.post("<{:U('order_cancle_handle')}>", params, function(data){
+                if(data['code'] == 0){
+                    location.reload();
+                }else{
+                    $('#loadingToast').hide();
+                }
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        /*
+        *  物流进度事件
+       */
+        // 无物流信息则有提示
+        if($('.more-btn .first-child').text() == ''){
+            $('.more-btn .first-child').text('自主配送则无物流信息');
+        }else{
+            // 有物流信息则可以点击展开
+            $('.more-btn').on('click', function(){
+                $('.new').hide();
+                $('.all').show();
+            });
+        }
+    </script>
+</block>

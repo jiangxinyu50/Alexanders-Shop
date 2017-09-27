@@ -1,0 +1,116 @@
+/*************main**************/
+#main{
+    min-height:500px;
+    margin:0 auto;
+    background:#fafafa;
+    border:1px solid #D3D3D3;
+    border-radius: 5px; 
+}
+
+#class-title{
+    height:35px;
+    line-height:35px;
+    padding-left:20px;
+    font-size:18px;
+    border-bottom:1px solid #d3d3d3;
+    background:#f4f4f4;
+}
+
+#main-left{
+    float:left;
+    width:190px;
+    padding-bottom:25px;
+}
+
+#left-menu ul li{
+    height:30px;
+    line-height:30px;
+}
+
+#left-menu ul li a{
+    display:block;
+    color:#000;
+    text-decoration:none;
+    padding:5px 0px 5px 20px;
+}
+
+#left-menu ul li a:hover{
+    background:#6EB262;
+}
+
+#main-right{
+    float:right;
+    width:747px;
+    min-height:600px;
+    padding-left:20px;
+    padding-top:25px;
+    padding-bottom:20px;
+    border-left:1px solid #d3d3d3;
+}
+
+#main-text{
+    padding:20px;
+}
+
+#main-text input{
+    height:30px;
+    line-height:30px;
+    padding-left:10px;
+}
+#main-text div{
+    margin-bottom:10px;
+}
+
+#text-name{
+    float:left;
+    margin-bottom:10px;
+}
+
+#text-tel{
+    clear:both;
+}
+
+#text-address{
+    clear:both;
+}
+
+#oldAddress{
+    clear:both;
+    height:30px;
+    line-height:30px;
+}
+
+#text-location{
+    float:left;
+    margin-left:20px;
+}
+
+#text-location p{
+    float:left;
+    width:120px;
+    height:30px;
+    line-height:30px;
+}
+
+#l-map{
+    width:700px;
+    height:500px;
+    margin-left:20px;
+}
+
+.msg-img-upload{
+    width: 248px;
+    height:auto;
+}
+
+
+#not-show{
+    clear:both;
+    height:1px;
+}
+/*************footer**************/
+#footer{
+    height:80px;
+    margin-top:50px;
+    background:#727171;
+}

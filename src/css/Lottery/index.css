@@ -1,0 +1,87 @@
+html body{
+	width: 100%;
+	height: 100%;
+	margin:0;
+}
+.wrapper{
+	position:fixed;
+	background: url('../../images/Lottery/lottery/bg.png') no-repeat;
+	background-size: 100% 100%;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+}
+
+.people_01{
+    position: absolute;
+    width: 90%;
+    top: 11%;
+    left: 0;
+    right: 0;
+    margin: auto;    
+}
+.people_02{
+    position: absolute;
+    width: 94%;
+    top: 17%;
+    left: 0;
+    right: 0;
+    margin: auto; 
+}
+.lamp{
+    position: absolute;
+    width: 91%;
+    top: -5%;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.lamp_shadow{
+    position: absolute;
+    width: 88%;
+    top: 59%;
+    left: 0;
+    right: 0;
+    margin: auto;   
+}
+.people_03{
+    position: absolute;
+    width: 65%;
+    top: 30%;
+    left: 24%;
+}
+.title{
+    position: absolute;
+    width: 94%;
+    top: 6%;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.getBtn{
+    position: absolute;
+    top: 80%;
+    margin: auto;
+    width: 70%;
+    left: 0;
+    right: 0;    
+}
+.footer{
+    position: absolute;
+    bottom: 4%;
+    margin: auto;
+    width: 85%;
+    left: 0;
+    right: 0;
+}
+
+
+.lamp{    
+    -webkit-animation: fadeIn 1s 0.5s both;
+}
+.lamp_shadow{    
+    -webkit-animation: fadeIn 1s 1s both;
+}
+.people_03{    
+    -webkit-animation: fadeIn 1s 1.5s both;
+}

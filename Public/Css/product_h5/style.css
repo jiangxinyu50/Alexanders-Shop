@@ -1,0 +1,100 @@
+.img-responsive{
+    width: 100%;
+    height: auto;
+}
+.page-bg {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 100%;
+    background-image:url(/Public/images/product_h5/banner.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-color: #F5F5F5;
+    z-index: 1;
+}
+
+.chart{
+    position: relative;
+    background: #FAE535;
+    box-shadow: 0px -1px 10px rgba(0, 0, 0, 0.2);
+    top:27rem;
+    bottom: 100px;
+    z-index: 2;
+    padding-top: 6rem;
+    margin-right: 15px;
+    margin-left: 15px;
+    padding-bottom: 15px;
+    border-radius: 10px !important;
+    text-align: center;
+    margin-bottom:1rem;
+}
+
+.face-img{
+    padding:0;
+    width:7rem;
+    margin-top:-4rem;
+
+}
+
+.face{
+    position: relative;
+    top:31rem;
+    z-index: 3;
+    text-align: center;
+}
+
+.info-1{
+    width:60%;
+    margin-top:-4rem;
+}
+
+.info-2{
+}
+
+.info-4{
+    width:80%;
+    margin-top:1rem;
+}
+.card{
+    width:85%;
+}
+
+.qrcode{
+    width:60%;
+    margin-top:1rem;
+}
+
+.logo-img{
+    width:5rem;
+    padding-top:1rem;
+}
+
+@media (max-width: 375px) and (min-width: 375px) {
+    .chart{
+        top:25rem;
+    }
+
+    .face{
+        top:28.5rem;
+    }
+
+    .face-img{
+        width:6rem;
+    }
+}
+
+@media (max-width: 320px) and (min-width: 320px) {
+    .chart{
+        top:22rem;
+    }
+
+    .face{
+        top:25rem;
+    }
+
+    .face-img{
+        width:5rem;
+    }
+}

@@ -1,0 +1,39 @@
+<extend name="Public/base" />
+<block name='title'>可分享红包</block>
+<block name='content'>
+    <div class="content Vip-Hongbao">
+        <div style="margin-top: 12%;">
+            <div style="position: relative;">
+                <div class="weui-flex__item"><div class="placeholder">
+                    <img src="/Public/images/Mobile/finish_order_share_bg.png?v=1.0.0" style="width: 100%;">
+                </div></div>
+                <div class="order-share_font" style="left: 6%;">
+                    <span>订单号:</span><span>282017020760881</span>
+                </div>
+                <div class="order-share_font" style="right: 6%;">
+                    <span>订单金额:</span><span>224.00元</span>
+                </div>
+                <div class="order-share_info">
+                    <span>恭喜您获得<span>200元</span>亚历山达冰淇淋优惠券，快去告诉小伙伴来抢优惠券啦!</span>
+                </div>
+            </div>
+        </div>
+        <div style="width: 100%;height: 30px;"></div>
+
+        <a href="javascript:;" class="weui-btn weui-btn_primary ready-to-use_btn index-btn">返回首页</a>
+        <a href="javascript:;" class="weui-btn weui-btn_default ready-to-use_btn back-btn neutral-grey-bg vip-btn">会员中心</a>
+    </div>
+
+</block>
+<block name='footer-js'>
+    <script>
+        //主页
+        $('.index-btn').on('click', function(){
+            window.location.href="<{:U('Index/index')}>";
+        });
+        //个人中心
+        $('.vip-btn').on('click', function(){
+            window.location.href="<{:U('Vip/index')}>";
+        });
+    </script>
+</block>

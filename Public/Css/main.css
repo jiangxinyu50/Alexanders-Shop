@@ -1,0 +1,166 @@
+#menu{
+	margin: 0 -15px;
+}
+
+.default-title{
+	padding:-15 -15px;
+}
+
+.select{
+	margin-top:10px;
+}
+
+.well{
+	background-color:#FAFAFA;
+}
+
+.news-one , .text-right{
+	background-color:#fff;
+}
+
+#news-add{
+    width: 280px;
+    height:155px;
+    border:1px dashed #ccc;
+    border-radius: 5px;
+    margin-bottom:30px;
+    background: #fff;
+    background-repeat:no-repeat;
+    background-position: center center;
+}
+
+#add-a{
+    margin-top:45px;
+    margin-left:55px;
+}
+
+#add-a a{
+    color:#b5b5b5;
+    text-decoration:none;
+    float:left;
+    margin-right:20px;
+}
+
+#add-a a:hover{
+    text-decoration:underline;
+}
+
+#add-a a p{
+    text-align:center;
+}
+
+#l-map{
+    width:100px;
+    height:100px;
+}
+
+#buyTime{
+    border-radius: 3px;
+    height:30px;
+    line-height:30px;
+    padding-left:10px;
+}
+
+#startTime , #startTime-Sel , #startTime-Scan,#startTime-prize{
+    border-radius: 3px;
+    height:34px;
+    line-height:34px;
+    padding-left:10px;
+    margin-bottom:0px;
+    border-color: green;
+}
+
+#endTime , #endTime-Sel , #endTime-Scan,#endTime-prize{
+    border-radius: 3px;
+    height:34px;
+    line-height:34px;
+    padding-left:10px;
+    margin-bottom:0px;
+    border-color: green;
+}
+
+#confirm-btn , #cancle-btn{
+    margin-top:10px;
+}
+/*subscribeStatistics页面*/
+#wx_startTime{
+    margin:0 auto 0 -13px;
+    border-color: green;
+    height:30px;
+    border-radius: 3px;
+    line-height: 30px;
+    padding-left: 10px;
+}
+#wx_endTime{
+    border-color: green;
+    height:30px;
+    border-radius: 3px;
+    line-height: 30px;
+    padding-left: 10px;
+}
+#labelName{
+right: 9px;
+bottom: 0;
+left: 0;
+padding: 15px;
+background: #333;
+background: rgba(0,0,0,0.75);
+}
+.modal{
+    overflow:auto !important;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+
+html,
+body {
+  height: 100%;
+  /* The html and body elements cannot have any padding or margin. */
+}
+
+/* Wrapper for page content to push down footer */
+#wrap {
+  min-height: 100%;
+  height: auto;
+  /* Negative indent footer by its height */
+  margin: 0 auto -60px;
+  /* Pad bottom by footer height */
+  padding: 0 0 60px;
+}
+
+/* Set the fixed height of the footer here */
+#footer {
+  height: 60px;
+  background-color: #f5f5f5;
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+#wrap > .container {
+  padding: 60px 15px 0;
+}
+.container .text-muted {
+  margin: 20px 0;
+}
+
+#footer > .container {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+code {
+  font-size: 80%;
+}
+
+#sendMessage ,  #register{
+  margin-top: 15px;
+}
+
+#export-csv{
+  margin-top: 15px;
+  margin-left: 28px;
+}

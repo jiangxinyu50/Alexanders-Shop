@@ -1,0 +1,62 @@
+<extend name="Public/base" />
+<block name='title'>订单列表</block>
+<block name='content'>
+	<div class="content vip-order-list">
+        <!-- 订单分栏 -->
+        <i class="iconfont icon-dingbu back_up" aria-hidden="true"></i>
+        <div class="weui-tab">
+            <div class="weui-navbar">
+                <div class="weui-navbar__item weui-bar__item_on order-tab-menu">
+                    全部
+                </div>
+                <div class="weui-navbar__item order-tab-menu" sign='0'>
+                    待付款
+                </div>
+                <div class="weui-navbar__item order-tab-menu" sign='1'>
+                    待配送
+                </div>
+                <div class="weui-navbar__item order-tab-menu" sign='205'>
+                    已完成
+                </div>
+            </div>
+            <div class="weui-tab__panel order-tab-content">
+            </div>
+        </div>
+    </div>
+    <include file="Public/footer" />
+</block>
+<block name='footer-js'>
+<script>
+    //底部栏图标选中变色
+    $('.menu-vip').addClass('weui-bar__item_on');
+    $('.vip-menu-icon').attr('src', "__PUBLIC__/images/Mobile/icon/menu-vip.png");
+    shop_item_init(false);
+
+    //加载订单信息
+    $('.order-tab-content').load("<{:U('send_friend_order_tab_list')}>", function(){});
+
+    //订单信息，选项卡切换特效等
+    $('.order-tab-menu').on('click', function(){
+        $('.order-tab-menu').removeClass('weui-bar__item_on');
+        $(this).addClass('weui-bar__item_on');
+
+        var opt = {};
+
+        if($(this).attr('sign')){
+            opt['sign'] = $(this).attr('sign');
+        }
+
+        $('.order-tab-content').load("<{:U('send_friend_order_tab_list')}>", opt, function(){});
+    });
+
+    //监听事件，滚动条超过一定程度，显示“返回顶部”
+    window.addEventListener('scroll',function(){
+        var _scrollTop = document.body.scrollTop;
+        if(_scrollTop > 200){
+            $('.back_up').show();
+        }else{
+            $('.back_up').hide();
+        }
+    },false);
+</script>
+</block>

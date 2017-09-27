@@ -1,0 +1,68 @@
+<extend name="Public/base" />
+<block name='title'>领取冰淇淋优惠券</block>
+<block name='head-link'>
+    <style type="text/css">
+        .img-div{
+            background: url(/Public/images/Activity/chinaUnicom_bg.jpg) no-repeat;
+            background-size: 100%;
+            width: 100%;
+            max-width: 768px;
+            height: 748px;
+        }
+        .main-part{
+            position: absolute;
+            width: 100%;
+            top: 37%;
+            text-align: center;
+        }
+        .img-style{
+            width: 35%;
+        }
+        .prompt-info{
+            font-size: 10px;
+            line-height: 0.8;
+        }
+        @media (max-width: 320px) and (min-width: 320px){
+            .img-div{
+                height: 572px;
+            }
+        }
+        @media (max-width: 360px) and (min-width: 360px){
+            .img-div{
+                height: 650px;
+            }
+        }
+        @media (max-width: 375px) and (min-width: 375px){
+            .img-div{
+                height: 675px;
+            }
+        }
+        @media (min-width: 768px){
+            .img-div{
+                height: 1378px;
+            }
+            .prompt-info{
+                font-size: 15px;
+            }
+        }
+    </style>
+</block>
+<block name='content'>
+    <div class="content">
+        <div class="img-div">
+            <div class="main-part">
+                <img class="img-style" src="/Public/images/Activity/coupon_qrcode.jpg">
+                <p class="prompt-info">*仅限中国联通用户领取</p>
+            </div>
+        </div>
+    </div>
+
+</block>
+<block name='footer-js'>
+    <script>
+        $(function(){
+            $('.footer-bottom').css('display','none');
+            $('.weui-footer').css('display','none');
+        });
+    </script>
+</block>

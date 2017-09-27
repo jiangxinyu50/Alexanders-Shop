@@ -1,0 +1,13 @@
+<div class="goods-info popup-goods-content" >
+    <div class="img-box" style='background-image: url("<{$ads_info.img}>");'></div>
+    <div class="weui-flex goods-control">
+        <div class="weui-flex__item">
+            <div class="modal-name text-center" style="padding-left: 0;">&nbsp;&nbsp;活动内容&nbsp;&nbsp;</div>
+        </div>
+    </div>
+</div>
+<div class="goods-deail">
+    <volist name="ads_info.params" id="info">
+        <{$info}>
+    </volist>
+</div>

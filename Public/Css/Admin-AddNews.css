@@ -1,0 +1,256 @@
+/* 
+    Document   : Admin-index
+    Created on : 2013-6-27, 22:37:20
+    Author     : lisha_000
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+#menu{
+    margin: 0 -15px;
+}
+
+/*************main**************/
+#main{
+    width:958px;
+    min-height:500px;
+    margin:0 auto;
+    background:#fafafa;
+    border:1px solid #D3D3D3;
+    border-radius: 5px; 
+}
+
+#class-title{
+    height:35px;
+    line-height:35px;
+    padding-left:20px;
+    font-size:18px;
+    border-bottom:1px solid #d3d3d3;
+    background:#f4f4f4;
+}
+
+#main-left{
+    float:left;
+    width:368px;
+    padding-bottom:25px;
+    margin-top:20px;
+}
+
+#main-right{
+    float:left;
+    background:#fff;
+    width:530px;
+    min-height:500px;
+    margin-top:20px;
+    margin-left:40px;
+    border:1px dashed #ccc;
+    border-radius:5px;
+    padding:20px;
+    padding-top:10px;
+    margin-bottom:20px;
+    margin:20px 0px 20px 40px;
+}
+
+#news{
+    float:left;
+    border: 1px solid #ccc;
+    width:350px;
+    margin-left:20px;
+    padding-bottom:10px;
+    border-radius:5px;
+    background-color:#fff;
+}
+
+#list-0{
+    width:348px;
+    height:200px;
+    padding:10px;
+    border-bottom:1px solid #ccc;
+}
+
+.big-news-edit{
+    width:328px;
+    height:180px;
+    position: relative;
+    background:#ccc;
+    top:-210px;
+    filter:alpha(opacity=70); 
+   -moz-opacity:0.7;
+   opacity:0.7;
+}
+
+#big-a{
+    width:18px;
+    height:18px;
+    padding-top:80px;
+    padding-left:160px;
+}
+
+#news-a{
+    position:relative;
+    top:-40px;
+    left:120px;
+    clear: both;  
+}
+
+#news-a a{
+    float:left;
+    margin-right:40px;
+    cursor:pointer;
+}
+
+.big-news-edit a{
+    cursor: pointer;
+}
+
+#news-big-img{
+    width:330px;
+    height:160px;
+    display:table; 
+    text-align:center;
+}
+
+#news-big-img img{
+    max-width: 330px; 
+    max-height: 160px;
+}
+
+#title-0{
+    background:#000;
+    color:#fff;
+    font-size:16px;
+    height:30px;
+    line-height:30px;
+    padding-left:10px;
+    position:relative;
+    top:-30px;
+    filter:alpha(opacity=70); 
+    -moz-opacity:0.7;
+    opacity:0.7;
+    word-break:break-all;
+    overflow: hidden;
+}
+
+#description-0{
+    word-wrap: break-word; 
+}
+
+.news-list{
+
+    width:348px;
+    padding:10px;
+    border-bottom:1px solid #ccc;
+    
+      
+}
+
+.news-edit{
+    width:328px;
+    position: relative;
+    top:0px;
+    background-color: #ccc;
+    filter:alpha(opacity=70); 
+    -moz-opacity:0.7;
+    opacity:0.7;
+}
+
+.news-title{
+    float:left;
+    font-size:16px;
+    width:235px;
+    padding:5px;
+    word-break:break-all; 
+    dispaly: block;
+}
+
+.news-img{
+    float:right;
+    width: 70px;
+    height:70px;
+    border:1px solid #ccc; 
+    display:table; 
+    text-align:center;
+}
+
+.news-img span, #news-big-img span{
+    display:table-cell; 
+    vertical-align:middle;
+
+}
+
+.news-img img{
+    max-width:70px; 
+    max-height:50px;
+
+}
+
+#news-add{
+    clear:both;
+    margin-left:20px;
+    padding-top:10px;
+}
+
+#news-add a{
+    display:block;
+    border:1px dashed #ccc;
+    padding:10px;
+    margin:10px;
+    margin-bottom:0px;
+    border-radius:5px;
+    text-align: center;
+    background-color: #fff;
+
+}
+
+#right-form p{
+    margin-top:20px;
+    margin-bottom:10px;
+    font-size:16px;
+}
+
+#right-form input{
+    /*height:30px;*/
+    padding-left:10px;
+}
+
+#addSmallText a{
+    font-size: 16px;
+    color:#2E7DC6;
+    text-decoration:underline;
+    cursor:pointer;
+}
+
+#addBtn{
+    color:#fff;
+    text-align:center;
+    background:#54A046;
+    width:100px;
+    height:30px;
+    line-height:30px;
+    border:1px solid #3D810C;
+    border-radius: 5px;
+    cursor:pointer;
+    margin-left:410px;
+    margin-bottom:20px;
+}
+
+#add-Picture{
+    font-weight:normal;
+    font-size: 14px;
+    font-weight: 15px;
+    line-height:23px;
+    text-align: left;
+    color:#777777;
+}
+
+#not-show{
+    clear:both;
+    height:1px;
+}
+/*************footer**************/
+#footer{
+    margin-top:50px;
+    height: 60px;
+    background-color: #f5f5f5;
+    padding-top: 20px;
+}

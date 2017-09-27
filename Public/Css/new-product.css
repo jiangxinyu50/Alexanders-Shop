@@ -1,0 +1,24 @@
+html,body{
+	text-align: left;
+	height:100%;
+	min-height: 100%;
+}
+.product-list-ad{
+	height:50%;
+	background:url(http://hjdf-img.oss-cn-shenzhen.aliyuncs.com/alexanders/product-ad.png) no-repeat center center;
+  	background-size : cover;
+}
+
+.logo-new{
+	margin-top: -5px;
+	height : 30px;
+}
+
+.headroom--top{
+  background: rgba(0,0,0,0.6);
+}
+
+body > .container {
+  padding: 60px 0px 0px 0px;
+  min-height: 500px;
+}

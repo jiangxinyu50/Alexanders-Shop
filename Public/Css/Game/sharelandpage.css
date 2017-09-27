@@ -1,0 +1,240 @@
+html body{
+	width: 100%;
+	height: 100%;
+	margin:0;
+	padding: 0;
+}
+#myCanvas{
+    width: 100%;
+    height:100%;
+    display:none;
+}
+@media (orientation: landscape) {
+    #myCanvas{
+        display: inline;
+        text-align: center;
+        font-size: 20px;
+        padding-top: 1rem;
+        background-color:#FFF;
+        position:absolute;
+        z-index: 999;
+    }
+}
+#loadingPage{
+    position:absolute;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    /*z-index: 999;*/
+    background: url('../../images/Game/bg.png') no-repeat center center;
+}
+#load-moon{
+    position: absolute;
+    width: 55%;
+    left: 0;
+    top: -8%;
+}
+#load-build{
+	position: absolute;
+	width: 100%;
+	left: 0;
+	right:0;
+	bottom:0;
+	margin:auto;
+}
+#load-right{
+	position: absolute;
+	width: 100%;
+	right: 0;
+	bottom:0;
+}
+#load-left{
+	position: absolute;
+	width: 100%;
+	left: 0;
+	bottom:0;
+}
+#load-cloud{
+	position: absolute;
+	width: 100%;
+	top:10%;
+}
+#load-text1{
+	position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 75%;
+    top: 32%;
+}
+#load-text2{
+	position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 75%;
+    top: 37%;
+}
+#load-text3{
+	position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 75%;
+    top: 42%;
+}
+.tiao{
+	position: absolute;
+	text-align: center;
+	width:100%;
+	top:56%;
+	font-size: 26px;
+	color: #a58755;
+}
+
+#load-build{
+    -webkit-animation: fadeInUp 1s 0.5s both
+}
+#load-moon{
+    -webkit-animation: fadeInLeft 1s 0.5s both
+}
+#load-cloud{
+    -webkit-animation: fadeIn 1s 1s both
+}
+#load-left{
+    -webkit-animation: fadeInLeft 1s 1s both
+}
+#load-right{
+    -webkit-animation: fadeInRight 1s 1s both
+}
+#load-text1{
+    -webkit-animation: fadeInUp 1s 1.5s both
+}
+#load-text2{
+    -webkit-animation: fadeInUp 1s 2.1s both
+}
+#load-text3{
+    -webkit-animation: fadeInUp 1s 3.1s both
+}
+#loadingPage{
+    -webkit-animation: fadeOut 1s 5s both
+}
+.swiper-container{
+    -webkit-animation: fadeIn 1s 5s both	
+}
+.modal-content{
+	text-align: center;
+	width:70%;
+	padding-left: 15%;
+	padding-top:30px;
+}
+#slidebar{
+	position: fixed;
+	top:35%;
+	right: 0;
+	width:25%;
+	height: 15%;
+	background-color: #ccc;
+	display: none; 
+}
+.swiper-container {
+    width: 100%;
+    height:100%;
+    overflow: hidden;
+    position: absolute;
+    background: url('../../images/Game/bg.png') no-repeat bottom center;
+    background-size: 100% auto;
+    opacity: 0;
+}
+.section5{
+    width: 100%;
+    height:100%;
+    overflow: hidden;
+    position: absolute;
+    background: url('../../images/Game/main-1.png') no-repeat center center;
+    background-size: 100% 100%;
+}
+#main-2{
+	position: absolute;
+	margin:auto;
+	right: 0;
+	left:0;
+	top: 2%;
+	width:94%;	
+}
+#main-3{
+    position: absolute;
+    margin: auto;
+    right: 0;
+    left: 0;
+    top: 22%;
+    width: 65%;
+}
+#main-4{
+	position: absolute;
+    margin: auto;
+    right: 0;
+    left: 0;
+    top: 82%;
+    width: 76%;	
+}
+#pageTwo{
+    -webkit-animation: fadeIn 1s 6s both		
+}
+#main-3{
+    -webkit-animation: fadeInRight 1s 6.5s both
+}
+#main-4{
+    -webkit-animation: bounceIn 1s 7s both
+}
+
+@-webkit-keyframes fadeIn-flash {
+	0% {
+		opacity:0
+	}
+	50%,100% {
+		opacity:1
+	}
+	25%,75% {
+		opacity:0
+	}
+}@keyframes fadeIn-flash {
+	0% {
+		opacity:0
+	}
+	50%,100% {
+		opacity:1
+	}
+	25%,75% {
+		opacity:0
+	}
+}.fadeIn-flash {
+	-webkit-animation-name:fadeIn-flash;
+	animation-name:fadeIn-flash
+}
+
+
+@-webkit-keyframes fadeInspeed {
+	0% {
+		opacity:0
+	}
+	85% {
+		opacity:1
+	}
+	100% {
+		opacity:1
+	}
+}@keyframes fadeInspeed {
+	0% {
+		opacity:0
+	}
+	85% {
+		opacity:1
+	}
+	100% {
+		opacity:1
+	}
+}.fadeInspeed {
+	-webkit-animation-name:fadeInspeed;
+	animation-name:fadeInspeed
+}

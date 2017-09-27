@@ -1,0 +1,75 @@
+<extend name="Public/base" />
+<block name='title'>优惠券详情</block>
+<block name='content'>
+    <!--=================优惠券详情===================-->
+    <div class="content">
+        <!-- 顶部标识图 -->
+        <div class="weui-flex coupon-banner_style">
+            <div><div class="placeholder"></div></div>
+            <div class="weui-flex__item">
+                <div class="text-center">
+                    <img src="/Public/images/Mobile/cardInfo-logo.png?v=1.0.0" alt="Alexander's" title="alexander's ice cream" style="width: 98%;">
+                </div>
+            </div>
+            <div><div class="placeholder"></div></div>
+        </div>
+
+        <!-- 优惠券主体部分 -->
+        <div style="margin-top: 20px;">
+            <div class="shareHongbao-div coupon-div">
+                <div class="coupon-top">
+                    <div class="" style="display: inline-block;">
+                        <span class="card-title coupon-title"><{$cardInfo.price}></span>
+                    </div>
+                    <div class="" style="display: inline-block;">
+                        <div class="coupon-style">
+                            <p class="Hongbao-rmb_style">RMB</p>
+                            <span class="Hongbao-card_style">冰淇淋券</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="coupon-desc">
+                    <p class="shareHongbao-date">有效日期: <span><{$cardInfo.startTime}></span> 至 <span><{$cardInfo.endTime}></span></p>
+                    <p class="shareHongbao-date">购满<{$cardInfo.price_limit}>元即可使用</p>
+                </div>
+            </div>
+        </div>
+        <!-- 优惠券使用注意事项 -->
+        <!-- 做判断,符合的优惠券展现不同的使用细则 -->
+        <eq name="cardInfo.cardId" value="183">
+            <div class="coupon-detail_padding">
+                <div class="weui-form-preview__item">
+                    <label class="weui-form-preview__label coupon-color">使用细则:</label>
+                    <span class="weui-form-preview__value card-explain">1. 本券仅限兑换「来电的味道」8杯装冰淇淋，内含草莓、港式奶茶、抹茶、黑巧克力各2杯。<br/>2. 本券有效使用范围仅限北京、上海、广州、深圳、成都。<br/>3.该优惠券不与其他优惠同享。
+                    <br/>4. 本券不设找零、折现、补发。<br/>5. 如有任何疑问，请联系客服。<br/>6. 亚历山达冰淇淋保留法律范围内允许的解释权。</span>
+                </div>
+            </div>
+            <else />
+            <div class="coupon-detail_padding">
+                <div class="weui-form-preview__item">
+                    <label class="weui-form-preview__label coupon-color">使用细则:</label>
+                    <span class="weui-form-preview__value card-explain">1. 购满<{$cardInfo.price_limit}>元即可使用本券。<br/>2. 支付时，请点击「使用优惠」选择该券。<br/>3. 该优惠券不与其他优惠同享。
+                    <br/>4. 如有任何疑问，请联系客服。<br/>5. 亚历山达冰淇淋保留法律范围内允许的解释权。</span>
+                </div>
+            </div>
+        </eq>
+
+        <!-- 按钮 -->
+        <neq name='cardInfo.redirect_guid' value=''>
+        <a href="<{:U('Index/index')}>?redirect=<{$cardInfo.redirect_guid}>" class="weui-btn weui-btn_primary ready-to-use_btn">立即使用</a>
+        <else/>
+        <a href="<{:U('Index/index')}>" class="weui-btn ready-to-use_btn" style="background: #ae945e;">立即使用</a>
+        </neq>
+
+    </div>
+    <include file="Public/footer" />
+
+</block>
+<block name='footer-js'>
+    <script>
+        //底部栏图标变色
+        $('.menu-vip').addClass('weui-bar__item_on');
+        $('.vip-menu-icon').attr('src', "__PUBLIC__/images/Mobile/icon/menu-vip.png");
+        shop_item_init(false);
+    </script>
+</block>

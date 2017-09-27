@@ -1,0 +1,24 @@
+#menu{
+	margin: 0 -15px;
+}
+
+.default-title{
+	padding:-15 -15px;
+}
+
+.select{
+	margin-top:10px;
+}
+
+.well{
+	background-color:#FAFAFA;
+}
+
+#l-map{
+    width:945px;
+    height:500px;
+}
+
+.text-center a{
+    cursor:pointer;
+}

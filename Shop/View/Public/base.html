@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title><block name='title'>亚历山达冰淇淋</block></title>
+    <link href="/Public/plugins/icon/iconfont.css" rel="stylesheet">
+    <link rel="stylesheet" href="/Public/plugins/weui/dist/style/weui.min.css"/>
+    <block name='head-link'></block>
+    <link rel="stylesheet" href="/Public/Css/Mobile/style.css?v=1.0.8"/>
+</head>
+
+<body>
+<include file="Public/google-analytics" />
+<div class="container gray-bg">
+    <div class="page gray-bg">
+        <block name='content'></block>
+        <div class="footer-bottom"></div>
+        <div class="weui-footer footer-position">
+            <p class="weui-footer__links">
+                <a href="<{:U('Index/index')}>" class="weui-footer__link" style="color: #999;">亚历山达冰淇淋官方商城</a>
+            </p>
+            <p class="weui-footer__text">Copyright © 2014-<script>document.write(new Date().getFullYear());</script> alexanders.cn</p>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/Public/plugins/zepto/zepto.min.js"></script>
+<script type="text/javascript" src="/Public/plugins/weui/weui.min.js"></script>
+<script type="text/javascript" src="/Public/plugins/fastclick/lib/fastclick.js"></script>
+<script type="text/javascript" src="__PUBLIC__/plugins/iscroll/build/iscroll.js"></script>
+<script type="text/javascript" src="/Public/Js/mobile/shop.js?v=1.0.3"></script>
+<!-- <script type="text/javascript" src="/src/js/Mobile/shop.js"></script> -->
+
+<eq name='is_wechat' value='1'>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"> </script>
+<script>
+    wx.config({
+      debug: false,
+      appId: '<{$js_sign['appid']}>', // 必填，公众号的唯一标识
+      timestamp: <{$js_sign['timestamp']}>, // 必填，生成签名的时间戳，切记时间戳是整数型，别加引号
+      nonceStr: '<{$js_sign['noncestr']}>', // 必填，生成签名的随机串
+      signature: '<{$js_sign['signature']}>', // 必填，签名，见附录1
+      jsApiList: [
+        'checkJsApi',
+    'onMenuShareTimeline',
+    'onMenuShareAppMessage',
+    'onMenuShareQQ',
+    'onMenuShareWeibo',
+    'hideMenuItems',
+    'showMenuItems',
+    'hideAllNonBaseMenuItem',
+    'showAllNonBaseMenuItem',
+    'translateVoice',
+    'startRecord',
+    'stopRecord',
+    'onRecordEnd',
+    'playVoice',
+    'pauseVoice',
+    'stopVoice',
+    'uploadVoice',
+    'downloadVoice',
+    'chooseImage',
+    'previewImage',
+    'uploadImage',
+    'downloadImage',
+    'getNetworkType',
+    'openLocation',
+    'getLocation',
+    'hideOptionMenu',
+    'showOptionMenu',
+    'closeWindow',
+    'scanQRCode',
+    'chooseWXPay',
+    'openProductSpecificView',
+    'addCard',
+    'chooseCard',
+    'openCard'
+      ]
+  });
+</script>
+<neq name='wx_no_default' value='1'>
+<script>
+wx.ready(function(){
+    wx.onMenuShareTimeline({
+        title: "ALEXANDER'S 官方商城", // 分享标题
+        link: 'http://www.alexanders.cn/Shop?link_from=timeline', // 分享链接
+        imgUrl: 'http://www.alexanders.cn/Public/images/ice_one.png', // 分享图标
+        success: function () { 
+            // 用户确认分享后执行的回调函数
+        },
+        cancel: function () { 
+            // 用户取消分享后执行的回调函数
+        }
+    });
+
+    wx.onMenuShareAppMessage({
+        title: "ALEXANDER'S 官方商城", // 分享标题
+        desc: '做最好的雪糕品牌', // 分享描述
+        link: 'http://www.alexanders.cn/Shop?link_from=friend_share', // 分享链接
+        imgUrl: 'http://www.alexanders.cn/Public/images/ice_one.png', // 分享图标
+        success: function () { 
+            // 用户确认分享后执行的回调函数
+        },
+        cancel: function () { 
+            // 用户取消分享后执行的回调函数
+        }
+    });
+});
+</script>
+</neq>
+</eq>
+<block name='footer-js'></block>
+</body>
+</html>

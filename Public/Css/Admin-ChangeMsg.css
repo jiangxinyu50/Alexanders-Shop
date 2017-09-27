@@ -1,0 +1,320 @@
+/* 
+    Document   : Admin-index
+    Created on : 2013-6-27, 22:37:20
+    Author     : lisha_000
+    Description:
+        Purpose of the stylesheet follows.
+*/
+body, div, address, blockquote, iframe, ul, ol, dl, dt, dd, li, dl, h1, h2, h3, h4, h5, h6, p, pre, table, caption, th, td, form, legend, fieldset, input, button, select, textarea {margin:0; padding:0;font-style: normal;font-size: 100%; font-family: inherit;} 
+ol, ul ,li{list-style: none;} 
+img {border: 0;} 
+body {color:#000;font-size: 12px;background-color:#fff;font-family: "Microsoft YaHei",Helvetica,Verdana,Arial,Tahoma;} 
+.clearfix:after {clear:both; content:"."; display:block; height:0pt; visibility:hidden; overflow:hidden;} 
+.clear{clear:both;height:1px; margin-top:-1px; width:100%;} 
+
+.dis{display:block;} 
+.undis{display:none;} 
+
+/*************main**************/
+#main{
+    width:958px;
+    min-height:400px;
+    margin:0 auto;
+    margin-top:25px;
+    background:#fafafa;
+    border:1px solid #D3D3D3;
+    border-radius: 5px; 
+}
+
+#class-title{
+    height:35px;
+    line-height:35px;
+    padding-left:20px;
+    font-size:18px;
+    border-bottom:1px solid #d3d3d3;
+    background:#f4f4f4;
+}
+
+#main-left{
+    float:left;
+    width:190px;
+    height:600px;
+    padding-bottom:25px;
+    overflow: auto;
+}
+
+#left-menu ul li a{
+    display:block;
+    color:#000;
+    text-decoration:none;
+    padding:10px 0px 10px 20px;
+}
+
+#left-menu ul li a:hover{
+    background:#6EB262;
+}
+
+#main-right{
+    float:right;
+    width:737px;
+    min-height:600px;
+    padding-left:30px;
+    padding-top:25px;
+    padding-bottom:20px;
+    border-left:1px solid #d3d3d3;
+}
+
+#review{
+    margin-bottom:50px;
+}
+
+#review-title{
+    margin-bottom:20px;
+}
+
+#review-title a{
+    color:red;
+    cursor:pointer;
+    font-size:16px;
+}
+
+#review-title a:hover{
+    text-decoration:underline;
+}
+
+.rule-main{
+    clear:both;
+    border:1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom:10px;
+    margin-right:30px;
+}
+
+.rule-title{
+    height:30px;
+    line-height:30px;
+    padding-left:10px;
+    border-bottom:1px solid #ccc;
+    background-image: url(/weixin/Public/Image/key-bg.png);
+    cursor: pointer;
+}
+
+.rule-title font{
+    float:right;
+    margin-right:10px;
+}
+
+.key-main{
+    padding:10px;
+}
+
+.key-main font{
+    float:left;
+    font-weight:bold;
+}
+
+.key-title ul{
+    float:left;
+}
+
+.key-title ul li{
+    float:left;
+    background: #ccc;
+    margin-right:10px;
+    padding:5px 10px 5px 10px;
+    border-radius: 5px;
+    margin-bottom:10px;
+}
+
+.key-response{
+    clear: both;
+    height:30px;
+    line-height:30px;
+}
+
+.rule-big-main{
+    padding:10px;
+}
+
+.rule-new-big-main{
+    padding:10px;
+}
+
+.addNew{
+    float:right;
+    color:#000;
+    text-align:center;
+    width:100px;
+    height:30px;
+    line-height:30px;
+    border:1px solid #ccc;
+    border-radius: 5px;
+    cursor:pointer;
+    margin-right:10px;
+    margin:10px 30px 10px 0px;
+}
+
+.rule-big-title{
+    color:#999999;
+    height:25px;
+    line-height:25px;
+}
+
+.rule-big-title input{
+    height:25px;
+    line-height: 25px;
+    padding-left:10px;
+}
+
+.rule-big-left{
+    float:left;
+    border:1px solid #ccc;
+    border-radius: 6px;
+    width:235px;
+    margin-top:10px;
+}
+
+.left-key-title{
+    background:#EEEDED;
+    height:40px;
+    line-height:40px;
+    padding-left:10px;
+    border-bottom:1px solid #ccc;
+}
+
+.left-key-list{
+    height:453px;
+    overflow:auto;
+}
+
+#list-default button{
+	display:block;
+	cursor:pointer;
+        margin-top:30px;
+        margin-left:80px;
+	}
+
+.left-key-list ul{
+    padding-top:10px;
+}
+
+.left-key-list ul li{
+    padding-left:10px;
+    width:95%;
+    height:25px;
+    line-height:25px;
+    border-bottom:1px solid #ccc;
+}
+
+.left-key-list ul li input{
+    float:left;
+    margin-top:5px;
+    margin-right:10px;
+}
+
+.key-text , #text-new{
+	width:90%;
+	height:350px;
+	padding:10px;
+	}
+
+.left-key-add{
+    height:46px;
+    background:#EEEDED;
+    border-top:1px solid #ccc;
+}
+
+.left-key-add button{
+    margin-top:10px;
+    margin-left:80px;
+}
+
+.rule-big-right{
+    float:left;
+    margin-top:10px;
+    margin-left:10px;
+    border:1px solid #ccc;
+    border-radius: 6px;
+    width:430px;
+}
+
+.right-response-title{
+    background:#EEEDED;
+    height:40px;
+    line-height:40px;
+    padding-left:10px;
+    border-bottom:1px solid #ccc;
+}
+
+.right-response-title button{
+    float:left;
+    margin-top:8px;
+    margin-right:10px;
+    cursor:pointer;
+	}
+
+.right-response-text{
+    clear:both;
+    height:443px;
+    overflow:auto;
+    padding-top:10px;
+    padding-left:10px;
+}
+
+#handleBtn{
+    margin-top:10px;
+    height:40px;
+}
+
+#handleBtn div{
+    float:left;
+    color:#fff;
+    text-align:center;
+    background:#54A046;
+    width:100px;
+    height:30px;
+    line-height:30px;
+    border:1px solid #3D810C;
+    border-radius: 5px;
+    cursor:pointer;
+    margin-right:10px;
+}
+
+#phone{
+    width:320px;
+    height:443px;
+    margin-left:40px;
+    background-image: url(/Public/Image/samsun-bg.png);
+}
+
+.msg-title{
+    color:#fff;
+    font-size: 16px;
+    padding-top:57px;
+    text-align: center;
+}
+
+.msg-img-main{
+    width:248px;
+    height:138px;
+    margin-top:38px;
+    margin-left:36px;
+    }
+
+.msg-img-upload{
+    width: 248px;
+    height:auto;
+}
+
+.text-msg{
+    width:150px;
+    padding:5px;
+    height:140px;
+    margin-top:24px;
+    margin-left:36px;
+}
+
+#not-show{
+    clear:both;
+    height:1px;
+}

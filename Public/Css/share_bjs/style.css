@@ -1,0 +1,123 @@
+.img-responsive{
+    width: 100%;
+    height: auto;
+}
+
+.top-bg{
+    position:absolute;
+    width:90%;
+    top:22px;
+    left:5%;
+    height: 440px;
+    background-color: #FFCC33;
+}
+
+.logo{
+    position: absolute;
+    width:100px;
+    top:40px;
+    left:50px;
+}
+
+.text1{
+    position: absolute;
+    width:110px;
+    top:40px;
+    right:40px;
+}
+
+.text2{
+    position: absolute;
+    width:110px;
+    top:350px;
+    right:40px;
+}
+
+.text3{
+    position: absolute;
+    width:170px;
+    top:390px;
+    right:40px;
+}
+
+.text4{
+    position: absolute;
+    width:140px;
+    top:480px;
+    right:40px;
+}
+
+.main{
+    position:absolute;
+    left:-7px;
+    bottom: 0;
+    width:250px;
+}
+
+@media (max-width: 375px) and (min-width: 375px) {
+    .top-bg{
+        position:absolute;
+        width:90%;
+        top:20px;
+        left:5%;
+        height: 420px;
+        background-color: #FFCC33;
+    }
+
+    .logo{
+        position: absolute;
+        width:100px;
+        top:30px;
+        left:35px;
+    }
+
+    .text1{
+        position: absolute;
+        width:110px;
+        top:30px;
+        right:35px;
+    }
+
+    .text2{
+        position: absolute;
+        width:110px;
+        top:330px;
+        right:35px;
+    }
+
+    .text3{
+        position: absolute;
+        width:170px;
+        top:370px;
+        right:35px;
+    }
+
+    .text4{
+        position: absolute;
+        width:130px;
+        top:450px;
+        right:35px;
+    }
+
+    .main{
+        position:absolute;
+        left:-7px;
+        bottom: 0;
+        width:230px;
+    }
+}
+
+@media (max-width: 320px) and (min-width: 320px) {
+    .chart{
+        top:22rem;
+    }
+
+    .face{
+        top:25rem;
+    }
+
+    .face-img{
+        width:5rem;
+    }
+}
+

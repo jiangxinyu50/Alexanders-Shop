@@ -1,0 +1,443 @@
+html body{
+	width: 100%;
+	height: 100%;
+	margin:0;
+	padding: 0;
+}
+#myCanvas{
+    width: 100%;
+    height:100%;
+    display:none;
+}
+@media (orientation: landscape) {
+    #myCanvas{
+        display: inline;
+        text-align: center;
+        font-size: 20px;
+        padding-top: 1rem;
+        background-color:#FFF;
+        position:absolute;
+        z-index: 999;
+    }
+}
+#loadingPage{
+    position:absolute;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    /*z-index: 999;*/
+    background: url('../../images/Game/bg.png') no-repeat center center;
+}
+#loadingPage img{
+	opacity: 0;
+}
+#load-moon{
+    position: absolute;
+    width: 55%;
+    left: 0;
+    top: -8%;
+}
+#load-build{
+	position: absolute;
+	width: 100%;
+	left: 0;
+	right:0;
+	bottom:0;
+	margin:auto;
+}
+#load-right{
+	position: absolute;
+	width: 100%;
+	right: 0;
+	bottom:0;
+}
+#load-left{
+	position: absolute;
+	width: 100%;
+	left: 0;
+	bottom:0;
+}
+#load-cloud{
+	position: absolute;
+	width: 100%;
+	top:10%;
+}
+#load-text1{
+	position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 75%;
+    top: 32%;
+}
+#load-text2{
+	position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 75%;
+    top: 37%;
+}
+#load-text3{
+	position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 75%;
+    top: 42%;
+}
+.tiao{
+	position: absolute;
+	text-align: center;
+	width:100%;
+	top:56%;
+	font-size: 26px;
+	color: #a58755;
+}
+
+.load-build{
+    -webkit-animation: fadeInUp 1s 0.5s both
+}
+.load-moon{
+    -webkit-animation: fadeInLeft 1s 0.5s both
+}
+.load-cloud{
+    -webkit-animation: fadeIn 1s 1s both
+}
+.load-left{
+    -webkit-animation: fadeInLeft 1s 1s both
+}
+.load-right{
+    -webkit-animation: fadeInRight 1s 1s both
+}
+.load-text1{
+    -webkit-animation: fadeInUp 1s 1.5s both
+}
+.load-text2{
+    -webkit-animation: fadeInUp 1s 2s both
+}
+.load-text3{
+    -webkit-animation: fadeInUp 1s 3s both
+}
+.loadingPage{
+    -webkit-animation: fadeOut 1s 5s both
+}
+.swiper-container1{
+    -webkit-animation: fadeIn 1s 5s both	
+}
+.swiper-container {
+    width: 100%;
+    height:100%;
+    overflow: hidden;
+    position: absolute;
+    background: url('../../images/Game/bg.png') no-repeat bottom center;
+    background-size: 100% auto;
+    opacity: 0;
+}
+/*.swiper-container img{
+	opacity: 0;
+}*/
+#s1-1{
+	position: absolute;
+	margin:auto;
+	left:0;
+	right:0;
+	padding-top:3%;
+	width:90%;
+}
+.s1-2{
+	position: absolute;
+	margin:auto;
+	left:0;
+	right:0;
+	padding-top:3%;
+	width:90%;
+}
+#s1-3{
+	position: absolute;
+	margin:auto;
+	left:0;
+	right:0;
+	padding-top:3%;
+	width:90%;
+}
+#s1-4{
+	position: absolute;
+	margin:auto;
+	left:0;
+	right:0;
+	top: -0.5%;
+	width:100%;
+}
+.s2-1{
+	position: absolute;
+	left:5%;
+	top: 38%;
+	width:36%;	
+}
+#s2-2{
+	position: absolute;
+	left:5%;
+	top: 38%;
+	width:36%;	
+}
+.s3-2,.s3-7{
+	position: absolute;
+	right:5%;
+	top: 32%;
+	width:50.5%;	
+}
+.s3-1{
+	position: absolute;
+	right:5%;
+	top: 32%;
+	width:50.5%;	
+}
+.s4-2{
+	position: absolute;
+	margin:auto;
+	right: 0;
+	left:0;
+	top: 66.5%;
+	width:90%;	
+}
+#s4-4{
+	position: absolute;
+	margin:auto;
+	right: 0;
+	left:0;
+	top: 97.8%;
+	width:90%;	
+}
+#s4-3{
+	position: absolute;
+	margin:auto;
+	right: 0;
+	left:0;
+	top: 66.5%;
+	width:90%;	
+}
+#s4-1{
+	position: absolute;
+	margin:auto;
+	right: 0;
+	left:0;
+	bottom: -0.5%;
+	width:100%;	
+}
+.modal-content{
+	text-align: center;
+	width:70%;
+	padding-left: 15%;
+	padding-top:30px;
+}
+#slidebar{
+	position: fixed;
+	top:35%;
+	right: 0;
+	width:25%;
+	height: 15%;
+	background-color: #ccc;
+	display: none; 
+}
+#pageTwo{
+    width: 100%;
+    height:100%;
+    overflow: hidden;
+    position: absolute;
+    background: url('../../images/Game/main-1.png') no-repeat center center;
+    background-size: 100% 100%;
+}
+#main-2{
+	position: absolute;
+	margin:auto;
+	right: 0;
+	left:0;
+	top: 2%;
+	width:94%;	
+}
+#main-3{
+    position: absolute;
+    margin: auto;
+    right: 0;
+    left: 0;
+    top: 22%;
+    width: 65%;
+}
+#main-4{
+	position: absolute;
+    margin: auto;
+    right: 0;
+    left: 0;
+    top: 82%;
+    width: 76%;	
+}
+.s1-2_ani{
+    -webkit-animation: fadeInDown 1s 5.5s both
+}
+.s1-3_ani{
+    -webkit-animation: fadeInDown 1s 5.5s both;
+}
+.s1-1_ani{
+    -webkit-animation: zoomIn 1s 6.8s both
+}
+.section1_ani{
+    -webkit-animation: tada 1s 6.8s both	
+}
+.s2-1_ani{
+    -webkit-animation: fadeInLeft 1s 7.5s both
+}
+.s2-2_ani{
+    -webkit-animation: fadeInLeft 1s 8.5s both
+}
+.s3-2_ani{
+    -webkit-animation: fadeInRight 1s 9.5s both
+}
+.s3-sun_ani{
+    -webkit-animation: fadeInspeed 1s 10.2s both	
+}
+.s3-1_ani{
+    -webkit-animation: fadeIn-flash 1s 10s both
+}
+.section3_ani{
+    -webkit-animation: fadeOut 1s 11s both	
+}
+.s3-7_ani{
+    -webkit-animation: fadeInspeed 2s 11s both
+}
+.s3-6_ani{
+    -webkit-animation: fadeIn 1s 11.5s both
+}
+.s4-1_ani{
+    -webkit-animation: fadeIn 1s 12s both
+}
+.s4-2_ani{
+    -webkit-animation: fadeInUp 1s 12s both
+}
+.s4-4_ani{
+    -webkit-animation: fadeIn 1s 12.5s both
+}
+.s4-3_ani{
+    -webkit-animation: fadeInRight 1s 12.8s both
+}
+.pageOne_ani{
+    -webkit-animation: fadeOut 1s 15s both		
+}
+.pageTwo_ani{
+    -webkit-animation: fadeIn 1s 15s both		
+}
+.main-3_ani{
+    -webkit-animation: fadeInRight 1s 15.5s both
+}
+.main-2_ani{
+    -webkit-animation: fadeIn 1s 15s both	
+}
+.main-4_ani{
+    -webkit-animation: bounceIn 1s 16s both
+}
+
+#audio_btn {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	z-index: 2000;
+	/*display: none;*/
+	width: 50px;
+	height: 50px;
+	background-repeat: no-repeat;
+}
+
+
+.off {
+background-image: url(../../images/Game/music_off.png);
+background-size: 30px 30px;
+background-repeat: no-repeat;
+background-position: center center;
+}
+.rotate{
+    position: absolute;
+left: 10px;
+top: 10px;
+width: 30px;
+height: 30px;
+background-size: 100% 100%;
+background-image: url(../../images/Game/music_off.png);
+-webkit-animation: rotating 1.2s linear infinite;
+-moz-animation: rotating 1.2s linear infinite;
+-o-animation: rotating 1.2s linear infinite;
+animation: rotating 1.2s linear infinite;
+}
+
+@-webkit-keyframes rotating {
+    from {-webkit-transform: rotate(0deg)
+    }
+    to {-webkit-transform: rotate(360deg)
+    }
+}@keyframes rotating {
+    from {
+        transform: rotate(0deg)
+    }
+    to {
+        transform: rotate(360deg)
+    }
+}@-moz-keyframes rotating {
+    from {-moz-transform: rotate(0deg)
+    }
+    to {-moz-transform: rotate(360deg)
+    }
+}
+.rotating {
+    -webkit-animation-name: rotating;
+    animation-name: rotating
+}
+
+@-webkit-keyframes fadeIn-flash {
+	0% {
+		opacity:0
+	}
+	50%,100% {
+		opacity:1
+	}
+	25%,75% {
+		opacity:0
+	}
+}@keyframes fadeIn-flash {
+	0% {
+		opacity:0
+	}
+	50%,100% {
+		opacity:1
+	}
+	25%,75% {
+		opacity:0
+	}
+}.fadeIn-flash {
+	-webkit-animation-name:fadeIn-flash;
+	animation-name:fadeIn-flash
+}
+
+
+@-webkit-keyframes fadeInspeed {
+	0% {
+		opacity:0
+	}
+	85% {
+		opacity:1
+	}
+	100% {
+		opacity:1
+	}
+}@keyframes fadeInspeed {
+	0% {
+		opacity:0
+	}
+	85% {
+		opacity:1
+	}
+	100% {
+		opacity:1
+	}
+}.fadeInspeed {
+	-webkit-animation-name:fadeInspeed;
+	animation-name:fadeInspeed
+}

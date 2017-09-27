@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title><block name='title'>ALEXANDER'S</block></title>
+    <block name='head-link'></block>
+    <link rel="stylesheet" href="/Public/plugins/weui/dist/style/weui.min.css"/>
+    <style type="text/css">
+        .img-responsive{
+            width: 100%;
+            height: auto;
+        }
+        .page-bg {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            height: 100%;
+            background-image:url(/Public/images/618/banner.jpg);
+            background-size: 100%;
+            background-repeat: no-repeat;
+            background-color: #F5F5F5;
+            z-index: 1;
+        }
+
+        .chart{
+            position: relative;
+            width: 100%;
+            background: #000;
+            box-shadow: 0px -1px 10px rgba(0, 0, 0, 0.2);
+            top:15rem;
+            bottom: 100px;
+            z-index: 2;
+            padding-bottom: 15px;
+            border-radius: 10px !important;
+            text-align: center;
+            margin-bottom:1rem;
+        }
+
+        .face-img{
+            padding:0;
+            width:7rem;
+            margin-top:-4rem;
+
+        }
+
+        .face{
+            position: relative;
+            top:19rem;
+            z-index: 3;
+            text-align: center;
+        }
+
+        .info-1{
+            height: 100%;
+        }
+
+        .info-2{
+            width: 36%;
+            z-index: 3;
+            position: absolute;
+            top: 10.5%;
+            right: 3%;
+        }
+
+        .info-3{
+            width: 25%;
+            z-index: 3;
+            position: absolute;
+            bottom: 5%;
+            right: 37.5%;
+        }
+
+        @media (max-width: 375px) and (min-width: 375px) {
+            .chart{
+                top:15rem;
+            }
+
+            .face{
+                top:18.5rem;
+            }
+
+            .face-img{
+                width:6rem;
+            }
+        }
+
+        @media (max-width: 320px) and (min-width: 320px) {
+            .chart{
+                top:12rem;
+            }
+
+            .face{
+                top:15rem;
+            }
+
+            .face-img{
+                width:5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <include file="Public/google-analytics" />
+    <div class="wrapper">
+        <div class="face">
+            <img src="/Public/images/618/face.png" alt="" class="face-img img-responsive">
+        </div>
+        <div class="chart">
+            <a href="https://www.alexanders.cn/Shop?redirect=D4F5951E-8451-A3EE-EC1A-52C007658F55&link_from=618">
+                <img src="/Public/images/618/button.png" alt="" class="img-responsive info-2">
+            </a>
+            <img src="/Public/images/618/info.png" alt="" class="img-responsive info-1" >
+            <img src="/Public/images/618/qr.jpg" alt="" class="img-responsive info-3">
+        </div>
+    </div>
+    <div class="page-bg"></div>
+    <script type="text/javascript" src="/Public/plugins/zepto/zepto.min.js"></script>
+    <eq name='is_wechat' value='1'>
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"> </script>
+    <script>
+        wx.config({
+          debug: false,
+          appId: '<{$js_sign['appid']}>', // 必填，公众号的唯一标识
+          timestamp: <{$js_sign['timestamp']}>, // 必填，生成签名的时间戳，切记时间戳是整数型，别加引号
+          nonceStr: '<{$js_sign['noncestr']}>', // 必填，生成签名的随机串
+          signature: '<{$js_sign['signature']}>', // 必填，签名，见附录1
+          jsApiList: [
+            'checkJsApi',
+        'onMenuShareTimeline',
+        'onMenuShareAppMessage',
+        'onMenuShareQQ',
+        'onMenuShareWeibo',
+        'hideMenuItems',
+        'showMenuItems',
+        'hideAllNonBaseMenuItem',
+        'showAllNonBaseMenuItem',
+        'translateVoice',
+        'startRecord',
+        'stopRecord',
+        'onRecordEnd',
+        'playVoice',
+        'pauseVoice',
+        'stopVoice',
+        'uploadVoice',
+        'downloadVoice',
+        'chooseImage',
+        'previewImage',
+        'uploadImage',
+        'downloadImage',
+        'getNetworkType',
+        'openLocation',
+        'getLocation',
+        'hideOptionMenu',
+        'showOptionMenu',
+        'closeWindow',
+        'scanQRCode',
+        'chooseWXPay',
+        'openProductSpecificView',
+        'addCard',
+        'chooseCard',
+        'openCard'
+          ]
+      });
+
+    </script>
+    <script>
+    wx.ready(function(){
+        wx.onMenuShareTimeline({
+            title: "亚历山达冰淇淋618大促", // 分享标题
+            link: 'https://www.alexanders.cn/Shop/Activity/product_618?link_from=timeline', // 分享链接
+            imgUrl: 'https://www.alexanders.cn/Public/images/618/face.png', // 分享图标
+            success: function () { 
+                // 用户确认分享后执行的回调函数
+            },
+            cancel: function () { 
+                // 用户取消分享后执行的回调函数
+            }
+        });
+
+        wx.onMenuShareAppMessage({
+            title: "亚历山达冰淇淋618大促", // 分享标题
+            link: 'https://www.alexanders.cn/Shop/Activity/product_618?link_from=friend_share', // 分享链接
+            imgUrl: 'https://www.alexanders.cn/Public/images/618/face.png', // 分享图标
+            success: function () { 
+                // 用户确认分享后执行的回调函数
+            },
+            cancel: function () { 
+                // 用户取消分享后执行的回调函数
+            }
+        });
+    });
+
+    </script>
+    </eq>
+</body>

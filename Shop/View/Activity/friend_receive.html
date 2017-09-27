@@ -1,0 +1,392 @@
+<extend name="Public/base" />
+<block name='title'>填入您的地址</block>
+<block name='head-link'>
+    <link href="/Public/plugins/mdater/zepto.mdater.css" rel="stylesheet">
+</block>
+<block name='content'>
+    <div class="shop-cart-page gray-bg">
+        <div class="content">
+
+            <!-- 购买人留言，有则显示，无则默认语句 -->
+            <div class="weui-panel">
+                <div class="weui-cells__title">TA一直想对您说的话</div>
+                <div class="weui-cells weui-cells_form">
+                    <div class="weui-cell">
+                        <div class="weui-cell__bd">
+                            <textarea class="weui-textarea black-color friend-message" placeholder="夏天，就要冰淇淋降温！" rows="3" readonly="readonly"><{$orderInfo.Message}></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="weui-panel">
+                <div class="weui-panel__hd">您的联系方式</div>
+                <div class="weui-panel__bd">
+                    <div class="weui-media-box weui-media-box_small-appmsg">
+                        <div class='weui-cells weui-cells_form'>
+                            <div class="weui-cell">
+                                <div class="weui-cell__hd"><label class="weui-label">姓名</label></div>
+                                <div class="weui-cell__bd">
+                                    <input class="weui-input add-address-input add-name black-color" type="text" placeholder="您的姓名">
+                                </div>
+                            </div>
+                            <!-- start —— 手机号绑定 -->
+                            <div class="weui-cell">
+                                <div class="weui-cell__hd">
+                                    <label class="weui-label">手机号</label>
+                                </div>
+                                <div class="weui-cell__bd">
+                                    <input class="weui-input add-tel black-color" type="tel" pattern="[0-9]{11}" maxlength="11" placeholder="您的手机号" value="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end —— 手机号绑定 -->
+            <!-- // ------------配送信息------------// -->
+            <div class="weui-panel">
+                <div class="weui-panel__hd">您的配送信息</div>
+                <div class="weui-panel__bd">
+                    <div class="weui-media-box weui-media-box_small-appmsg">
+                        <div class='weui-cells weui-cells_form'>
+                            <div class="weui-cell">
+                                <div class="weui-cell__hd">
+                                    <label class="weui-label">城市</label>
+                                </div>
+                                <div class="weui-cell__bd">
+                                    <label class="weui-label add-address-input add-city" name="citysel" style="width: 100%;">点击选择</label>
+                                </div>
+                                <div class="weui-cell__ft">
+                                </div>
+                            </div>
+                            <div class="weui-cell district_Choose">
+                                <div class="weui-cell__hd">
+                                    <label class="weui-label">区域</label>
+                                </div>
+                                <div class="weui-cell__bd">
+                                    <label class="weui-label add-address-input add-district" name="district" style="width: 100%;">点击选择</label>
+                                </div>
+                                <div class="weui-cell__ft">
+                                </div>
+                            </div>
+                            <div class="weui-cell">
+                                <div class="weui-cell__hd"><label class="weui-label">地址</label></div>
+                                <div class="weui-cell__bd">
+                                    <input class="weui-input add-address-input add-address black-color" type="text" placeholder="配送地址" param-name='address'>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 配送时间 -->
+            <!-- 第三方配送不显示时间选择 -->
+            <div class="weui-panel" id='send-time-panel'>
+                <div class="weui-panel__hd">选择配送时间<span class="error-info error-date-sel">（配送时间未选择。）</span></div>
+                <div class="weui-panel__bd">
+                    <div class="weui-media-box weui-media-box_small-appmsg">
+                        <div class="weui-cells">
+                            <div class="weui-cell">
+                                <div class="weui-cell__hd"><label class="weui-label">日期:</label></div>
+                                <div class="weui-cell__bd">
+                                    <label class="weui-label date-sel needsclick" name="date">点击选择</label>
+                                </div>
+                            </div>
+                            <div class="weui-cell">
+                                <div class="weui-cell__hd">
+                                    <label class="weui-label">时间:</label>
+                                </div>
+                                <div class="weui-cell__bd">
+                                    <label class="weui-label section needsclick order-send-time" name="section">点击选择</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 按钮 -->
+            <div class="weui-cell" style="padding: 22px 50px 10px;">
+                <button class="weui-btn weui-btn_primary add-address-btn" href="javascript:">领 取</button>
+            </div>
+        </div>
+
+    </div>
+    <!-- 弹窗 -->
+    <div id="loadingToast" style="display:none;">
+        <div class="weui-mask_transparent"></div>
+        <div class="weui-toast">
+            <i class="weui-loading weui-icon_toast"></i>
+            <p class="weui-toast__content">提交中...</p>
+        </div>
+    </div>
+    <!-- 错误信息或者提示信息 -->
+    <div class="error-dialog" style="display:none;">
+        <div class="weui-mask"></div>
+        <div class="weui-dialog">
+            <div class="weui-dialog__bd error-message"></div>
+            <div class="weui-dialog__ft">
+                <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary index-dialog-btn">知道了</a>
+            </div>
+        </div>
+    </div>
+</block>
+<block name='footer-js'>
+<script type="text/javascript" src="/Public/plugins/mdater/zepto.mdater.js"></script>
+    <script>
+        var orderInfo = <{:json_encode($orderInfo)}>;
+        var send_time_list = [];
+        var send_district_list = [];
+        var addAddress = {
+            "city" : '',
+            "district" :'',
+            "name" : '',
+            "tel" : '',
+            "address" :''
+        };
+        var btn_click = false;
+    </script>
+    <script>
+        if('<{$req.Code}>' == '10049'){
+            $('#loadingToast').hide(100);
+            $('.error-message').text('您已领取，请等待收货');
+            $('.error-dialog').show();
+            $('.index-dialog-btn').on('click',function(){
+            $('.error-dialog').hide();
+                window.location.href="<{:U('Index/index')}>";
+            });
+        }
+
+        $('.weui-footer').css('padding-bottom','50px');
+
+        // 点击城市——选择配送地址城市
+        $('.add-city').on('click',function(){
+            $('.add-district').empty();
+            $('.add-district').text('点击选择');
+
+            weui.picker(<{:json_encode($city)}>, {  //weui.picker 是必须的
+                onConfirm: function (result) {
+                    addAddress['city'] = result[0];
+                    $(".add-city").text(result[0]);
+
+                    $.post("<{:U('get_district_list')}>", {city:addAddress['city']}, function(data){
+
+                        // 判断是否是第三方配送城市
+                        if(data.delivery_type == 'thirdparty'){
+                            $('#send-time-panel').hide();
+                            orderInfo['sendTime'] = '任意时段配送';
+
+                        }else{
+                            $('#send-time-panel').show();
+                        }
+
+                        send_district_list = [];
+
+                        if(data.district != null){
+                            $(".district_Choose").show();
+
+                            for(var i=0; i<data.district.length; i++){
+                                send_district_list.push({
+                                    label : data.district[i].name,
+                                    value : data.district[i].name
+                                });
+                            }
+                        }else{
+                            $(".district_Choose").hide();
+                        }
+                    });
+                }
+            });
+        });
+
+        // 点击区域——选择配送地址区域
+        // 要与选择城市分开写,不然会出切换城市,区域乱象bug
+        $('.add-district').on('click',function(){
+            weui.picker(send_district_list, {  //weui.picker 是必须的
+                onChange: function (result) {
+                    addAddress['district'] = result[0];
+                    $(".add-district").text(result[0]);
+                },
+                onConfirm: function (result) {
+                    addAddress['district'] = result[0];
+                    $(".add-district").text(result[0]);
+                }
+            });
+        });
+
+        // 城市选择 字体变色
+        $('.add-city').on('click',function () {
+            $('.add-city').addClass('black-color');
+        });
+        // 区域选择 字体变色
+        $('.add-district').on('click',function () {
+            $('.add-district').addClass('black-color');
+        });
+
+        //地址输入事件，对数据变更进行操作
+        $('.add-address').on('change', function(){
+            var param_name = $(this).attr('param-name');
+
+            addAddress[param_name] = $(this).val();
+
+            if($(this).val())
+                $(this).removeClass('input-error');
+        });
+
+        /*
+         * 基于zepto精简的日历控件mdater,配送日期选择事件
+         */
+        $('.date-sel').mdater({
+            minDate : new Date("<{$send_min_format}>"),
+            correct_date : "<{$send_min}>",
+            finish_function : date_sel_handle
+        });
+
+        function date_sel_handle(date){
+            $.post("<{:U('getTimeSectionHandle')}>", {date:date}, function(data){
+                $('#section').empty();
+                $('.date-sel').text(date);
+
+                if(!data['TimeSection']){
+                    $('.section').text(date['Message']);
+                }
+                if(data['Code'] == 0){
+                    orderInfo['sendDay'] = date;
+
+                    send_time_list = [];
+
+                    for(var i=0; i<data['TimeSection'].length; i++){
+                        send_time_list.push({
+                            label : data['TimeSection'][i],
+                            value : data['TimeSection'][i]
+                        });
+                    }
+
+                    weui.picker(send_time_list, {
+                        onChange: function (result) {
+                            orderInfo['sendTime'] = result[0];
+                            $('.section').text(result[0]);
+
+                            $('.error-date-sel').hide();
+                        },
+                        onConfirm: function (result) {
+                            orderInfo['sendTime'] = result[0];
+                            $('.section').text(result[0]);
+
+                            $('.error-date-sel').hide();
+                        }
+                    });
+                }else{
+                    $('.date_err_message').text(data['Message']);
+                    $('#date_sel_message').show();
+                }
+            });
+        }
+
+        //配送时间选择事件
+        $('.section').on('click', function(e){
+            if(isEmpty(send_time_list))
+                return ;
+
+            weui.picker(send_time_list, {
+                onChange: function (result) {
+                    orderInfo['sendTime'] = result[0];
+                    $('.section').text(result[0]);
+                },
+                onConfirm: function (result) {
+                    orderInfo['sendTime'] = result[0];
+                    $('.section').text(result[0]);
+                }
+            });
+        });
+
+        //提示框关闭按钮事件
+        $('.date_dialog_btn').on('click', function(e){
+            $('#date_sel_message').hide();
+        });
+
+        // ------------地址添加事件，对填入数据进行校验判断------------ //
+        $('.add-address-btn').on('click', function(){
+            var correct = true;
+            addAddress['city'] = $('.add-city').text();
+            addAddress['name'] = $('.add-name').val();
+            addAddress['tel'] = $('.add-tel').val();
+            addAddress['district'] = $('.add-district').text();
+
+            var num = /(^(([0\+]\d{2,3}-)?(0\d{2,3})-)(\d{7,8})(-(\d{3,}))?$)|(^0{0,1}1[3|4|5|6|7|8|9][0-9]{9}$)/;
+
+            if(addAddress['name']== undefined || addAddress['name']==''){
+                $('.add-name').addClass('input-error');
+                correct = false;
+            }
+
+            if(addAddress['city']== undefined || addAddress['city']=='' || addAddress['district']== null || addAddress['district']=='点击选择'){
+                $('.add-city').addClass('input-error');
+                correct = false;
+            }
+
+            if(addAddress['tel']== undefined || addAddress['tel']==''){
+                $('.add-tel').addClass('input-error');
+                correct = false;
+            }
+
+            if(num.test(addAddress['tel'])==false){
+                $('.add-tel').addClass('input-error');
+                correct = false;
+            }
+
+            if(addAddress['district']== undefined || addAddress['district']=='' || addAddress['district']== null || addAddress['district']=='点击选择'){
+                $('.add-district').addClass('input-error');
+                correct = false;
+            }
+
+            if(addAddress['address']== undefined || addAddress['address']==''){
+                $('.add-address').addClass('input-error');
+                correct = false;
+            }
+
+            if(orderInfo['sendDay']== undefined || orderInfo['sendDay']==''){
+                $('.date-sel').addClass('input-error');
+                correct = false;
+            }
+
+            if(orderInfo['sendTime']== undefined || orderInfo['sendTime']==''){
+                $('.section').addClass('input-error');
+                correct = false;
+            }
+
+            var params = {
+                address : addAddress,
+                orderNo : orderInfo['orderNo'],
+                sendDay : orderInfo['sendDay'],
+                sendTime : orderInfo['sendTime']
+            };
+
+            if(!correct){
+                return;
+            }else{
+                $('#loadingToast').show(100);
+                $.post("<{:U('save_friend_info')}>" , params , function(data){
+                    if(data['status'] == 0 ){
+                        $('#loadingToast').hide(100);
+                        $('.error-message').text('领取成功！请耐心等待收货');
+                        $('.error-dialog').show();
+                        $('.index-dialog-btn').on('click',function(){
+                            $('.error-dialog').hide();
+                            window.location.href="<{:U('Index/index')}>";
+                        });
+                    }else{
+                        $('#loadingToast').hide(100);
+                        $('.error-message').text('订单出错，请联系客服！');
+                        $('.error-dialog').show();
+                        $('.index-dialog-btn').on('click',function(){
+                            $('.error-dialog').hide();
+                        });
+                    }
+                });
+            }
+        });
+    </script>
+</block>

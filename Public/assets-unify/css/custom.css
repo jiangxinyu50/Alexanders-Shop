@@ -1,0 +1,78 @@
+/* Add here all your css styles (customizations) */
+
+/*Product Quantity*/
+.shop-product .product-quantity {
+	float: left;
+	margin-right: 30px;
+}
+
+.shop-product .quantity-button {
+	color: #555;
+	width: 55px;
+	height: 50px;
+	padding: 5px;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	font-size: 20px;
+	background: #eee;
+	text-align: center;
+	font-weight: normal;
+	white-space: nowrap;
+	display: inline-block;
+  	background-image: none;
+}
+
+.shop-product .quantity-field {
+	width: 55px;
+	height: 50px;
+	outline: none;
+	margin: 0 -4px;
+	font-size: 20px;
+	text-align: center;
+	border: 1px solid #eee;
+}
+
+.bg-fixed{
+  background-position: center;
+  background-size: cover; 
+}
+
+.product-quantity {
+  float: left;
+}
+
+.quantity-button {
+  color: #555;
+  width: 40px;
+  height: 32px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding:5px;
+  font-size: 16px;
+  background: #eee;
+  text-align: center;
+  font-weight: normal;
+  white-space: nowrap;
+  display: inline-block;
+    background-image: none;
+}
+
+.quantity-field {
+  width: 40px;
+  height: 32px;
+  outline: none;
+  margin: 0 -4px;
+  font-size: 20px;
+  text-align: center;
+  border: 1px solid #eee;
+}
+
+.shop-footer{
+  background-color: #FFF;
+  border-top:1px solid #EEE;
+  height:50px;
+  padding-top : 5px;
+}
+

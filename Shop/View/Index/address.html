@@ -1,0 +1,495 @@
+<extend name="Public/base" />
+<block name='title'>配送地址</block>
+<block name='head-link'>
+</block>
+<block name='content'>
+    <div class="shop-cart-page gray-bg">
+        <!-- <div class="content"> -->
+            <!-- 选项卡 -->
+            <!-- <div class="weui-tab"> -->
+                <!-- <div class="weui-navbar">
+                    <div class="weui-navbar__item weui-bar__item_on owner-tab-menu">
+                        自己享用
+                    </div>
+                    <div class="weui-navbar__item friend-tab-menu">
+                        送给TA
+                    </div>
+                </div> -->
+                <!-- <div class="weui-tab__panel"> -->
+                <!-- </div> -->
+            <!-- </div> -->
+
+            <div class="weui-panel">
+                <div class="weui-panel__hd">您的联系方式</div>
+                <div class="weui-panel__bd">
+                    <div class="weui-media-box weui-media-box_small-appmsg">
+                        <div class='weui-cells weui-cells_form'>
+                            <div class="weui-cell">
+                                <div class="weui-cell__hd"><label class="weui-label">姓名</label></div>
+                                <div class="weui-cell__bd">
+                                    <input class="weui-input add-address-input add-owner-name black-color" type="text" placeholder="您的姓名" name='owner_name' value='<{$userInfo.realName}>'>
+                                </div>
+                            </div>
+                            <!-- start —— 手机号绑定 -->
+                            <div class="weui-cell weui-cell_vcode">
+                                <div class="weui-cell__hd">
+                                    <label class="weui-label">手机号</label>
+                                </div>
+                                <div class="weui-cell__bd">
+                                    <input class="weui-input add-owner-tel black-color" type="tel" pattern="[0-9]{11}" maxlength="11" placeholder="您的手机号" name='owner_tel' value="<{$userInfo.tel}>">
+                                </div>
+                                <div class="weui-cell__ft">
+                                    <button class="weui-vcode-btn tel-vcode-btn">
+                                        <eq name='userInfo.tel' value=''>
+                                            获取验证码
+                                            <else />
+                                            重新绑定
+                                        </eq>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="weui-cell vcode-input-cell" style='display:none;'>
+                                <div class="weui-cell__hd">
+                                    <label class="weui-label">验证码</label>
+                                </div>
+                                <div class="weui-cell__bd">
+                                    <input class="weui-input add-address-input add-owner-tel-vcode black-color" type="tel" maxlength="6" placeholder="手机验证码" name='owner_vcode'>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end —— 手机号绑定 -->
+
+            <!--  配送信息 -->
+            <div class="weui-panel">
+                <div class="weui-panel__hd">配送信息 <span class="owner_distribution">（<a href="<{:U('Info/question_list')}>/id/10" style="color: #940506;">点击查看配送范围</a>）</span></div>
+                <div class="weui-panel__bd">
+                    <div class="weui-media-box weui-media-box_small-appmsg">
+                        <div class='weui-cells weui-cells_form'>
+                            <div class="weui-cell">
+                                <div class="weui-cell__hd">
+                                    <label class="weui-label">城市</label>
+                                </div>
+                                <div class="weui-cell__bd add-city black-color"><{$city.city}></div>
+                            </div>
+                            <div class="weui-cell">
+                                <div class="weui-cell__hd">
+                                    <label class="weui-label">区域</label>
+                                </div>
+                                <div class="weui-cell__bd">
+                                    <label class="weui-label add-address-input add-district" name="district" style="width: 100%;">点击选择</label>
+                                </div>
+                                <div class="weui-cell__ft">
+                                </div>
+                            </div>
+                            <!-- // start——收件人、电话信息是“自己享用”所没有的 -->
+                            <div class="weui-cell friend-info-cell" style='display:none;'>
+                                <div class="weui-cell__hd"><label class="weui-label">收件人</label></div>
+                                <div class="weui-cell__bd">
+                                    <input class="weui-input add-address-input add-name black-color" type="text" placeholder="收件人姓名" name='name'>
+                                </div>
+                            </div>
+                            <div class="weui-cell friend-info-cell" style='display:none;'>
+                                <div class="weui-cell__hd"><label class="weui-label">电话</label></div>
+                                <div class="weui-cell__bd">
+                                    <input class="weui-input add-address-input add-tel black-color" type="tel" pattern="[0-9]{11}" maxlength="11" placeholder="收件人电话" name='tel'>
+                                </div>
+                            </div>
+                            <!-- // end——收件人、电话信息是“自己享用”所没有的 -->
+                            <div class="weui-cell">
+                                <div class="weui-cell__hd"><label class="weui-label">地址</label></div>
+                                <div class="weui-cell__bd">
+                                    <input class="weui-input add-address-input add-address black-color" type="text" placeholder="配送地址" name='address'>
+                                </div>
+                            </div>
+                            <!-- 按钮 -->
+                            <div class="weui-cell">
+                                <button class="weui-btn weui-btn_primary add-address-btn" href="javascript:">使用</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 循环展示已有配送信息 -->
+            <div class="address-list"></div>
+    </div>
+
+    <!-- 删除配送信息——弹窗 -->
+    <div class="comform_dialog" id="del_comform_dialog" style="display : none;">
+        <div class="weui-mask"></div>
+        <div class="weui-dialog">
+            <div class="weui-dialog__hd"><strong class="weui-dialog__title">删除确认</strong></div>
+            <div class="weui-dialog__bd">请确认是否删除此地址信息</div>
+            <div class="weui-dialog__ft">
+                <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default dialog-btn-cancle">取消</a>
+                <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary dialog-btn-del">删除</a>
+            </div>
+        </div>
+    </div>
+    <!-- 弹窗 -->
+    <div id="loadingToast" style="display:none;">
+        <div class="weui-mask_transparent"></div>
+        <div class="weui-toast">
+            <i class="weui-loading weui-icon_toast"></i>
+            <p class="weui-toast__content">提交中...</p>
+        </div>
+    </div>
+
+</block>
+<block name='footer-js'>
+<script>
+    var secs = 60; 
+    var default_tel = "<{$userInfo.tel}>";
+    var addAddress = {
+        "type" : "<{$address_type.type}>",
+        "owner_name" : "<{$userInfo.realName}>",
+        "owner_tel" : "<{$userInfo.tel}>"
+    };
+    var sel_id = 0;
+    var has_send_vcode = false;
+
+    // 如果存在手机号码,input只读.注:readonly属性规定输入字段为只读.
+    if(default_tel){
+        $('.add-owner-tel').attr('readonly', "readonly");
+    }
+
+    // 配送信息编辑状态初始化
+    if($('.owner-tab-menu').hasClass('edit-status')){
+        $('.owner-tab-menu').removeClass('edit-status');
+    }
+    if($('.friend-tab-menu').hasClass('edit-status')){
+        $('.friend-tab-menu').removeClass('edit-status');
+    }
+
+    $('.address-list').load("<{:U('address_list')}>",{type: addAddress.type});
+
+    // 点击区域——选择配送地址区域
+    $('.add-district').on('click',function(){
+        weui.picker(<{:json_encode($district)}>, {  //weui.picker 是必须的
+            onConfirm: function (result) {
+                addAddress['district'] = result[0];
+                $(".add-district").text(result[0]);
+            }
+        });
+    });
+
+    //地址输入事件，对数据变更进行操作
+    $('.add-address-input').on('change', function(){
+        var param_name = $(this).attr('name');
+
+        addAddress[param_name] = $(this).val();
+
+        if($(this).val())
+            $(this).removeClass('input-error');
+    });
+
+    // ------------地址添加事件，对填入数据进行校验判断------------ //
+    $('.add-address-btn').on('click', function(){
+        var correct = true;
+        addAddress['city'] = $('.add-city').text();
+
+        var num = /(^(([0\+]\d{2,3}-)?(0\d{2,3})-)(\d{7,8})(-(\d{3,}))?$)|(^0{0,1}1[3|4|5|6|7|8|9][0-9]{9}$)/;
+
+        if(addAddress['owner_name']== undefined || addAddress['owner_name']==''){
+            $('.add-owner-name').addClass('input-error');
+            correct = false;
+        }
+
+        if(num.test(addAddress['owner_tel'])==false){
+            $('.add-owner-tel').addClass('input-error');
+            correct = false;
+        }
+
+        if(has_send_vcode){
+            if(addAddress['owner_vcode']== undefined || addAddress['owner_vcode']==''){
+                $('.add-owner-tel-vcode').addClass('input-error');
+                correct = false;
+            }
+        }
+
+        if(addAddress['type'] == 'owner'){
+            addAddress['name'] = addAddress['owner_name'];
+            addAddress['tel'] = addAddress['owner_tel'];
+        }
+
+        if(num.test(addAddress['tel'])==false){
+            $('.add-tel').addClass('input-error');
+            correct = false;
+        }
+
+        if(addAddress['district']== undefined || addAddress['district']==''){
+            $('.add-district').addClass('input-error');
+            correct = false;
+        }
+
+        if(addAddress['tel']== undefined || addAddress['tel']==''){
+            $('.add-tel').addClass('input-error');
+            correct = false;
+        }
+
+        if(addAddress['name']== undefined || addAddress['name']==''){
+            $('.add-name').addClass('input-error');
+            correct = false;
+        }
+
+        if(addAddress['address']== undefined || addAddress['address']==''){
+            $('.add-address').addClass('input-error');
+            correct = false;
+        }
+
+        if(!correct){
+            return;
+        }else{
+            $.post("<{:U('addAddress')}>" , addAddress , function(data){
+                if(data['Code'] > 0){
+                    if(addAddress.type == 'friend'){
+                        window.location = "<{:U('send_friend')}>";
+                    }else{
+                        window.location = "<{:U('cart')}>";
+                    } 
+                }
+            });
+        }
+    });
+
+    // ------------每个已有配送信息的选项----------- //
+    //已有配送信息选项，点击展示
+    $(".address-list").on('click', ".address-item-sel", function(){
+        var $control = $(this).parents('.address-use-panel').find('.address-item');
+
+        $control.show();
+    });
+    //已有配送信息选项——使用
+    $('.address-list').on('click', '.address-use', function(){
+        var index = $(this).parents('.address-item').attr('index');
+
+        var params = {
+            id : index
+        };
+
+        $.post("<{:U('useAddress')}>", params, function(data){
+            if(data['status'] == 0){
+                if(addAddress.type == 'friend'){
+                    window.location = "<{:U('send_friend')}>";
+                }else{
+                    window.location = "<{:U('cart')}>";
+                } 
+            }
+        });
+    });
+    // -----------已有配送信息选项——编辑------------- //
+    $('.address-list').on('click', '.address-edit', function(){
+        // 从输入框上获取信息
+        var $address_item = $(this).parents('.address-use-panel');
+        var index = $address_item.attr('index');
+        var name = $address_item.find('.name').text();
+        var tel = $address_item.find('.tel').text();
+        var address = $address_item.find('.address').text();
+        var district = $address_item.find('.district').text();
+        var type = $address_item.find('.type').val();
+
+        addAddress['id'] = index;
+        addAddress['name'] = name;
+        addAddress['tel'] = tel;
+        addAddress['address'] = address;
+        addAddress['district'] = district;
+        addAddress['type'] = type;
+
+        // 判断配送信息的类型以及匹配相应的样式特效
+        if(addAddress['type'] == 'owner'){
+            if(!$('.owner-tab-menu').hasClass('weui-bar__item_on')){
+                $('.weui-navbar__item').removeClass('weui-bar__item_on');
+                $('.owner-tab-menu').addClass('weui-bar__item_on');
+            }
+            $('.friend-info-cell').hide();
+        }else{
+            if(!$('.friend-tab-menu').hasClass('owner-tab-menu')){
+                $('.weui-navbar__item').removeClass('weui-bar__item_on');
+                $('.friend-tab-menu').addClass('weui-bar__item_on');
+            }
+            $('.friend-info-cell').show();
+        }
+
+        // 给编辑的信息打上编辑的标识
+        $('.owner-tab-menu').addClass('edit-status');
+        $('.friend-tab-menu').addClass('edit-status');
+
+        // 将要编辑的信息展示出来
+        $('.add-name').val(name);
+        $('.add-tel').val(tel);
+        $('.add-address').val(address);
+        $('.add-district').text(district.trim());
+
+        $('.add-address-btn').text('保存');
+        // 回到顶部
+        goTop();
+    });
+    //已有配送信息选项——设为默认
+    $('.address-list').on('click', '.address-default', function(){
+        var index = $(this).parents('.address-item').attr('index');
+
+        var params = {
+            id : index
+        };
+
+        $.post("<{:U('set_address_default_handle')}>", params, function(data){
+            if(data['status'] == 0){
+                if(addAddress.type == 'friend'){
+                    window.location = "<{:U('send_friend')}>";
+                }else{
+                    window.location = "<{:U('cart')}>";
+                } 
+            }
+        });
+    });
+    // ------------配送信息——删除----------- //
+    //已有配送信息选项——删除的点击事件
+    $('.address-list').on('click', '.address-del', function(){
+        sel_id = $(this).parents('.address-item').attr('index');
+
+        if(parseInt(sel_id)> 0){
+            $('#del_comform_dialog').show(300);
+        }
+    });
+    //删除——取消删除配送信息
+    $('.dialog-btn-cancle').on('click', function(){
+        $('.comform_dialog').hide(300);
+    });
+    //删除——确认删除配送信息
+    $('.dialog-btn-del').on('click', function(){
+        if(sel_id){
+            $.post("<{:U('del_address_handle')}>", {"id" : sel_id}, function(data){
+                if(data['status'] == 0){
+                    $('#address-item-'+sel_id).remove();
+                }
+            });
+        }
+
+        $('.comform_dialog').hide(300);
+    });
+
+    // -----------手机绑定验证码----------- //
+    //获取验证码
+    $('.tel-vcode-btn').on('click', function(){
+        if(default_tel){
+            $('.add-owner-tel').val("");
+            $('.add-owner-tel').attr('readonly', null);
+            $(this).text('获取验证码');
+            default_tel = '';
+        }
+        var tel = $('.add-owner-tel').val();
+
+        if(tel){
+            $(this).attr('disabled', 'disabled');
+            $('#loadingToast').show(100);
+            $.post("<{:U('get_tel_vcode')}>", {"tel" : tel}, function(data){
+                if(data['status'] == 0){
+                    $('.vcode-input-cell').show();
+                    setTimeout("update('" + secs + "')", 1000);
+                    addAddress['owner_tel'] = tel;
+                    addAddress['need_vcode'] = true;
+                    has_send_vcode = true;
+                    $('#loadingToast').hide(100);
+                }else{
+                    $('#loadingToast').hide(100);
+                    $('.tel-vcode-btn').attr('disabled', null);
+                }
+            });
+        }
+    });
+    //获取验证码方法
+    function update(num) { 
+        if(num == 0) { 
+            $('.tel-vcode-btn').attr('disabled', null);
+            $('.tel-vcode-btn').text('获取验证码');
+        } 
+        else { 
+            num--;
+            $('.tel-vcode-btn').text('已发送('+num+')');
+            setTimeout("update('" + num + "')", 1000);
+        } 
+    }
+
+    // -------------选项卡-------------- //
+    $(function(){
+        if (addAddress.type == 'friend') {
+            $('.friend-info-cell').show();
+        }else{
+            $('.friend-info-cell').hide();
+        }
+    });
+    
+    // 选项卡切换——给自己、送好友
+    // $('.weui-navbar__item').on('click', function(){
+    //     // 切换选项卡,样式更替
+    //     if($(this).hasClass('weui-bar__item_on'))
+    //         return;
+
+    //     $('.weui-navbar__item').removeClass('weui-bar__item_on');
+    //     $(this).addClass('weui-bar__item_on');
+
+    //     // 判断是否是编辑状态,如果是,则切换选项卡时清空数据
+    //     if($(this).hasClass('edit-status')){
+    //         if($(this).hasClass('owner-tab-menu')){
+    //             $('.friend-info-cell').hide();
+    //             tab_change();
+    //             addAddress['type'] = 'owner';
+    //             $('.address-list').load("<{:U('address_list')}>", {type: 'owner'});
+    //         }else{
+    //             $('.friend-info-cell').show();
+    //             tab_change();
+    //             addAddress['type'] = 'friend';
+    //             $('.address-list').load("<{:U('address_list')}>", {type: 'friend'});
+    //         }
+    //     }else{   // 如果不是,则切换选项卡时不清空数据
+    //         if($(this).hasClass('owner-tab-menu')){
+    //             $('.friend-info-cell').hide();
+    //             addAddress['type'] = 'owner';
+    //             $('.address-list').load("<{:U('address_list')}>", {type: 'owner'});
+    //         }else{
+    //             $('.friend-info-cell').show();
+    //             addAddress['type'] = 'friend';
+    //             $('.address-list').load("<{:U('address_list')}>", {type: 'friend'});
+    //         }
+    //     }
+    // });
+    // ----------选项卡切换--------- //
+    // 切换效果以及初始化配送信息
+    function tab_change(){
+        if((addAddress['type'] == 'owner') && ($('.owner-tab-menu').hasClass('weui-bar__item_on'))){
+            return ;
+        }else{
+            initialize_input();
+        }
+
+        if((addAddress['type'] == 'friend') && ($('.friend-tab-menu').hasClass('weui-bar__item_on'))){
+            return ;
+        }else{
+            initialize_input();
+        }
+    }
+    // 初始化配送信息
+    function initialize_input(){
+        addAddress['id'] = '';
+        addAddress['name'] = '';
+        addAddress['tel'] = '';
+        addAddress['address'] = '';
+        addAddress['district'] = '';
+        addAddress['type'] = '';
+
+        $('.add-name').val('');
+        $('.add-tel').val('');
+        $('.add-address').val('');
+        $('.add-district').text('点击选择');
+
+        $('.add-address-btn').text('添加');
+    }
+
+    // 区域选择 字体变色
+    $('.add-district').on('click',function () {
+        $('.add-district').addClass('black-color');
+    });
+</script>
+</block>

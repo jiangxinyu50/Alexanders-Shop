@@ -1,0 +1,14 @@
+#present-text{
+	font-size:20px;
+	color:#00a0e9;
+	font-family: "黑体";
+}
+#present-text-bottom{
+	margin-top: 5px; 
+	line-height:23px;
+	color:#777777;
+}
+
+#present-top,#present-bottom{
+	min-height: 140px;
+}

@@ -1,0 +1,228 @@
+<extend name="Public/base" />
+<block name='title'>在线充值</block>
+<block name='content'>
+	<div class="content shop-vip recharge-cell">
+        <!-- 余额信息 -->
+        <div class="weui-flex">
+            <div class="weui-flex__item">
+                <div class="placeholder user-head-margin">
+                    <div class="weui-media-box__hd">
+                        <img class="user-head" src="<{$userInfo.headimgurl}>" alt="您的微信头像" title="您的微信头像">
+                        <h4 class="weui-media-box__title text-center user-name" style="color: #000;"><{$userInfo.nickname}></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="person_rechargeInfo">
+            <p class="placeholder text-center">
+                <span class="weui-media-box__desc font-size-2x">我的余额</span>
+            </p>
+            <p class="placeholder text-center" style="line-height: 1.3em;"><{$balance}>元</p>
+        </div>
+
+        <!--===========储值卡选项卡============-->
+        <div class="choose-card">
+            <div class="weui-flex">
+                <!-- 充值有礼 -->
+                <div class="weui-flex__item">
+                    <div class="text-center menu_body-size">
+                        <div class="menu-base menu-base_on" sign="1">
+                            <div class="menu-icon menu-icon_left">
+                                <img src="__PUBLIC__/images/Mobile/icon/recharge.png" alt="Alexander's" class='index-icon'>
+                            </div>
+                            <div class="menu-body">
+                                <p class="index-icon-dp">充值有礼</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="vertical-line"></div>
+
+                <!-- 充值记录 -->
+                <div class="weui-flex__item">
+                    <div class="text-center menu_body-size">
+                        <div class="menu-base" sign="0">
+                            <div class="menu-icon menu-icon_right" >
+                                <img src="__PUBLIC__/images/Mobile/icon/record.png" alt="Alexander's" class='index-icon'>
+                            </div>
+                            <div class="menu-body">
+                                <p class="index-icon-dp">充值记录</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 充值卡主体部分 -->
+        <div class="recharge-content">
+            <!-- 充值金额 -->
+            <div class="recharge-money-content" style="display: block;">
+                <!-- 选择金额部分 -->
+                <div class="weui-flex">
+                    <ul class="clearfix" style="width: 100%;">
+                        <volist name='rules' id='rule' key="k">
+                            <li class="goods-card">
+                                <div class="weui-panel__bd text-center goods-card-body">
+                                    <div class="weui-media-box weui-media-box_appmsg goods-card-info">
+                                        <div class="recharge">
+                                            <p class="chongzhi">
+                                                <label money='<{$rule.money}>' info='<{$rule.info}>' guid='<{$rule.guid}>'><span class="font-size-2x">充</span> ¥<span class="font-size-4x"><{$rule.money}></span></label>
+                                            </p>
+                                            <p class="zengsong">
+                                                <label info='<{$rule.info}>'><span class="font-size-2x">赠</span> ¥<span class="font-size-4x"><{$rule.giving_money}></span></label>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <!-- 支付 -->
+                                    <div class="recharge-button content-margin">
+                                        <button class="weui-btn weui-btn_mini pay-recharge-btn" guid='<{$rule.guid}>'><i class="fa fa-weixin" aria-hidden="true"></i>立即充值</button>
+                                    </div>
+                                </div>
+                            </li>
+                        </volist>
+                    </ul>
+                </div>
+                <!-- 充值提示部分 -->
+                <div class="recharge-prompt">
+                    <ul>
+                        <li class="recharge-prompt-title">储值须知：</li>
+                        <li>储值金额不支持退款、提现、找零</li>
+                        <li>储值成功后，即可购买亚历山达冰淇淋微信商城中的商品</li>
+                        <li>本储值卡最终解释权由深圳亚历山达食品有限公司所有</li>
+                        <li>如有疑问，可直接咨询客服或拨打服务热线400-990-8355（周一至周日 9:30-20:00）</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="recharge-record-content" style="display: none;">
+                <!-- 无充值记录 -->
+                <eq name="recharge_pay" value="">
+                    <div class="no-recharge">
+                        <p class="text-center">
+                            <img class="index-icon" style="height: 60px;" src="/Public/images/Mobile/icon/no-recharge.png">
+                        </p>
+                        <p class="text-center">
+                            您还没有充值过哟~
+                        </p>
+                    </div>
+                    <else/>
+                    <!-- 有充值记录 -->
+                    <div class="weui-cells has-recharge">
+                        <volist name="recharge_pay" id="item">
+                            <div class="weui-cell">
+                                <div class="weui-cell__bd">
+                                    <p>充值<{$item['money']}>元-<{$item['order_no']}></p>
+                                    <p class="font-size-1x"><{$item['addTime']}></p>
+                                </div>
+                                <div class="weui-cell__ft">+<{$item['money']}>.00</div>
+                            </div>
+                        </volist>
+                    </div>
+                </eq>
+            </div>
+        </div>
+    </div>
+    <!-- 充值成功弹窗 -->
+    <div class="js_dialog success_dialog" style="display: none;">
+        <div class="weui-mask"></div>
+        <div class="weui-dialog">
+            <div class="weui-dialog__hd"><strong class="weui-dialog__title">充值成功</strong></div>
+            <div class="weui-dialog__bd">
+                <p>充值金额：¥<span class="recharge-money-show"></span>.00。</p>
+                <p>充值卡类型：<span class="card-name"></span></p>
+                <p>充值卡号：<span class="card-code"></span></p>
+            </div>
+            <div class="weui-dialog__ft">
+                <a href="javascript:window.location.reload();" class="weui-dialog__btn weui-dialog__btn_default">继续充值</a>
+                <a href="<{:U('Vip/index')}>" class="weui-dialog__btn weui-dialog__btn_primary">会员中心</a>
+            </div>
+        </div>
+    </div>
+    <!-- 充值失败弹窗 -->
+    <div class="js_dialog error-dialog" style="display: none;">
+        <div class="weui-mask"></div>
+        <div class="weui-dialog">
+            <div class="weui-dialog__bd error-info"></div>
+            <div class="weui-dialog__ft">
+                <a href="<{:U('Vip/index')}>" class="weui-dialog__btn weui-dialog__btn_default">会员中心</a>
+                <a href="javascript:$('.error-dialog').hide();" class="weui-dialog__btn weui-dialog__btn_primary">重新输入</a>
+            </div>
+        </div>
+    </div>
+    <include file="Public/footer" />
+</block>
+<block name='footer-js'>
+<script>
+    var params = {};
+
+    //底部栏图标选中变色
+    shop_item_init(false);
+    $('.menu-card').addClass('weui-bar__item_on');
+    $('.card-menu-icon').attr('src', "__PUBLIC__/images/Mobile/icon/recharge-icon-u.png");
+
+    // 初始选项卡选中的样式
+    if($('.menu-icon_left').parent().hasClass('menu-base_on')){
+        $('.menu-icon_left').children('img').attr('src', "__PUBLIC__/images/Mobile/icon/recharge_on.png");
+    }
+
+    //充值有礼与充值记录，选项卡切换特效等
+    $('.menu-base').on('click', function(){
+        $('.menu-base').removeClass('menu-base_on');
+        $(this).addClass('menu-base_on');
+        // 判断切换卡切换
+        if($('.menu-icon_left').parent().hasClass('menu-base_on')){
+            $('.menu-icon_left').children('img').attr('src', "__PUBLIC__/images/Mobile/icon/recharge_on.png");
+            $('.menu-icon_right').children('img').attr('src', "__PUBLIC__/images/Mobile/icon/record.png");
+        }else {
+            $('.menu-icon_left').children('img').attr('src', "__PUBLIC__/images/Mobile/icon/recharge.png");
+            $('.menu-icon_right').children('img').attr('src', "__PUBLIC__/images/Mobile/icon/record_on.png");
+        }
+
+        // 判断切换卡是否切换至对应内容
+        if($(this).attr('sign') == '1'){ //充值有礼
+            $('.recharge-money-content').show();
+            $('.recharge-record-content').hide();
+        }else {
+            $('.recharge-money-content').hide();
+            $('.recharge-record-content').show();
+        }
+    });
+
+    //支付按钮点击事件
+    $('.pay-recharge-btn').on('click', function(){
+        params['guid'] = $(this).attr('guid');
+
+        $.post("<{:U('Vip/pre_recharge_handle')}>", params, function(data){
+            if(data['code'] == 0){
+                window.location.href = "<{:U('Index/recharge_pay')}>?no="+data['pre_order'];
+            }else{
+                alert(data.message);
+                return false;
+            }
+        });
+    });
+
+    //支付成功与否
+    $('.user-sn-btn').on('click', function(){
+        var code = $('.sn-input').val();
+
+        if(!code)
+            return;
+
+        $.post("<{:U('exchange_recharge_card_handle')}>", {code:code}, function(data){
+            if(data['status'] == 0){
+                $('.recharge-money-show').text(data['sn_info']['money']);
+                $('.card-code').text(code);
+                $('.card-name').text(data['sn_info']['card_name']);
+
+                $('.success_dialog').show();
+            }else{
+                $('.error-info').text(data['info']);
+                $('.error-dialog').show();
+            }
+        });
+    });
+</script>
+</block>

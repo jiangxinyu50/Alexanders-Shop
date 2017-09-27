@@ -1,0 +1,129 @@
+/* 
+    Document   : Admin-index
+    Created on : 2013-6-27, 22:37:20
+    Author     : lisha_000
+    Description:
+        Purpose of the stylesheet follows.
+*/
+body, div, address, blockquote, iframe, ul, ol, dl, dt, dd, li, dl, h1, h2, h3, h4, h5, h6, p, pre, table, caption, th, td, form, legend, fieldset, input, button, select, textarea {margin:0; padding:0;font-style: normal;font-size: 100%; font-family: inherit;} 
+ol, ul ,li{list-style: none;} 
+img {border: 0;} 
+body {color:#000;font-size: 12px;background-color:#fff;font-family: "Microsoft YaHei",Helvetica,Verdana,Arial,Tahoma;} 
+.clearfix:after {clear:both; content:"."; display:block; height:0pt; visibility:hidden; overflow:hidden;} 
+.clear{clear:both;height:1px; margin-top:-1px; width:100%;} 
+
+.dis{display:block;} 
+.undis{display:none;} 
+
+/*************header**************/
+#header{
+    height:60px;
+    background:#f3f3f3;
+}
+
+#head-main{
+    width:960px;
+    margin:0 auto;
+}
+
+#head-logo{
+    float:left;
+    height:60px;
+}
+
+#head-user{
+    float:right;
+}
+
+#head-menu{
+    height:36px;
+    background-color: rgb(69, 153, 53);
+}
+
+#head-menu ul{
+    width:960px;
+    margin:0 auto;
+}
+
+#head-menu ul li{
+    height:36px;
+    line-height:36px;
+    font-size:14px;
+    display:block;
+    float:left;
+}
+
+#head-menu ul li a{
+    color:#fff;
+    text-decoration:none;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding:8px 30px 8px 30px;
+}
+
+#head-menu ul li a:hover{
+    background:#37712B;
+}
+
+/*************main**************/
+#main{
+    width:958px;
+    min-height:500px;
+    margin:0 auto;
+    margin-top:25px;
+    background:#fafafa;
+    border:1px solid #D3D3D3;
+    border-radius: 5px; 
+}
+
+#class-title{
+    height:35px;
+    line-height:35px;
+    padding-left:20px;
+    font-size:18px;
+    border-bottom:1px solid #d3d3d3;
+    background:#f4f4f4;
+}
+
+#main-left{
+    float:left;
+    width:190px;
+    padding-bottom:25px;
+}
+
+#left-menu ul li{
+    height:30px;
+    line-height:30px;
+}
+
+#left-menu ul li a{
+    display:block;
+    color:#000;
+    text-decoration:none;
+    padding:5px 0px 5px 20px;
+}
+
+#left-menu ul li a:hover{
+    background:#6EB262;
+}
+
+#main-right{
+    float:right;
+    width:747px;
+    min-height:500px;
+    padding-left:20px;
+    padding-top:25px;
+    border-left:1px solid #d3d3d3;
+}
+
+
+#not-show{
+    clear:both;
+    height:1px;
+}
+/*************footer**************/
+#footer{
+    height:80px;
+    margin-top:50px;
+    background:#727171;
+}

@@ -1,0 +1,169 @@
+/* 
+    Document   : Admin-index
+    Created on : 2013-6-27, 22:37:20
+    Author     : lisha_000
+    Description:
+        Purpose of the stylesheet follows.
+*/
+body, div, address, blockquote, iframe, ul, ol, dl, dt, dd, li, dl, h1, h2, h3, h4, h5, h6, p, pre, table, caption, th, td, form, legend, fieldset, input, button, select, textarea {margin:0; padding:0;font-style: normal;font-size: 100%; font-family: inherit;} 
+ol, ul ,li{list-style: none;} 
+img {border: 0;} 
+body {color:#000;font-size: 12px;background-color:#fff;font-family: "Microsoft YaHei",Helvetica,Verdana,Arial,Tahoma;} 
+.clearfix:after {clear:both; content:"."; display:block; height:0pt; visibility:hidden; overflow:hidden;} 
+.clear{clear:both;height:1px; margin-top:-1px; width:100%;} 
+
+.dis{display:block;} 
+.undis{display:none;} 
+
+/*************main**************/
+#prize{
+    position: absolute;
+    width:100%;
+    height:100%;
+}
+
+#prize-bg{
+    position: absolute;
+    background: #000;
+    width:100%;
+    height:100%;
+    padding:20px;
+    filter:alpha(opacity=70); 
+    -moz-opacity:0.7;
+    opacity:0.7;
+}
+
+#prize-main{
+    position: absolute;
+    width:680px;
+    background:#fff;
+    border:1px solid #ccc;
+    border-radius: 10px;
+    overflow:hidden;
+    padding-bottom:10px;
+    z-index: 100;
+}
+
+
+#prize-title{
+    height:30px;
+    line-height:30px;
+    padding-left:10px;
+    border-bottom:1px solid #ccc;
+    background-image: url(/weixin/Public/Image/key-bg.png);
+    cursor: pointer;
+}
+
+#prize-title a{
+    float:right;
+    margin-right:10px;
+}
+
+#prize-table{
+    padding:20px;
+    height:500px;
+    overflow: auto;
+}
+
+
+
+#main{
+    width:958px;
+    min-height:500px;
+    margin:0 auto;
+    margin-top:25px;
+    background:#fafafa;
+    border:1px solid #D3D3D3;
+    border-radius: 5px; 
+}
+
+#class-title{
+    height:35px;
+    line-height:35px;
+    padding-left:20px;
+    font-size:18px;
+    border-bottom:1px solid #d3d3d3;
+    background:#f4f4f4;
+}
+
+#main-left{
+    float:left;
+    width:190px;
+    padding-bottom:25px;
+}
+
+#left-menu ul li a{
+    display:block;
+    color:#000;
+    text-decoration:none;
+    padding:10px 0px 10px 20px;
+}
+
+#left-menu ul li a:hover{
+    background:#6EB262;
+}
+
+#main-right{
+    float:right;
+    width:747px;
+    min-height:500px;
+    padding-left:20px;
+    padding-top:25px;
+    border-left:1px solid #d3d3d3;
+}
+
+#lucky-table tr td a{
+    cursor:pointer;
+    color:#000;
+    text-decoration:underline;
+}
+
+#lucky-table tr td{
+    word-wrap: break-word;
+    word-break:break-all;
+}
+
+#lucky-table tr{
+    line-height:20px;
+}
+
+#edit-table{
+    font-size:16px;
+}
+
+#edit-table tr{
+    height:40px;
+}
+
+#edit-table tr td{
+    padding-left:10px;
+}
+
+#add-table{
+    font-size:16px;
+}
+
+#add-table td{
+    padding-left:10px;
+}
+
+#add-table input{
+    height:30px;
+    padding-left:10px;
+    padding-right:10px;
+    width:200px;
+}
+
+#add-table tr{
+    height:40px;
+}
+
+#page{
+    text-align: center;
+    margin-top:20px;
+}
+
+#not-show{
+    clear:both;
+    height:1px;
+}

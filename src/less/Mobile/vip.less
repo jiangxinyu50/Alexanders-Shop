@@ -1,0 +1,976 @@
+@base-font-size : 12px;
+@base-padding : 0px;
+@base-width : 100%;
+@base-margin : 10px;
+
+.font-size{
+  font-size:@base-font-size;
+}
+.font-size-1x{
+  font-size:@base-font-size+1;
+}
+.font-size-2x{
+  font-size:@base-font-size+3;
+}
+.font-size-3x{
+  font-size:@base-font-size+6;
+}
+.font-size-4x{
+  font-size:@base-font-size+8;
+}
+.font-color{
+  color: @black-color;
+}
+.weui-cell__bd p{
+  color: @black-color;
+}
+.shop-vip .recharge-money{
+  text-align:center;
+  border: 2px solid #fff;
+  margin-left:@base-spacing;
+  margin-right:@base-spacing;
+  margin-top:@base-spacing;
+  font-size:@base-font-size+12;
+  border-radius: 5px;
+  color:#CCC;
+}
+.shop-vip .choose-card{
+  padding: 20px 0 10px;
+  color: #020202;
+  border-bottom: 1px solid #000;
+}
+.shop-vip .menu_body-size {
+  width: 100%;
+  height: 32px;
+}
+.shop-vip .menu-body {
+  width: auto;
+  margin-top: 5px;
+  float: right;
+  font-size: 15px;
+}
+.shop-vip .menu-base{
+  height: 26px;
+  width: 50%;
+  margin: 0 auto;
+  padding: 0 0 19px;
+}
+.shop-vip .menu-base_on{
+  color: #8d070e;
+  border-bottom: 3px solid #960407;
+}
+.shop-vip .menu-icon {
+  width: 30%;
+  margin-right: 0;
+  display: inline-block;
+  float: left;
+}
+.shop-vip .index-icon {
+  height: 25px;
+  width: auto;
+  margin-top: 4px;
+}
+.recharge-cell .vertical-line {
+  width: 1px;
+  height: 32px;
+  position: relative;
+}
+.shop-vip .money-select{
+  border: 2px solid @main-color;
+  color:@main-color;
+}
+.shop-vip .recharge-money-content{
+  visibility: visible;
+  width: 100%;
+  display: inline-block;
+}
+.recharge-cell .pay-recharge-btn{
+  background-color: #000;
+  border-radius: 0;
+  padding: 0 1em;
+}
+.recharge-money-content .goods-card{
+  list-style-type:none;
+  height: auto;
+  min-height: 0;
+  float: left;
+  width: 24%;
+  margin: 30px 0 10px 7%;
+  border: 1px solid #050505;
+}
+.shop-vip .recharge{
+  width: 100%;
+  border-radius: 0 0 5px 5px;
+  margin: 0;
+  font-size: 1em;
+  color: #777;
+}
+.shop-vip .content-margin {
+  margin: 5px auto 15px;
+}
+.recharge-prompt{
+  margin: 45px 0 20px;
+  padding: 0 6% 0 11%;
+  font-size: 12px;
+}
+.recharge-cell .goods-card-body{
+  width: 98%;
+  margin: 0 auto;
+}
+.recharge-cell .goods-card-info{
+  padding: 15px 0;
+  text-align: center;
+  font-size: 17px;
+  border-radius: 0 0 5px 5px;
+}
+.recharge-cell .chongzhi{
+  font-size: 14px;
+  color: #050505;
+  line-height: 1.2;
+}
+.recharge-cell .zengsong{
+  font-size: 14px;
+  color: #9d0102;
+  line-height: 1.3;
+}
+.recharge-prompt-title{
+  list-style: none;
+  margin-left: -16px;
+}
+.recharge-record-content{
+  padding: 5px 0;
+}
+.no-recharge{
+  padding: 20px;
+}
+.info-icon{
+  width:20px;
+  margin-right:5px;
+  display:block;
+}
+.vip-order-list .order-tab-content{
+  padding-top:4*@base-spacing;
+  background-color: @bg-color;
+}
+.user-background{
+  height: 180px;
+  background: url("/Public/images/Mobile/vip-bg.jpg");
+  background-size: 100%;
+}
+.user-head-margin{
+  margin: 26px 5px 5px 5px;
+}
+.user-head{
+  width: 64px;
+  display: block;
+  margin: 0 auto;
+  border-radius: 40px;
+  border: 2px solid #fff;
+}
+.user-name{
+  line-height: 36px;
+  color: #fff;
+  margin-bottom: -8px;
+}
+
+.footer-position{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+}
+
+.angle-left{
+  font-size: 28px;
+  position: absolute;
+  margin: 4px 0;
+}
+
+.ellipsis-h{
+  font-size: 24px;
+  float: right;
+  margin: 8px 0;
+}
+
+.back-btn-font{
+  margin: 0 18px;
+  font-size: @base-font-size+2;
+}
+
+.icon{
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  background-size: 100% !important;
+}
+
+.tabbar-icon{
+  width: 24px;
+  height: 26px;
+  display: inline-block;
+  background-size: 100% !important;
+}
+
+.personal_data .cell-select_padding{
+  padding: 10px;
+}
+.personal_data .data-label_margin{
+  color:#a4a09d;
+  margin-left: 6px;
+}
+
+.btn-area{
+  margin: 1.17647059em 56px .3em;
+}
+
+.look-more{
+  color: #a4a09d;
+}
+
+.shop-vip .weui-navbar__item:after{
+  border-right:none;
+}
+
+.weui-bar-item_on{
+ border-bottom: 3px solid #ccc;
+}
+
+.coupon-bg{
+  background: url(/Public/images/Mobile/coupon-bg.png) no-repeat;
+  margin: 10px 10px;
+  background-size: 100%;
+}
+.coupon-money{
+  font-size: 24px;
+  font-weight: bold;
+  color:#fff;
+}
+.coupon-left{
+  width: 28.6%;
+  height: 95px;
+  line-height: 95px;
+  margin-right: .8em;
+  background: url(/Public/images/Mobile/coupon-left.png) no-repeat;
+  background-size: cover;
+  text-align: center;
+}
+.coupon-right{
+  width: 28.6%;
+  height: 100px;
+  line-height: 100px;
+  margin-left: .8em;
+  background: url(/Public/images/Mobile/coupon-right.png) no-repeat;
+  background-size: cover;
+  text-align: center;
+}
+.popup-card-left{
+  height: 93px !important;
+  line-height: 93px !important;
+}
+.coupon-banner_style{
+  border-bottom: 1px solid #fff;
+  box-shadow: 0 5px 10px #ccc;
+}
+.coupon-title{
+  position: relative;
+  top: 3px;
+  font-size: 3em;
+}
+.coupon-top{
+  width: 76%;
+  padding: 0;
+  text-align: center;
+}
+.coupon-desc{
+  margin-top: -0.4em;
+  margin-left: -1em;
+}
+.coupon-style{
+  margin: 2.4em 0 0;
+}
+.card-info-title{
+  color:#6c4217;
+  text-align: center;
+}
+.card-info-slogan{
+  margin: -10px 0 0 0;
+  font-size: 17px;
+}
+.card-info-prompt{
+  font-weight: bold;
+  font-size: 20px;
+  margin: 24px 0 10px 0;
+  letter-spacing: 1.5px;
+}
+.card-title{
+  color: #ae945e;//#950505
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+.card-explain{
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.personal-head-bottom{
+  color: #fff;
+  display: inline-block;
+  font-size: 14px;
+  padding: 0 5px;
+}
+
+.hongbao-banner-img{
+  width: 100%;
+  height: 0;
+  padding-top: 56%;
+  background-size: 100%;
+  background-image: url('/Public/images/Mobile/Hongbao-banner.jpg');
+  background-repeat: no-repeat;
+}
+
+.shareHongbao-div{
+  padding-left:10px;
+  padding-right:10px;
+  background: url(/Public/images/Mobile/card-bg.png) no-repeat;
+  background-size: 100%;
+  width: 88%;
+  margin: 0 auto;
+  height: 0;
+  padding-bottom: 152px;
+}
+.shareHongbao-title{
+  position: relative;
+  top: 12px;
+  font-size: 3.6em;
+}
+.shareHongbao-date{
+  margin-left: 4.6em;
+  color: #000;
+  font-size: 12px;
+}
+.shareHongbao-money{
+  position: relative;
+  top:-24px;
+  right: -76%;
+  line-height: 80px;
+}
+
+.shouqi-div{
+  padding: 20px 0 25px 0;
+  margin-top: 10px;
+}
+
+.weui-loadmore_supplement{
+  margin: 0.8em auto 0 auto;
+  width: 94%;
+}
+
+.order_share_userhead{
+  width: 48px;
+  height: 48px;
+  display: block;
+  border-radius: 10px;
+}
+.order-share_font{
+  color:#ababab;
+  display: inline-block;
+  font-size: @base-font-size+4;
+  position: absolute;
+  top: 42%;
+  padding: 0 10px;
+}
+.order-share_info{
+  color:#888;
+  text-align: center;
+  position: absolute;
+  font-size: @base-font-size+6;
+  margin: 8px @base-margin;
+  top: 55%;
+  padding: @base-padding 20px;
+  line-height: 1.5em;
+}
+
+.vip-card .weui-search-bar__form:after{
+  border-radius: 15px 0 0 15px;
+}
+.vip-card .little-circle_position{
+  right: -8px;
+  bottom: 42%;
+}
+
+.most_small-font{
+  font-size:10px;
+}
+.vip-card .big-font{
+  font-size: @base-font-size+6;
+}
+
+.exchangeDiv{
+  margin: 0 @base-margin;
+}
+.exchangeDiv .exchangeDiv_div{
+  height: 32px;
+  border-radius: 15px 0 0 15px;
+}
+.exchange_icon{
+  margin: 0.5em 0.34em 0 0;
+  width: 20px;
+}
+.exchange-input{
+  padding-left: 15px;
+  padding-right:0;
+}
+.vip-card .exchange_a{
+  padding: 0 8px;
+  line-height: 32px;
+  display: none;
+}
+
+.cardDiv{
+  padding: 24px 15px 10px 11px;
+  position: initial;
+}
+.card_icon{
+  margin: 0.2em 0.34em 0 0;
+  width:20px;
+}
+.base-margin-top{
+  margin-top: @base-margin;
+}
+.coupon-detail_padding{
+  padding: 16px 6%;
+}
+.coupon-color{
+  color: #ae945e;
+}
+
+.recharge-cell .weui-cell:before {
+  border-top: 1px solid #d9d9d9;
+}
+.recharge-left{
+  width: 32.6%;
+  line-height: 4;
+  margin-right: .8em;
+  text-align: center;
+  background-size: cover;
+  border-radius: 3px;
+}
+.shop-vip .gift-select{
+  border: 1px solid #d4a77E;
+  color: #d4a77E;
+}
+.shop-vip .gift-left{
+  width: 32.6%;
+  line-height: 1.5;
+  margin-right: 0;
+  text-align: center;
+  background-size: cover;
+  border-radius: 3px;
+}
+.shop-vip .gift-money{
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  margin: 21px 10px 21px 11px;
+}
+.shop-vip .gift-bg_title{
+  line-height: 3.5;
+}
+.shop-vip .gift-valid_date{
+  font-size: 13px;
+  text-align: left;
+  padding-top: 10px;
+  padding-left: 15px;
+}
+.shop-vip .gift-limit_money{
+  font-size: 14px;
+  margin-top: 0;
+  padding-left: 15px;
+}
+.vip-info .weui-label{
+  width: 75px;
+}
+.mygift .weui-cell:before {
+  border-top:none !important;
+}
+.vip-info .weui-input {
+  color: black;
+}
+
+.hongbao-banner_div{
+  position: absolute;
+  width: 70%;
+  top: 4%;
+  right: 10%;
+  text-align: right;
+}
+.shareHongbao-top{
+  width: 76%;
+  padding: 8px 0 0;
+}
+.Hongbao-style{
+  margin: 2.5em 0 0;
+  padding-left: 12px;
+}
+.Hongbao-rmb_style{
+  letter-spacing: 2px;
+  width: 40%;
+  color: #000;
+  font-size: 1em;
+  line-height: 1;
+}
+.Hongbao-card_style{
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+.hongbao-rules{
+  width: 85%;
+  margin:0 15px 0 auto;
+  font-size: .9em;
+}
+.Hongbao-desc{
+  margin-top: -0.65em;
+  margin-left: -1em;
+}
+.shareHongbao-title_div{
+  text-align: right;
+  margin-left: -3.4em;
+}
+.shareHongbao-over_img{
+  width: 90%;
+  padding: 0 auto;
+  margin: 0 5%;
+}
+.weui-media-box_appmsg .weui-media-box__hd {
+  height: auto;
+  line-height: 0;
+}
+.goods_desc{
+  margin-top: -4px;
+}
+
+@media (max-width: 320px) and (min-width: 320px){
+  .user-background {
+    background-position: -40px 1px;
+    background-size: 121%;
+  }
+  .shareHongbao-title{
+    top: 8px;
+    font-size: 2.5em;
+  }
+  .shareHongbao-date{
+    margin-left: 1.5em;
+  }
+  .Hongbao-desc{
+    margin-top: -7px;
+    margin-left: -1.2em;
+  }
+  .shareHongbao-money{
+    top:-24px;
+    right: -77%;
+  }
+  .Hongbao-style {
+    margin: 20px 0 0;
+  }
+  .shareHongbao-div {
+    width: 85%;
+    padding-bottom: 112px;
+  }
+  .card-money{
+    font-size: 26px;
+    line-height: 54px;
+    margin-right: 2px;
+  }
+  .popup-card-left{
+    height: 71px !important;
+    line-height: 70px !important;
+  }
+  .coupon-money{
+    font-size: 20px;
+  }
+  .coupon-left{
+    height: 75px;
+    line-height: 77px;
+    margin-right: .4em;
+  }
+  .order-share_font{
+    font-size: 12px;
+  }
+  .order-share_info{
+    font-size: 15px;
+  }
+  .recharge-cell .weui-btn_mini {
+    padding: 0 .3em;
+    font-size: 12px;
+  }
+  .shop-vip .menu-base {
+    width: 62%;
+  }
+  .hongbao-banner_div{
+    top: 4%;
+  }
+  .shareHongbao-top {
+    padding: 2px 0 0;
+  }
+  .coupon-title {
+    font-size: 2em;
+    top: 1px;
+  }
+  .coupon-style {
+    margin: 2em 0 0;
+  }
+  .Hongbao-card_style {
+    font-size: 12px;
+  }
+  .Hongbao-rmb_style {
+    font-size: 12px;
+    line-height: 0;
+  }
+  .coupon-detail_padding .weui-form-preview__label {
+    font-size: 14px;
+  }
+  .card-explain {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 360px) and (min-width: 360px){
+  .user-background {
+    background-size: 108%;
+  }
+  .shareHongbao-title {
+    top: 18px;
+    font-size: 3em;
+  }
+  .shareHongbao-date{
+    margin-left: 45px;
+  }
+  .shareHongbao-top{
+    padding: 0 0 0;
+  }
+  .shareHongbao-money{
+    top:-26px;
+    right: -77%;
+    line-height: 66px;
+  }
+  .coupon-money{
+    font-size: 22px;
+  }
+  .card-money{
+    font-size: 28px;
+  }
+  .popup-card-left{
+    height: 80px !important;
+    line-height: 80px !important;
+  }
+  .coupon-left {
+    height: 85px;
+    line-height: 85px;
+  }
+  .order-share_font{
+    font-size: 14px;
+  }
+  .order-share_info{
+    font-size: 16px;
+  }
+  .recharge-cell .weui-btn_mini {
+    padding: 0 .6em;
+  }
+  .shop-vip .menu-base {
+    width: 56%;
+  }
+  .shareHongbao-div {
+    padding-bottom: 130px;
+  }
+  .hongbao-banner_div{
+    top: 5%;
+  }
+  .Hongbao-desc {
+    margin-top: -4px;
+    margin-left: -12px;
+  }
+  .Hongbao-style {
+    margin: 2.4em 0 0;
+  }
+  .coupon-title {
+    font-size: 2.6em;
+  }
+  .coupon-desc {
+    margin-top: 0;
+  }
+  .coupon-style {
+    margin: 1.6em 0 0;
+    padding-left: 8px;
+  }
+}
+
+@media (max-width: 375px) and (min-width: 375px){
+  .user-background {
+    background-size: 104%;
+  }
+  .shareHongbao-money{
+    top:-25px;
+    right: -75%;
+    line-height: 72px;
+  }
+  .popup-card-left{
+    height: 84px !important;
+    line-height: 85px !important;
+  }
+  .coupon-money{
+    font-size: 22px;
+  }
+  .coupon-left{
+    height: 89px;
+    line-height: 92px;
+  }
+  .order-share_font{
+    font-size: 14px;
+  }
+  .order-share_info{
+    font-size: 16px;
+  }
+  .recharge-cell .weui-btn_mini {
+    padding: 0 0.7em;
+  }
+  .shop-vip .menu-base {
+    width: 54%;
+  }
+  .shareHongbao-title {
+    top: 20px;
+    font-size: 3em;
+  }
+  .shareHongbao-date {
+    margin-left: 52px;
+  }
+  .hongbao-banner_div{
+    top: 5%;
+  }
+  .shareHongbao-div {
+    padding-bottom: 135px;
+  }
+  .Hongbao-desc {
+    margin-left: -0.8em;
+    margin-top: 2px;
+  }
+  .shareHongbao-title_div {
+    margin-top: -0.9em;
+  }
+  .Hongbao-style {
+    margin: 1.5em 0 0;
+  }
+  .Hongbao-rmb_style {
+    width: 26%;
+  }
+  .coupon-style {
+    margin: 2em 0 0;
+  }
+}
+@media (max-width: 414px) and (min-width: 414px){
+  .user-background {
+    background-position: 0 -6px;
+  }
+}
+
+@media (max-width: 768px) and (min-width: 768px){
+  .user-background {
+    background-position: 0;
+  }
+  .shareHongbao-div{
+    padding-bottom: 275px;
+  }
+  .shareHongbao-top {
+    padding: 0 0 0;
+  }
+  .shareHongbao-title_div {
+    margin-left: -7em;
+  }
+  .shareHongbao-title{
+    top: 28px;
+    font-size: 6em;
+  }
+  .shareHongbao-date{
+    font-size: 24px;
+    top: -8px;
+    left: 75px;
+  }
+  .shareHongbao-money{
+    top:-18px;
+    font-size: 55px;
+  }
+  .up-semicircle{
+    right: 27.5%;
+  }
+
+  .down-semicircle{
+    right: 27.5%;
+  }
+  .order-share_font{
+    font-size: 28px;
+    top: 45%;
+  }
+  .order-share_info{
+    font-size: 30px;
+    padding: 0 35px;
+    top: 60%;
+  }
+  .hongbao-banner_div {
+    top: 7%;
+  }
+  .hongbao-rules {
+    font-size: 1.5em;
+  }
+  .Hongbao-rmb_style {
+    font-size: 32px;
+    letter-spacing: 0;
+  }
+  .Hongbao-card_style {
+    font-size: 30px;
+  }
+  .Hongbao-style {
+    margin: 4.5em 0 0;
+  }
+  .Hongbao-desc{
+    margin-top: 0;
+    margin-left: -2em;
+  }
+  .coupon-top {
+    padding: 10px 0 0;
+  }
+  .coupon-title {
+    font-size: 5.6em;
+  }
+  .coupon-style {
+    margin: 3em 0 0;
+  }
+  .coupon-desc {
+    margin-left: -1.5em;
+  }
+  .card-explain {
+    font-size: 18px;
+  }
+  .weui-form-preview__label {
+    font-size: 1.2em;
+  }
+}
+
+@media (max-width: 1024px) and (min-width: 1024px){
+  .user-background {
+    height: 195px;
+    background-position: -1px -135px;
+  }
+  .order-share_font{
+    font-size: 40px;
+    top:46%;
+  }
+  .order-share_info{
+    font-size: 45px;
+    padding: 0 60px;
+    top:60%;
+  }
+  .Vip-Hongbao{
+    width: 50%;
+    margin: 0 auto;
+  }
+  .hongbao-banner_div {
+    width: 34%;
+    top: 5%;
+    right: 30%;
+  }
+  .shareHongbao-title {
+    top: 38px;
+    font-size: 3em;
+  }
+  .shareHongbao-date {
+    position: relative;
+    top: -34px;
+    left: 80px;
+  }
+  .shareHongbao .card-date {
+    margin-left: -1em;
+    color: #000;
+    font-size: 14px;
+  }
+  .Hongbao-rmb_style {
+    width: 21%;
+    font-size: 1.2em;
+  }
+  .shareHongbao-div {
+    padding-bottom: 140px;
+  }
+  .Hongbao-desc {
+    margin-top: 2.5em;
+    margin-left: -6em;
+  }
+  .Hongbao-style {
+    margin: 1.4em 0 0;
+  }
+  .shareHongbao-title_div {
+    margin-top: -2em;
+  }
+  .coupon-div {
+    padding-bottom: 270px !important;
+    width: 88% !important;
+  }
+  .coupon-top {
+    padding: 4em 0 0;
+  }
+  .coupon-desc {
+    margin-top: 2.6em;
+    margin-left: 2em;
+  }
+}
+
+@media (min-width: 1025px){
+  .Vip-Hongbao{
+    width: 50%;
+    margin: 0 auto;
+    max-width: 720px;
+  }
+  .hongbao-banner_div {
+    width: 32%;
+    top: 7%;
+    right: 32%;
+  }
+  .shareHongbao-title {
+    font-size: 3em;
+  }
+  .Hongbao-desc {
+    margin-top: -4px;
+    margin-left: -1.2em;
+  }
+  .shareHongbao-div {
+    padding-bottom: 140px;
+  }
+  .Hongbao-rmb_style {
+    font-size: 1.2em;
+    top:0;
+  }
+  .Hongbao-card_style {
+    font-size: 1.2em;
+  }
+  .Hongbao-style {
+    margin: 1.8em 0 0;
+  }
+  .shareHongbao-title_div{
+    margin-left: -5em;
+  }
+  .coupon-div{
+    padding-bottom: 270px !important;
+  }
+  .coupon-desc {
+    margin-top: 0.6em;
+    margin-left: 5.4em;
+  }
+  .coupon-desc .shareHongbao-date {
+    font-size: 1em;
+  }
+  .coupon-top {
+    padding: 3em 0 0;
+  }
+  .coupon-style {
+    margin: 2.1em 0 0;
+  }
+}

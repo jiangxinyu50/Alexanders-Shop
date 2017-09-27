@@ -1,0 +1,38 @@
+<div id="address_list" class="weui-panel" style="margin-top: 10px;">
+    <div class="weui-panel__hd">常用地址</div>
+    <div class="weui-panel__bd">
+        <volist name='address' id='item'>
+            <div class="weui-panel_access address-use-panel" type='<{$item.type}>' index='<{$item.id}>' id='address-item-<{$item.id}>'>
+                <div class="weui-panel__bd">
+                    <!-- 隐藏的输入框，获取配送信息类型 -->
+                    <input class="type" type="hidden" value="<{$item.type}>">
+                    <a class="weui-cell weui-cell_access address-item-sel" href="javascript:;" index="<{$item.id}>">
+                        <div class="weui-cell__bd">
+                            <h4 class="weui-media-box__title black-color"><span class="name"><{$item.name}></span> <span class="tel"><{$item.tel}></span>
+                                <eq name='item.is_default' value='1'>
+                                    <span class="weui-badge" style="margin-left: 5px;">默认</span>
+                                </eq>
+                            </h4>
+                            <p class='weui-media-box__desc'><span class="district"><{$item.district}> </span><span class="address"><{$item.address}> <{$item.floor}></span></p>
+                        </div>
+                        <div class="weui-cell__ft">
+                        </div>
+                    </a>
+                </div>
+                <!-- 配送信息选项 -->
+                <div class="weui-panel__ft address-item" index="<{$item.id}>" style='display:none;'>
+                    <div class="weui-cell weui-cell_access weui-cell_link">
+                        <div class="weui-cell__bd">
+                            <span class="address-control address-use">使用</span>
+                            <span class="address-control address-edit">编辑</span>
+                            <neq name='item.is_default' value='1'>
+                            <span class="address-control address-default">设为默认</span>
+                            </neq>
+                            <span class="address-control address-del">删除</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </volist>
+    </div>
+</div>

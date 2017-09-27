@@ -1,0 +1,118 @@
+<extend name="Public/base" />
+<block name='title'>我的优惠券</block>
+<block name='content'>
+    <!--============优惠券兑换==============-->
+	<div class="content vip-card">
+        <!-- 个人信息顶部 -->
+        <div class="weui-panel_access user-background"></div>
+
+        <div class="white-bg">
+        <!-- 兑换title -->
+        <div class="weui-cell white-bg" style="padding: 5px 13px;">
+            <div class="weui-cell__hd base-color">
+                <img src="/Public/images/Mobile/icon/coupon-icon.png" alt="Alexander's" class="exchange_icon">
+            </div>
+            <div class="weui-cell__bd base-color">
+                <p class="big-font">优惠券兑换</p>
+            </div>
+        </div>
+        <!-- 输入框 -->
+        <div class="exchangeDiv">
+            <div class="weui-cell weui-cell_vcode base-padding" style="padding: 8px 10px 0 0;">
+                <div class="weui-search-bar__form exchangeDiv_div">
+                    <div class="weui-search-bar__box exchange-input">
+                        <input type="text" class="weui-search-bar__input code-input" placeholder="请在这里输入兑换码" style="padding: 6px 0;">
+                    </div>
+                </div>
+                <div class="weui-cell__ft">
+                    <button class="weui-vcode-btn exchange-btn">兑换</button>
+                </div>
+            </div>
+        </div>
+        <!-- 可用优惠券title -->
+        <div class="weui-cell cardDiv">
+            <div class="weui-cell__hd base-color">
+                <img src="/Public/images/Mobile/icon/usable-card.png" alt="Alexander's" class="card_icon">
+            </div>
+            <div class="weui-cell__bd base-color">
+                <p class="big-font">可用优惠券<span style="color: #999;font-size: 13px;">（点击查看优惠券详情）</span></p>
+            </div>
+        </div>
+        </div>
+        <!-- 可用优惠券列表信息 -->
+        <volist name='coupon' id='card'>
+        <div class="gray-bg">
+            <div class="gray-bg base-margin-top">
+                <div class="weui-panel__bd coupon-bg">
+                    <a href="<{:U('cardInfo')}>/id/<{$card.id}>" class="weui-media-box weui-media-box_appmsg base-padding" style="padding: 0;">
+                        <div class="coupon-left">
+                            <span class="little-circle little-circle_position"></span>
+                            <label class="coupon-money">¥<{$card.price}></label>
+                        </div>
+                        <div class="weui-media-box__bd">
+                            <span class="little-circle little-circle_position"></span>
+                            <h4 class="weui-media-box__title"><{$card.name}></h4>
+                            <p class="weui-media-box__desc most_small-font">有效日期:<{$card.startTime}> 至 <{$card.endTime}></p>
+                            <p class="weui-media-box__desc most_small-font">订单满<{$card.price_limit}>元可使用</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        </volist>
+        <!-- 兑换结果弹窗 -->
+        <div class="js_dialog" id="exchange-dialog" style="opacity: 1; display:none;">
+            <div class="weui-mask"></div>
+            <div class="weui-dialog">
+                <div class="weui-dialog__hd"><strong class="weui-dialog__title">兑换结果</strong></div>
+                <div class="weui-dialog__bd exchange-info">弹窗内容，描述文字尽量控制在三行内</div>
+                <div class="weui-dialog__ft">
+                    <eq name='from' value='cart'>
+                        <a href="<{:U('Index/cart')}>" class="weui-dialog__btn weui-dialog__btn_default">返回订单</a>
+                    </eq>
+                    <a href="<{:U('card')}>" class="weui-dialog__btn weui-dialog__btn_primary exchange-dialog-ok">确认</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <include file="Public/footer" />
+
+</block>
+<block name='footer-js'>
+<script>
+    //加载顶部
+    $('.user-background').load("<{:U('vipHeader')}>", function(){
+        $('.account_balance').text(<{$balance}>);
+    });
+
+    //底部栏默认选中样式
+    $('.menu-vip').addClass('weui-bar__item_on');
+    $('.vip-menu-icon').attr('src', "__PUBLIC__/images/Mobile/icon/menu-vip.png");
+    shop_item_init(false);
+
+    //兑换优惠券 事件
+    $('.exchange-btn').on('click', function(){
+        var code = $('.code-input').val();
+
+        if(!code)
+            return ;
+
+        var params  = {
+            code : code
+        };
+
+        $.post("<{:U('exchange_promo_code')}>", params, function(data){
+            if(data['status'] == 0){
+                $('.exchange-info').text("兑换成功");
+                $('#exchange-dialog').show();
+            }else if(data['status'] == -40006){  //已兑换过
+                $('.exchange-info').text(data.info);
+                $('#exchange-dialog').show();
+            }else{
+                $('.exchange-info').text("兑换码错误");
+                $('#exchange-dialog').show();
+            }
+        });
+    });
+</script>
+</block>

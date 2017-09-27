@@ -1,0 +1,59 @@
+.img-responsive{
+	width: 100%;
+	height: auto;
+}
+.clear-margin-top{
+	margin-top:0px;
+}
+.clear-margin-bottom{
+	margin-bottom: 0px;
+}
+.user-head{
+	height: 10rem;
+	text-align: center;
+	background-position :center;
+	background-image: url(http://ecode-img.msa12365.com/alexander/mobile/2.jpg@20-5bl);
+	background-size : cover;
+	background-repeat: no-repeat;
+}
+
+.user-face{
+	width: 4rem;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+	margin-top: 3em;
+	box-shadow:0 0 10px #000;
+}
+
+.white-font{
+	color:#FFF;
+}
+
+.shadow-font{
+	text-shadow:0 0 10px #000;
+}
+
+/**
+ * integral 用户积分
+ */
+.user-integral-head{
+	height: 10rem;
+	text-align: center;
+	background-position :center;
+	background-image: url(http://ecode-img.msa12365.com/alexander/mobile/2.jpg@20-5bl);
+	background-size : cover;
+	background-repeat: no-repeat;
+}
+
+.integral-total{
+	padding-top:1rem;
+	font-size: 70px;
+}
+
+/***************************************/
+
+/*card 优惠券*/
+.card-time-rand{
+	font-size: 14px;
+	color:#CCC;
+}

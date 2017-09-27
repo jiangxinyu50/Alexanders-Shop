@@ -1,0 +1,24 @@
+<extend name="Public/base" />
+<block name='title'>自助服务</block>
+<block name='content'>
+    <div class="content gray-bg">
+        <!-- 解答详情 -->
+        <div class="weui-panel">
+            <div class="weui-panel__hd question-details-hd"><{$question.title}></div>
+            <div class="weui-panel__bd">
+                <div class="weui-media-box weui-media-box_text">
+                    <{$question.info}>
+                </div>
+            </div>
+        </div>
+    </div>
+    <include file="Public/footer" />
+</block>
+<block name='footer-js'>
+<script>
+    //底部栏图标选中变色
+    $('.menu-vip').addClass('weui-bar__item_on');
+    $('.vip-menu-icon').attr('src', "__PUBLIC__/images/Mobile/icon/menu-vip.png");
+    shop_item_init(false);
+</script>
+</block>
